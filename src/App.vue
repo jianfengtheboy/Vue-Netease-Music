@@ -10,5 +10,4 @@ export default {
 }
 </script>
 
-<style lang="scss" type="text/css">
-</style>
+<style lang="scss" type="text/css"></style>
