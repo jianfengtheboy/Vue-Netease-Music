@@ -20,6 +20,14 @@ Vue.use(VueLazyLoad, {
 
 Vue.config.productionTip = false
 
+//版权信息
+const pkg = require('../package.json');
+window.NeteaseMusic = window.NeteaseMusic = `欢迎使用--网易云音乐，听见好时光!
+当前版本为：V${pkg.version}
+作者：Sun
+歌曲来源于网易云音乐(http://music.163.com)`;
+console.info(`%c${NeteaseMusic}`, `color : #198cff`);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
