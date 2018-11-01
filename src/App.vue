@@ -1,12 +1,20 @@
 <template>
-    <div id="app">
-        <router-view/>
+    <div id="app" @touchmove.prevent>
+        <NetHeader></NetHeader>
+        <keep-alive>
+            <router-view/>
+        </keep-alive>
     </div>
 </template>
 
 <script>
+import NetHeader from './components/NetHeader/NetHeader'
+
 export default {
-    name: 'App'
+    name: 'App',
+    components : {
+        NetHeader
+    }
 }
 </script>
 

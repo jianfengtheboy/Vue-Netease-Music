@@ -36,7 +36,7 @@ export function getMvFirst(limit = defaultLimit) {
 }
 
 //获取推荐电台
-export function getDjProgram() {
+export function getPersonalizedDjProgram() {
     const url = `${URL}/personalized/djprogram`
     return axios.get(url)
 }
@@ -86,11 +86,10 @@ export function getPlayListHot() {
 }
 
 //获取歌单 ( 网友精选碟 )
-export function getTopPlayList(page = 0, limit = defaultLimit, order = 'hot') {
+export function getTopPlayList(limit = defaultLimit, order = 'hot') {
     const url = `${URL}/top/playlist`
     return axios.get(url, {
         params : {
-            offset : page * limit,
             limit,
             order,
         }
@@ -190,60 +189,55 @@ export function getLyric(id) {
 }
 
 //歌曲评论
-export function getMusicComment(id, page, limit = defaultLimit) {
+export function getMusicComment(id, limit = defaultLimit) {
     const url = `${URL}/comment/music`
     return axios.get(url, {
         params : {
             id,
-            offset : page * limit,
             limit : limit
         }
     })
 }
 
 //专辑评论
-export function getAlbumComment(id, page, limit = defaultLimit) {
+export function getAlbumComment(id, limit = defaultLimit) {
     const url = `${URL}/comment/album`
     return axios.get(url, {
         params : {
             id,
-            offset : page * limit,
             limit : limit
         }
     })
 }
 
 //歌单评论
-export function getPlayListComment(id, page, limit = defaultLimit) {
+export function getPlayListComment(id, limit = defaultLimit) {
     const url = `${URL}/comment/playlist`
     return axios.get(url, {
         params : {
             id,
-            offset : page * limit,
             limit : limit
         }
     })
 }
 
 //mv评论
-export function getMvComment(id, page, limit = defaultLimit) {
+export function getMvComment(id, limit = defaultLimit) {
     const url = `${URL}/comment/mv`
     return axios.get(url, {
         params : {
             id,
-            offset : page * limit,
             limit : limit
         }
     })
 }
 
 //电台节目评论
-export function getDjComment(id, page, limit = defaultLimit) {
+export function getDjComment(id, limit = defaultLimit) {
     const url = `${URL}/comment/dj`
     return axios.get(url, {
         params : {
             id,
-            offset : page * limit,
             limit : limit
         }
     })
@@ -291,12 +285,11 @@ export function getArtist(id) {
 }
 
 //获取歌手专辑
-export function getArtistAlbum(id, page, limit) {
+export function getArtistAlbum(id, limit) {
     const url = `${URL}/artist/album`
     return axios.get(url, {
         params : {
             id,
-            offset : page * limit,
             limit : limit
         }
     })
@@ -391,23 +384,21 @@ export function musicLike(id) {
 }
 
 //新碟上架
-export function getTopAlbum(page = 0, limit) {
+export function getTopAlbum(limit) {
     const url = `${URL}/top/album`
     return axios.get(url, {
         params : {
-            offset : page * limit,
-            limit : limit
+            limit
         }
     })
 }
 
 //热门歌手
-export function getTopArtists(page = 0, limit) {
+export function getTopArtists(limit) {
     const url = `${URL}/top/artists`
     return axios.get(url, {
         params : {
-            offset : page * limit,
-            limit : limit
+            limit
         }
     })
 }
@@ -447,12 +438,11 @@ export function getDjCatelist() {
 }
 
 //电台 - 节目
-export function getDjProgram(rid, page = 0, limit = defaultLimit) {
+export function getDjProgram(rid, limit) {
     const url = `${URL}/dj/program`
     return axios.get(url, {
         params : {
             rid,
-            offset : page * limit,
             limit
         }
     })
