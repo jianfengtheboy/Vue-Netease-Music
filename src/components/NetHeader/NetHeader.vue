@@ -26,7 +26,7 @@ export default {
     background-color: $themeColor;
     .netHeaderLeft {
         position: absolute;
-        top: 30.5px;
+        top: 31px;
         left: $fontSize28 - 1;
         width: 48px;
         height: 48px;
@@ -36,7 +36,7 @@ export default {
     .netHeaderTitle {
         display: flex;
         justify-content: center;
-        padding: 30.5px 165px;
+        padding: 30.5px 160px;
         .netHeaderIcon {
             flex: 0 0 25%;
             height: 50px;
@@ -69,7 +69,7 @@ export default {
     }
     .netHeaderRight {
         position: absolute;
-        top: 30.5px;
+        top: 31px;
         right: $fontSize26;
         width: 48px;
         height: 48px;

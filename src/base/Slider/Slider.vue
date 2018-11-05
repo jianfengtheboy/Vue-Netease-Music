@@ -14,7 +14,57 @@ import { addClass } from '@/common/js/dom'
 import BScroll from 'better-scroll'
 
 export default {
-    name : 'slider'
+    name : 'slider',
+    props : {
+        loop : {
+            type : Boolean,
+            default : true
+        },
+        autoPlay : {
+            type : Boolean,
+            default : true
+        },
+        interval : {
+            type : Number,
+            default : 4000
+        }
+    },
+    data () {
+        return {
+            dots : [],
+            currentPageIndex : 0
+        }
+    },
+    mounted () {
+        setTimeout(() => {
+            this._setSliderWidth()
+            this._initSlider()
+            this._initDots()
+            if (this.autoPlay) {
+                this._play()
+            }
+        }, 20)
+
+        window.addEventListener('resize', () => {
+            if (!this.slider) return
+            this._setSliderWidth(true)
+            this.slider.refresh()
+        })
+    },
+    methods : {
+        _setSliderWidth (isResize) {
+
+        },
+        _initSlider () {
+
+        },
+        _initDots () {
+
+        },
+        _play () {
+
+        }
+    }
 }
 </script>
 
