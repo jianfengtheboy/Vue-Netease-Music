@@ -398,7 +398,7 @@ export function getTopArtists(limit) {
     const url = `${URL}/top/artists`
     return axios.get(url, {
         params : {
-            limit
+            limit : defaultLimit
         }
     })
 }
@@ -443,7 +443,7 @@ export function getDjProgram(rid, limit) {
     return axios.get(url, {
         params : {
             rid,
-            limit
+            limit : defaultLimit
         }
     })
 }
