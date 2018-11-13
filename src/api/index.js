@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URL, defaultLimit } from '../common/js/config.js'
+import { URL, defaultLimit } from '../common/js/config'
 
 //获取banner
 export function getBanner() {

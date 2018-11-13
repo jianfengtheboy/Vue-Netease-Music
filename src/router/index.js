@@ -12,6 +12,10 @@ const Discover = () => import('../views/Discover/Discover.vue')
 const Friends = () => import('../views/Friends/Friends.vue')
 const Music = () => import('../views/Music/Music.vue')
 const UserVideo = () => import('../views/UserVideo/UserVideo.vue')
+const PersonalFM = () => import('../components/PersonalFM/PersonalFM.vue')
+const Recommend = () => import('../components/Recommend/Recommend.vue')
+const MusicList = () => import('../components/MusicList/MusicList.vue')
+const Rank = () => import('../components/Rank/Rank.vue')
 
 /**
 * 方法二 ：webpack 代码分割写法
@@ -34,7 +38,25 @@ export default new Router({
         },
         {
             path : '/discover',
-            component : Discover
+            component : Discover,
+            children : [
+                {
+                    path : '/discover/personalFM',
+                    component : PersonalFM
+                },
+                {
+                    path : '/discover/recommend',
+                    component : Recommend
+                },
+                {
+                    path : '/discover/musicList',
+                    component : MusicList
+                },
+                {
+                    path : '/discover/rank',
+                    component : Rank
+                }
+            ]
         },
         {
             path : '/friends',

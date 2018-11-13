@@ -32,3 +32,21 @@
 @mixin bg-url($url) {
     background-image: url($url);
 }
+
+//圆角
+@mixin borderRadius($radius : 5px) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+//transform
+@mixin transform($transform) {
+    -webkit-transform:$transform;
+	-moz-transform:$transform;
+	-ms-transform:$transform;
+    -o-transform:$transform;
+	transform:$transform;
+}

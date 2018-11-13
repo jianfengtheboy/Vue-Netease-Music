@@ -62,9 +62,9 @@ export default {
     },
     mounted () {
         /* 保证在DOM渲染完毕后初始化better-scroll */
-        this.$nextTick(() => {
+        setTimeout(() => {
             this._initScroll()
-        })
+        }, 20)
     },
     methods : {
         _initScroll () {

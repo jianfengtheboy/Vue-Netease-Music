@@ -18,4 +18,4 @@ export const playMode = {
    loop : 3
 }
 
-export const ERR_OK = 0
+export const ERR_OK = 200

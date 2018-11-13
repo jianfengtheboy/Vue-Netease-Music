@@ -4,7 +4,7 @@
             <slot></slot>
         </div>
         <div class="dots">
-            <span class="dot" v-for="(item, index) in dots" :key="item.index" :class="{ active : currentPageIndex === index}"></span>
+            <span class="dot" v-for="(item, index) in dots" :class="{ active : currentPageIndex === index}"></span>
         </div>
     </div>
 </template>
@@ -106,7 +106,7 @@ export default {
             })
         },
         _initDots () {
-            this.dots = new Array(this.children.length)
+            this.dots = new Array(this.children.length - 2)
         },
         _play () {
             let pageIndex = this.currentPageIndex + 1
@@ -125,8 +125,10 @@ export default {
 </script>
 
 <style scoped lang="scss" type="text/css">
+@import "../../common/css/base.scss";
+@import "../../common/css/mixin.scss";
 
-.sliderWrapper {
+.slider {
     position: relative;
     width: 100%;
     height: 100%;
@@ -136,18 +138,19 @@ export default {
         overflow: hidden;
         white-space: nowrap;
         height: 100%;
-        .sliderItem {
+        .slider-item {
             float: left;
             box-sizing: border-box;
             overflow: hidden;
             text-align: center;
-            padding: 0 18px;
+            padding: 0 9.25px;
             height: 100%;
             a {
                 display: block;
                 width: 100%;
                 overflow: hidden;
                 text-decoration: none;
+                @include borderRadius(14px);
             }
             img {
                 width: 100%;
@@ -161,15 +164,15 @@ export default {
         right: 0;
         left: 0;
         bottom: 25px;
-        transform: translateZ(1px);
+        @include transform(translateZ(1px));
         text-align: center;
         font-size: 0;
         .dot {
             display: inline-block;
-            margin:0 10px;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
+            margin:0 7px;
+            width: 13px;
+            height: 13px;
+            @include borderRadius(50%);
             background-color: $themeWhite;
             &.active {
                 background-color: $themeColor;
