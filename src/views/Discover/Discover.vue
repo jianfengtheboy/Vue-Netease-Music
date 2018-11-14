@@ -15,6 +15,34 @@
                         </div>
                     </div>
                     <NetMenu></NetMenu>
+                    <div class="songListBox">
+                        <div class="personalizedList">
+                            <div class="listTitle">
+                                <span>推荐歌单</span>
+                            </div>
+                            <SongList :items="personalizedList">
+                                <template slot-scope="personalizedList">
+                                    <div class="song-img" data-play={formatPlayCount(personalizedList.playCount)}>
+                                        <img width="100%" height="100%" v-lazy="personalizedList.picUrl">
+                                    </div>
+                                    <p className="song-title">{{personalizedList.name.replace(/\s/g, ' ')}}</p>
+                                </template>
+                            </SongList>
+                        </div>
+                        <div class="highQualityList">
+                            <div class="listTitle">
+                                <span>精品歌单</span>
+                            </div>
+                            <SongList :items="highQualityList">
+                                <template slot-scope="highQualityList">
+                                    <div class="song-img" data-play={formatPlayCount(highQualityList.playCount)}>
+                                        <img width="100%" height="100%" v-lazy="highQualityList.coverImgUrl">
+                                    </div>
+                                    <p className="song-title">{{highQualityList.name.replace(/\s/g, ' ')}}</p>
+                                </template>
+                            </SongList>
+                        </div>
+                    </div>
                 </div>
             </Scroll>
         </div>
@@ -26,24 +54,44 @@ import Scroll from '@/base/Scroll/Scroll'
 import Loading from '@/base/Loading/Loading'
 import Slider from '@/base/Slider/Slider'
 import NetMenu from '@/components/NetMenu/NetMenu'
-import { getBanner } from '../../../src/api/index'
+import SongList from '@/base/SongList/SongList'
+import { getBanner, getPersonalized, getPlayListHighQuality } from '../../../src/api/index'
 import { ERR_OK } from '@/common/js/config'
+import { formatPlayCount } from '@/common/js/util'
 
 export default {
     name : 'discover',
     data () {
         return {
-            bannerList : []
+            bannerList : [],
+            personalizedList : [],
+            highQualityList : []
         }
     },
     created () {
         this._getBannerList()
+        this._getPersonalized()
+        this._getHighQuality()
     },
     methods : {
         _getBannerList () {
             getBanner().then(res => {
                 if (res.data.code === ERR_OK) {
                     this.bannerList = res.data.banners
+                }
+            })
+        },
+        _getPersonalized () {
+            getPersonalized().then(res => {
+                if (res.data.code === ERR_OK) {
+                    this.personalizedList = res.data.result
+                }
+            })
+        },
+        _getHighQuality () {
+            getPlayListHighQuality().then(res => {
+                if (res.data.code === ERR_OK) {
+                    this.highQualityList = res.data.playlists
                 }
             })
         },
@@ -58,13 +106,15 @@ export default {
         Scroll,
         Loading,
         Slider,
-        NetMenu
+        NetMenu,
+        SongList
     }
 }
 </script>
 
 <style scoped lang="scss" type="text/css">
 @import "../../common/css/base.scss";
+@import "../../common/css/mixin.scss";
 
 .slide-enter-active,.slide-leave-active {
     transition: all 0.3s;
@@ -84,16 +134,27 @@ export default {
     }
     .banner {
         position: relative;
-        height: 271px;
-        padding-top: 12px;
+        height: $fontSize30 * 9 + 1;
+        padding-top: $fontSize24 / 2;
         &:before {
             content : '';
             position: absolute;
             top: 0;
             right: 0;
-            bottom: 40px;
+            bottom: $fontSize38;
             left: 0;
             background-color: $themeColor;
+        }
+    }
+    .listTitle {
+        height: $fontSize46 * 2 - 2;
+        padding-left: $fontSize36 / 2;
+        line-height: $fontSize46 * 2 - 2;
+        font-size: $fontSize28;
+        span {
+            padding-right: $fontSize28;
+            @include bg-url("./aa7.png");
+            @include bg-full($s:$fontSize30 / 2, $p:right center);
         }
     }
 }

@@ -38,37 +38,43 @@ export default new Router({
         },
         {
             path : '/discover',
+            name : 'discover',
             component : Discover,
-            children : [
-                {
-                    path : '/discover/personalFM',
-                    component : PersonalFM
-                },
-                {
-                    path : '/discover/recommend',
-                    component : Recommend
-                },
-                {
-                    path : '/discover/musicList',
-                    component : MusicList
-                },
-                {
-                    path : '/discover/rank',
-                    component : Rank
-                }
-            ]
         },
         {
             path : '/friends',
+            name : 'friends',
             component : Friends
         },
         {
             path : '/music',
+            name : 'music',
             component : Music
         },
         {
             path : '/userVideo',
+            name : 'userVideo',
             component : UserVideo
+        },
+        {
+            path : '/personalFM',
+            name : 'personalFM',
+            component : PersonalFM
+        },
+        {
+            path : '/recommend',
+            name : 'recommend',
+            component : Recommend
+        },
+        {
+            path : '/musicList',
+            name : 'musicList',
+            component : MusicList
+        },
+        {
+            path : '/rank',
+            name : 'rank',
+            component : Rank
         }
     ]
 })

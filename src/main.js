@@ -26,7 +26,7 @@ window.NeteaseMusic = window.NeteaseMusic = `欢迎使用--网易云音乐，听
 当前版本为：V${pkg.version}
 作者：Sun
 歌曲来源于网易云音乐(http://music.163.com)`;
-console.info(`%c${NeteaseMusic}`, `color : #198cff`);
+console.info(`%c${NeteaseMusic}`, `color : #e5473c`);
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,18 +1,18 @@
 <template>
     <div class="netmenu">
-        <router-link class="menu-item" tag="div" to="/personalFM">
+        <router-link class="menu-item" tag="div" :to="{ name : 'personalFM'}">
             <div class="menu-icon fm"></div>
             <p>私人FM</p>
         </router-link>
-        <router-link class="menu-item" tag="div" to="/recommend">
-            <div class="menu-icon daily"></div>
+        <router-link class="menu-item" tag="div" :to="{ name : 'recommend'}">
+            <div class="menu-icon daily"><span class="date">{{ getTime }}</span></div>
             <p>每日推荐</p>
         </router-link>
-        <router-link class="menu-item" tag="div" to="/musicList">
+        <router-link class="menu-item" tag="div" :to="{ name : 'musicList'}">
             <div class="menu-icon musicList"></div>
             <p>歌单</p>
         </router-link>
-        <router-link class="menu-item" tag="div" to="/rank">
+        <router-link class="menu-item" tag="div" :to="{ name : 'rank'}">
             <div class="menu-icon rank"></div>
             <p>排行榜</p>
         </router-link>
@@ -21,7 +21,18 @@
 
 <script type="text/ecmacript-6">
 export default {
-    name : 'netmenu'
+    name : 'netmenu',
+    data () {
+        return { 
+            date : ''
+        }
+    },
+    computed : {
+        getTime () {
+            let today = new Date()
+            return this.date = today.getUTCDate()
+        }
+    }
 }
 </script>
 
@@ -32,21 +43,23 @@ export default {
 .netmenu {
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #dbdcde80;
+    border-bottom: $fontSize22 / 22 solid #dbdcde80;
     .menu-item {
         flex: 0 0 25%;
-        padding: 30px 0;
+        margin: $fontSize30 0;
         p {
             text-align: center;
-            font-size: $fontSize26;
+            font-size: $fontSize22;
             color: #2e302f;
         }
         .menu-icon {
             position: relative;
             width: 50%;
             height: 0;
-            margin: 0 25% 15%;
+            margin: 0 25% 10%;
             padding-top: 50%;
+            @include borderRadius(50%);
+            box-shadow: 0 $fontSize22 / 11 $fontSize32 / 2 rgba(229,71,60,.6);
             &:before {
                 content: '';
                 position: absolute;
@@ -61,6 +74,15 @@ export default {
             }
             &.daily:before {
                 @include bg-url('./icn_daily_prs.png')
+            }
+            &.daily .date {
+                display: block;
+                position: absolute;
+                top: 58%;
+                left: 50%;
+                font-size: $fontSize40 / 2;
+                color: $themeWhite;
+                @include transform(translate(-50%, -50%));
             }
             &.musicList:before {
                 @include bg-url('./icn_playlist_prs.png')

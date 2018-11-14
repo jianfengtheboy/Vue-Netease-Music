@@ -4,7 +4,7 @@
             <slot></slot>
         </div>
         <div class="dots">
-            <span class="dot" v-for="(item, index) in dots" :class="{ active : currentPageIndex === index}"></span>
+            <span class="dot" v-for="(item, index) in dots" :key="item" :class="{ active : currentPageIndex === index}"></span>
         </div>
     </div>
 </template>
@@ -150,7 +150,7 @@ export default {
                 width: 100%;
                 overflow: hidden;
                 text-decoration: none;
-                @include borderRadius(14px);
+                @include borderRadius($fontSize28 / 2);
             }
             img {
                 width: 100%;
@@ -164,14 +164,14 @@ export default {
         right: 0;
         left: 0;
         bottom: 25px;
-        @include transform(translateZ(1px));
+        @include transform(translateZ($fontSize28 / 28));
         text-align: center;
         font-size: 0;
         .dot {
             display: inline-block;
-            margin:0 7px;
-            width: 13px;
-            height: 13px;
+            margin:0 $fontSize28 / 4;
+            width: $fontSize28 / 2 - 1;
+            height: $fontSize28 / 2 - 1;
             @include borderRadius(50%);
             background-color: $themeWhite;
             &.active {

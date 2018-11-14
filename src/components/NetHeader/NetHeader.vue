@@ -26,20 +26,20 @@ export default {
     background-color: $themeColor;
     .netHeaderLeft {
         position: absolute;
-        top: 31px;
+        top: $fontSize30 + 1;
         left: $fontSize28 - 1;
-        width: 48px;
-        height: 48px;
+        width: $fontSize48;
+        height: $fontSize48;
         background-image: url("./ov.png");
         @include bg-full;
     }
     .netHeaderTitle {
         display: flex;
         justify-content: center;
-        padding: 30.5px 160px;
+        padding: 30.5px 4 * $fontSize40;
         .netHeaderIcon {
             flex: 0 0 25%;
-            height: 50px;
+            height: $fontSize50;
             @include bg-full($s:cover);
             &.music {
                 background-image: url("./t_actionbar_music_normal.png");
@@ -69,10 +69,10 @@ export default {
     }
     .netHeaderRight {
         position: absolute;
-        top: 31px;
+        top: $fontSize30 + 1;
         right: $fontSize26;
-        width: 48px;
-        height: 48px;
+        width: $fontSize48;
+        height: $fontSize48;
         background-image: url("./pf.png");
         @include bg-full;
     }
