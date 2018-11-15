@@ -151,35 +151,35 @@ export default {
             left: 0;
             background-color:$themeColor; 
         }
-    }
-    .banner {
-        position: relative;
-        height: $fontSize30 * 9 + 1;
-        padding-top: $fontSize24 / 2;
-        background-color: $themeWhite;
-        &:before {
-            content : '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: $fontSize38;
-            left: 0;
-            background-color: $themeColor;
+        .banner {
+            position: relative;
+            height: $fontSize30 * 9 + 1;
+            padding-top: $fontSize24 / 2;
+            background-color: $themeWhite;
+            &:before {
+                content : '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: $fontSize38;
+                left: 0;
+                background-color: $themeColor;
+            }
         }
-    }
-    .listTitle {
-        height: $fontSize46 * 2 - 2;
-        padding-left: $fontSize36 / 2;
-        line-height: $fontSize46 * 2 - 2;
-        font-size: $fontSize30 - 1;
-        span {
-            padding-right: $fontSize26;
-            @include bg-url("./aa7.png");
-            @include bg-full($s:$fontSize32 / 2, $p:right center);
+        .songListBox {
+            background-color: $themeWhite;
+            .listTitle {
+                height: $fontSize46 * 2 - 2;
+                padding-left: $fontSize36 / 2;
+                line-height: $fontSize46 * 2 - 2;
+                font-size: $fontSize30 - 1;
+                span {
+                    padding-right: $fontSize26;
+                    @include bg-url("./aa7.png");
+                    @include bg-full($s:$fontSize32 / 2, $p:right center);
+                }
+            }
         }
-    }
-    .songListBox {
-        background-color: $themeWhite;
     }
     .loadingContainer {
         padding: $fontSize50 * 5 0;
