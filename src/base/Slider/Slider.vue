@@ -4,7 +4,7 @@
             <slot></slot>
         </div>
         <div class="dots">
-            <span class="dot" v-for="(item, index) in dots" :key="item" :class="{ active : currentPageIndex === index}"></span>
+            <span class="dot" v-for="(item, index) in dots" :key="index" :class="{ active : currentPageIndex === index}"></span>
         </div>
     </div>
 </template>
@@ -83,16 +83,15 @@ export default {
                 scrollX : true,
                 scrollY : false,
                 momentum : false,
-                snap : true,
-                snapLoop : this.loop,
-                snapThreshold : 0.3,
-                snapSpeed : 400
+                snap : {
+                    loop : this.loop,
+                    threshold : 0.3,
+                    speed : 400 
+                },
+                click : true
             })
             this.slider.on('scrollEnd', () => {
                 let pageIndex = this.slider.getCurrentPage().pageX
-                if (this.loop) {
-                    pageIndex -= 1
-                }
                 this.currentPageIndex = pageIndex
                 if (this.autoPlay) {
                     clearTimeout(this.timer)
@@ -109,12 +108,8 @@ export default {
             this.dots = new Array(this.children.length - 2)
         },
         _play () {
-            let pageIndex = this.currentPageIndex + 1
-            if (this.loop) {
-                pageIndex += 1
-            }
             this.timer = setTimeout(() => {
-                this.slider.goToPage(pageIndex, 0, 400)
+                this.slider.next()
             }, this.interval)
         }
     },
@@ -133,6 +128,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    min-height: 1px;
     .sliderGroup {
         position: relative;
         overflow: hidden;
@@ -153,6 +149,7 @@ export default {
                 @include borderRadius($fontSize28 / 2);
             }
             img {
+                display: block;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;

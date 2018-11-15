@@ -44,6 +44,7 @@ export default {
     display: flex;
     justify-content: space-around;
     border-bottom: $fontSize22 / 22 solid #dbdcde80;
+    background-color: $themeWhite;
     .menu-item {
         flex: 0 0 25%;
         margin: $fontSize30 0;

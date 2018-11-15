@@ -26,7 +26,7 @@ export default {
     .song-item {
         flex: 0 0 33.33333%;
         box-sizing: border-box;
-        padding: $fontSize30 / 3 $fontSize30 / 6 0;
+        padding: $fontSize30 / 3 $fontSize30 / 6 $fontSize30 / 3;
         .song-img {
             width: 100%;
             height: 0;
@@ -41,23 +41,22 @@ export default {
                 left: 0;
                 right: 0;
                 z-index: 1;
-                height: $fontSize50;
-                background: linear-gradient(to bottom,rgba(0, 0, 0, .35) 0,rgba(0, 0, 0, .2) 80%,rgba(0, 0, 0, 0) 100%);
+                height: $fontSize50 + $fontSize24 / 4;
+                background: linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,.2) 80%,rgba(0,0,0,0) 100%);
             }
-            &:after {
-                content : attr(data-play);
+            .playCount {
                 position: absolute;
-                top: 15px;
-                right: 20px;
+                top: $fontSize22 / 3;
+                right: $fontSize22;
                 z-index: 1;
                 display: block;
-                height: 40px;
-                line-height: 40px;
-                padding-left: 40px;
-                font-size: $fontSize30;
-                color: #fff;
+                height: $fontSize34;
+                line-height: $fontSize34;
+                padding-left: $fontSize32;
+                font-size: $fontSize22 - 2;
+                color: $themeMainColor;
                 @include bg-url("./zf.png");
-                @include bg-full($p:left,$s:30px);
+                @include bg-full($p:left,$s:$fontSize22);
             }
             img {
                 position: absolute;
@@ -67,11 +66,10 @@ export default {
             }
         }
         .song-title {
-            height: 100px;
-            margin: 20px 10px;
-            line-height: 50px;
-            color: #333;
-            font-size: $fontSize30;
+            margin: $fontSize30 / 3 $fontSize30 / 6;
+            line-height: $lineHeight;
+            color: $theme333;
+            font-size: $fontSize24;
             word-wrap: break-word;
             word-break: break-all;
             @include no-wrap-line(2);

@@ -62,15 +62,13 @@ export default {
     },
     mounted () {
         /* 保证在DOM渲染完毕后初始化better-scroll */
-        setTimeout(() => {
+        this.$nextTick(() => {
             this._initScroll()
-        }, 20)
+        })
     },
     methods : {
         _initScroll () {
-            if (!this.$refs.wrapper) {
-                return
-            }
+            if (!this.$refs.wrapper) return
 
             /* better-scroll的初始化 */
             this.scroll = new BScroll (this.$refs.wrapper, {
@@ -102,7 +100,7 @@ export default {
                 this.scroll.on('touchend', (pos) => {
                     /* 下拉动作 */
                     if (pos.y > 50) {
-                    this.$emit('pulldown')
+                        this.$emit('pulldown')
                     }
                 })
             }

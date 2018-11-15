@@ -1,7 +1,7 @@
 <template>
     <transition name="slide">
         <div class="discover" ref="discover">
-            <Scroll ref="scroll" class="discoverContent">
+            <Scroll ref="scroll" class="discoverContent" v-if="personalizedList.length && bannerList.length && highQualityList.length">
                 <div>
                     <div class="banner">
                         <div v-if="bannerList.length" class="sliderWrapper">
@@ -22,10 +22,11 @@
                             </div>
                             <SongList :items="personalizedList">
                                 <template slot-scope="personalizedList">
-                                    <div class="song-img" data-play={formatPlayCount(personalizedList.playCount)}>
+                                    <div class="song-img">
+                                        <span class="playCount">{{ formatPlayCount(personalizedList.playCount) }}</span>
                                         <img width="100%" height="100%" v-lazy="personalizedList.picUrl">
                                     </div>
-                                    <p className="song-title">{{personalizedList.name.replace(/\s/g, ' ')}}</p>
+                                    <p class="song-title">{{ personalizedList.name.replace(/\s/g, ' ') }}</p>
                                 </template>
                             </SongList>
                         </div>
@@ -35,16 +36,20 @@
                             </div>
                             <SongList :items="highQualityList">
                                 <template slot-scope="highQualityList">
-                                    <div class="song-img" data-play={formatPlayCount(highQualityList.playCount)}>
+                                    <div class="song-img">
+                                        <span class="playCount">{{ formatPlayCount(highQualityList.playCount) }}</span>
                                         <img width="100%" height="100%" v-lazy="highQualityList.coverImgUrl">
                                     </div>
-                                    <p className="song-title">{{highQualityList.name.replace(/\s/g, ' ')}}</p>
+                                    <p class="song-title">{{ highQualityList.name.replace(/\s/g, ' ') }}</p>
                                 </template>
                             </SongList>
                         </div>
                     </div>
                 </div>
             </Scroll>
+            <div class="loadingContainer" v-show="!personalizedList.length && !bannerList.length && !highQualityList.length">
+                <Loading></Loading>
+            </div>
         </div>
     </transition>
 </template>
@@ -57,7 +62,6 @@ import NetMenu from '@/components/NetMenu/NetMenu'
 import SongList from '@/base/SongList/SongList'
 import { getBanner, getPersonalized, getPlayListHighQuality } from '../../../src/api/index'
 import { ERR_OK } from '@/common/js/config'
-import { formatPlayCount } from '@/common/js/util'
 
 export default {
     name : 'discover',
@@ -100,6 +104,11 @@ export default {
                 this.$refs.scroll.refresh()
                 this.checkedLoad = true
             }
+        },
+        formatPlayCount (item) {
+            return (item / 10000) > 9 ?
+             ((item / 10000) > 10000 ? `${(item / 100000000).toFixed(1)}亿` : 
+             `${Math.ceil(item / 10000)}万`) : Math.floor(item)
         }
     },
     components : {
@@ -125,17 +134,29 @@ export default {
 }
 
 .discover {
-    height: 100%;
+    position: absolute;
+    top: $fontSize50 * 2;
+    width:100%;
+    bottom: 0;
     overflow: hidden;
     .discoverContent {
-        width: 100%;
         height: 100%;
         overflow: hidden;
+        &:before {
+            content: '';
+            width: 100%;
+            height: $fontSize24 * 10 + 5;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color:$themeColor; 
+        }
     }
     .banner {
         position: relative;
         height: $fontSize30 * 9 + 1;
         padding-top: $fontSize24 / 2;
+        background-color: $themeWhite;
         &:before {
             content : '';
             position: absolute;
@@ -150,12 +171,18 @@ export default {
         height: $fontSize46 * 2 - 2;
         padding-left: $fontSize36 / 2;
         line-height: $fontSize46 * 2 - 2;
-        font-size: $fontSize28;
+        font-size: $fontSize30 - 1;
         span {
-            padding-right: $fontSize28;
+            padding-right: $fontSize26;
             @include bg-url("./aa7.png");
-            @include bg-full($s:$fontSize30 / 2, $p:right center);
+            @include bg-full($s:$fontSize32 / 2, $p:right center);
         }
+    }
+    .songListBox {
+        background-color: $themeWhite;
+    }
+    .loadingContainer {
+        padding: $fontSize50 * 5 0;
     }
 }
 </style>

@@ -36,7 +36,7 @@ export default {
     .netHeaderTitle {
         display: flex;
         justify-content: center;
-        padding: 30.5px 4 * $fontSize40;
+        padding: $fontSize30 + 0.5 4 * $fontSize40;
         .netHeaderIcon {
             flex: 0 0 25%;
             height: $fontSize50;

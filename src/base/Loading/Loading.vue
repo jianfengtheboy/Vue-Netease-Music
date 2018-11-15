@@ -24,7 +24,7 @@ export default {
     width: 100%;
     text-align: center;
     .desc {
-        font-size: $fontSize26;
+        font-size: $fontSize24;
         color: $theme777;
     }
 }
