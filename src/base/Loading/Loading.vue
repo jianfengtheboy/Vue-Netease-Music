@@ -1,11 +1,11 @@
 <template>
     <div class="loading">
         <img src="./loading.svg" width="64" height="64">
-        <p class="desc">{{desc}}</p>
+        <p class="desc">{{ desc }}</p>
     </div>
 </template>
 
-<script type="text/ecmacript-6">
+<script>
 export default {
     name : 'loading',
     props : {
@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" type="text/css">
+<style scoped lang="scss">
 @import "../../common/css/base.scss";
 
 .loading {

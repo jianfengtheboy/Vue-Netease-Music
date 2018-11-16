@@ -1,9 +1,7 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import 'babel-polyfill'
 import Vue from 'vue'
-import App from './App'
+import App from './App.vue'
 import router from './router'
+import store from './store'
 import FastClick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 
@@ -28,10 +26,8 @@ window.NeteaseMusic = window.NeteaseMusic = `欢迎使用--网易云音乐，听
 歌曲来源于网易云音乐(http://music.163.com)`;
 console.info(`%c${NeteaseMusic}`, `color : #e5473c`);
 
-/* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
+    router,
+    store,
+    render: h => h(App)
+}).$mount('#app')

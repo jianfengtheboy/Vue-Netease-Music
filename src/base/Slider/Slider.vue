@@ -9,7 +9,7 @@
     </div>
 </template>
 
-<script type="text/ecmacript-6">
+<script>
 import { addClass } from '@/common/js/dom'
 import BScroll from 'better-scroll'
 
@@ -119,7 +119,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" type="text/css">
+<style scoped lang="scss">
 @import "../../common/css/base.scss";
 @import "../../common/css/mixin.scss";
 

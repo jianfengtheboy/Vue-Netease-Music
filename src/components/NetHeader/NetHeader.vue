@@ -11,13 +11,13 @@
     </div>
 </template>
 
-<script type="text/ecmacript-6">
+<script>
 export default {
     name : 'netHeader'
 }
 </script>
 
-<style scoped lang="scss" type="text/css">
+<style scoped lang="scss">
 @import "@/common/css/base.scss";
 @import "@/common/css/mixin.scss";
 

@@ -54,7 +54,7 @@
     </transition>
 </template>
 
-<script type="text/ecmacript-6">
+<script>
 import Scroll from '@/base/Scroll/Scroll'
 import Loading from '@/base/Loading/Loading'
 import Slider from '@/base/Slider/Slider'
@@ -121,7 +121,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss" type="text/css">
+<style scoped lang="scss">
 @import "../../common/css/base.scss";
 @import "../../common/css/mixin.scss";
 

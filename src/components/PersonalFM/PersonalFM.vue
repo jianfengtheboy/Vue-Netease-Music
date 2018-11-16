@@ -4,12 +4,12 @@
     </div>
 </template>
 
-<script type="text/ecmacript-6">
+<script>
 export default {
     name : 'personalFM'
 }
 </script>
 
-<style scoped lang="scss" type="text/css">
+<style scoped lang="scss">
 
 </style>
