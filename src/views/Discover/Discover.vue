@@ -154,7 +154,7 @@ export default {
         .banner {
             position: relative;
             height: $fontSize30 * 9 + 1;
-            padding-top: $fontSize24 / 2;
+            padding-top: $fontSize22 / 2;
             background-color: $themeWhite;
             &:before {
                 content : '';

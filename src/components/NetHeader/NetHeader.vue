@@ -24,6 +24,7 @@ export default {
 .netHeader {
     position: relative;
     background-color: $themeColor;
+    z-index: 9;
     .netHeaderLeft {
         position: absolute;
         top: $fontSize30 + 1;

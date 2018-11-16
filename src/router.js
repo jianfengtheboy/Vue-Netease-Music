@@ -6,7 +6,7 @@ Vue.use(Router)
 
 //路由懒加载（异步组件？）
 /**
-* 方法一 ：webpack + ES6 写法 ->> 官网推荐写法
+* 方法一 ：webpack + ES6 写法
 */
 //const Friends = () => import(/* webpackChunkName: "friends" */ './views/Friends/Friends.vue')
 //const Music = () => import(/* webpackChunkName: "music" */ './views/Music/Music.vue')

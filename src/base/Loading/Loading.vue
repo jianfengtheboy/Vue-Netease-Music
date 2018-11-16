@@ -1,6 +1,6 @@
 <template>
     <div class="loading">
-        <img src="./loading.svg" width="64" height="64">
+        <img src="./loading.svg">
         <p class="desc">{{ desc }}</p>
     </div>
 </template>
@@ -23,6 +23,10 @@ export default {
 .loading {
     width: 100%;
     text-align: center;
+    img {
+        width: 150px;
+        height: 150px;
+    }
     .desc {
         font-size: $fontSize24;
         color: $theme777;
