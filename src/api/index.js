@@ -8,9 +8,13 @@ export function getBanner() {
 }
 
 //获取推荐歌单
-export function getPersonalized() {
+export function getPersonalized(limit) {
     const url = `${URL}/personalized`
-    return axios.get(url)
+    return axios.get(url, {
+        params : {
+            limit : 9
+        }
+    })
 }
 
 //获取推荐新音乐
@@ -26,11 +30,11 @@ export function getPersonalizedMv() {
 }
 
 //获取最新 mv
-export function getMvFirst(limit = defaultLimit) {
+export function getMvFirst(limit) {
     const url = `${URL}/mv/first`
     return axios.get(url, {
         params : {
-            limit
+            limit : defaultLimit
         }
     })
 }
@@ -103,7 +107,7 @@ export function getPlayListHighQuality(cat, offset) {
         params : {
             type : cat,
             offset : offset,
-            limit : defaultLimit
+            limit : 9
         }
     })
 }

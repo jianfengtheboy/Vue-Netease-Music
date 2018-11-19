@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NetHeader from './components/NetHeader/NetHeader'
+import NetHeader from './components/net-header/net-header'
 
 export default {
     name: 'App',

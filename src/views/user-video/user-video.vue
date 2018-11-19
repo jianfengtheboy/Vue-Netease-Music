@@ -1,5 +1,5 @@
 <template>
-    <div class="userVideo">
+    <div class="user-video">
         UserVideo
     </div>
 </template>

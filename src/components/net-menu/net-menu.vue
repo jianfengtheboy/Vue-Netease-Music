@@ -50,7 +50,7 @@ export default {
         margin: $fontSize30 0;
         p {
             text-align: center;
-            font-size: $fontSize22;
+            font-size: $fontSize24;
             color: #2e302f;
         }
         .menu-icon {

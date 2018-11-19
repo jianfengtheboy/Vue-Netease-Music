@@ -34,7 +34,7 @@ export default {
             border-radius: $fontSize30 / 3;
             overflow: hidden;
             position: relative;
-            &:before {
+            &.bgTopLinear:before {
                 content: "";
                 position: absolute;
                 top: 0;
@@ -43,6 +43,16 @@ export default {
                 z-index: 1;
                 height: $fontSize50 + $fontSize24 / 4;
                 background: linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,.2) 80%,rgba(0,0,0,0) 100%);
+            }
+            &.bgBottomLinear:after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 1;
+                height: $fontSize50 + $fontSize24 / 4;
+                background: linear-gradient(to top,rgba(0,0,0,.35) 0,rgba(0,0,0,.2) 80%,rgba(0,0,0,0) 100%);
             }
             .playCount {
                 position: absolute;
