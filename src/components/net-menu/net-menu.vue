@@ -43,7 +43,7 @@ export default {
 .netmenu {
     display: flex;
     justify-content: space-around;
-    border-bottom: $fontSize22 / 22 solid #dbdcde80;
+    border-bottom: $fontSize22 / 22 solid rgba(219,220,222,.50196);
     background-color: $themeWhite;
     .menu-item {
         flex: 0 0 25%;

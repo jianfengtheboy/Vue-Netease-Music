@@ -1,7 +1,7 @@
 <template>
     <transition name="slide">
         <div class="discover" ref="discover">
-            <Scroll ref="scroll" class="discoverContent" v-if="personalizedList.length && bannerList.length && highQualityList.length && newSongsList.length && djProgramList.length">
+            <Scroll ref="scroll" class="discoverContent" v-if="personalizedList.length && highQualityList.length && newSongsList.length && djProgramList.length">
                 <div>
                     <div class="banner">
                         <div v-if="bannerList.length" class="sliderWrapper">
@@ -72,7 +72,7 @@
                                         <span class="djProgram-name">{{ djProgramList.program.radio.name.replace(/\s/g, ' ') }}</span>
                                         <img width="100%" height="100%" v-lazy="djProgramList.program.radio.picUrl">
                                     </div>
-                                    <p class="song-title">{{ djProgramList.program.radio.rcmdText.replace(/\s/g, ' ') }}</p>
+                                    <p class="song-title">{{ djProgramList.program.radio.desc.replace(/\s/g, ' ') }}</p>
                                 </template>
                             </SongList>
                         </div>
@@ -239,7 +239,7 @@ export default {
                 margin: $fontSize30 / 3 $fontSize30 / 6 0;
                 line-height: $lineHeight;
                 color: $theme333;
-                font-size: $fontSize24;
+                font-size: $fontSize22;
                 word-wrap: break-word;
                 word-break: break-all;
                 @include no-wrap-line(1);
@@ -248,7 +248,7 @@ export default {
                 margin: 0 $fontSize30 / 6 $fontSize30 / 3;
                 line-height: $lineHeight;
                 color: $theme777;
-                font-size: $fontSize22;
+                font-size: $fontSize22 - 2;
                 word-wrap: break-word;
                 word-break: break-all;
                 @include no-wrap-line(1);

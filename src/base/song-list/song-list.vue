@@ -79,7 +79,7 @@ export default {
             margin: $fontSize30 / 3 $fontSize30 / 6;
             line-height: $lineHeight;
             color: $theme333;
-            font-size: $fontSize24;
+            font-size: $fontSize22;
             word-wrap: break-word;
             word-break: break-all;
             @include no-wrap-line(2);
