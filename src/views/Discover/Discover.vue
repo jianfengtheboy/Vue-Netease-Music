@@ -236,7 +236,7 @@ export default {
                 }
             }
             .album-name {
-                margin: $fontSize30 / 3 $fontSize30 / 6 0;
+                margin: $fontSize24 / 3 $fontSize30 / 6 0;
                 line-height: $lineHeight;
                 color: $theme333;
                 font-size: $fontSize22;
@@ -245,7 +245,7 @@ export default {
                 @include no-wrap-line(1);
             }
             .artist-name {
-                margin: 0 $fontSize30 / 6 $fontSize30 / 3;
+                margin: 0 $fontSize30 / 6 $fontSize24 / 3;
                 line-height: $lineHeight;
                 color: $theme777;
                 font-size: $fontSize22 - 2;
@@ -257,7 +257,7 @@ export default {
                 position: absolute;
                 bottom: $fontSize22 / 3;
                 left: 0;
-                z-index: 2;
+                z-index: 5;
                 padding: 0 $fontSize22 - 2;
                 height: $fontSize34;
                 line-height: $fontSize34;

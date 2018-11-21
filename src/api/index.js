@@ -90,11 +90,11 @@ export function getPlayListHot() {
 }
 
 //获取歌单 ( 网友精选碟 )
-export function getTopPlayList(limit = defaultLimit, order = 'hot') {
+export function getTopPlayList(limit,order = 'hot') {
     const url = `${URL}/top/playlist`
     return axios.get(url, {
         params : {
-            limit,
+            limit : 1000,
             order,
         }
     })

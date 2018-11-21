@@ -31,7 +31,7 @@ export default {
             width: 100%;
             height: 0;
             padding-top: 100%;
-            border-radius: $fontSize30 / 3;
+            border-radius: $fontSize30 / 5;
             overflow: hidden;
             position: relative;
             &.bgTopLinear:before {
@@ -42,7 +42,7 @@ export default {
                 right: 0;
                 z-index: 1;
                 height: $fontSize50 + $fontSize24 / 4;
-                background: linear-gradient(to bottom,rgba(0,0,0,.35) 0,rgba(0,0,0,.2) 80%,rgba(0,0,0,0) 100%);
+                background: linear-gradient(to bottom,$themeBlackOpacity20 0,$themeBlackOpacity10 80%,rgba(0,0,0,0) 100%);
             }
             &.bgBottomLinear:after {
                 content: "";
@@ -52,7 +52,7 @@ export default {
                 right: 0;
                 z-index: 1;
                 height: $fontSize50 + $fontSize24 / 4;
-                background: linear-gradient(to top,rgba(0,0,0,.35) 0,rgba(0,0,0,.2) 80%,rgba(0,0,0,0) 100%);
+                background: linear-gradient(to top,$themeBlackOpacity20 0,$themeBlackOpacity10 80%,rgba(0,0,0,0) 100%);
             }
             .playCount {
                 position: absolute;
@@ -76,7 +76,7 @@ export default {
             }
         }
         .song-title {
-            margin: $fontSize30 / 3 $fontSize30 / 6;
+            margin: $fontSize24 / 3 $fontSize30 / 6;
             line-height: $lineHeight;
             color: $theme333;
             font-size: $fontSize22;

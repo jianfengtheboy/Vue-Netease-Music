@@ -13,7 +13,7 @@ FastClick.attach(document.body)
 //懒加载
 Vue.use(VueLazyLoad, {
     preLoad : 1,
-    loading : require('./common/image/default.jpg')
+    loading : require('./common/image/default.png')
 })
 
 Vue.config.productionTip = false
