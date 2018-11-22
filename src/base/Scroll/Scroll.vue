@@ -40,12 +40,12 @@ export default {
             default : false
         },
         /* 是否派发滚动到底部的事件，用于上拉加载 */
-        pullUp : {
+        pullUpLoad : {
             type : Boolean,
             default : false
         },
         /* 是否派发顶部下拉的事件，用于下拉刷新 */
-        pullDown : {
+        pullDownRefresh : {
             type : Boolean,
             default : false
         },

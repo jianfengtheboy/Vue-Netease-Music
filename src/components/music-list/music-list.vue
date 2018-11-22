@@ -7,7 +7,7 @@
                         class="musicListContent" 
                         v-if="topPlayList.length"
                         :data = "topPlayList"
-                        :pullUp="onPullUp"
+                        :pullUpLoad="onPullUp"
                         @pullingUp="onPullingUp">
                     <div>
                         <!-- 精品歌单推荐 -->
@@ -38,7 +38,8 @@
                                     <p class="song-title">{{ topPlayList.name }}</p>
                                 </template>
                             </SongList>
-                            <Loading class="loadMore" :desc="desc"></Loading>
+                            <Loading class="loadMore" v-show="hasMore" :desc="desc"></Loading>
+                            <p class="tips" v-show="!hasMore">(^_^) 已全部加载</p>
                         </div>
                     </div>    
                 </Scroll>
@@ -65,6 +66,8 @@ export default {
             navTitle : '歌单',
             desc : '',
             onPullUp : true,
+            hasMore : false,
+            page : 1,
             highQualityList : [],
             topPlayList : []
         }
@@ -76,6 +79,8 @@ export default {
     methods : {
         // 上拉加载
         onPullingUp () {
+            if (!this.hasMore) return
+            this.page ++
 
         },
         _getPlayListHighQuality () {
@@ -227,6 +232,13 @@ export default {
                 @include no-wrap-line(1);
                 @include bg-url("./user.png");
                 @include bg-full($s:$fontSize22 - 2, $p:left center);
+            }
+            .tips {
+                height: $fontSize50 * 2.4;
+                line-height: $fontSize50 * 2.4;
+                font-size: $fontSize24;
+                color: $themeColor;
+                text-align: center;
             }
         }
         .loadingContainer {
