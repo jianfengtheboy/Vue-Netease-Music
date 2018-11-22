@@ -86,4 +86,9 @@ export default {
         }
     }
 }
+.topPlayListMusic {
+    .song-item {
+        flex: 0 0 50%;
+    }
+}
 </style>

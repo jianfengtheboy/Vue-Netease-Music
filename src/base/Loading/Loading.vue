@@ -24,12 +24,18 @@ export default {
     width: 100%;
     text-align: center;
     img {
-        width: 150px;
-        height: 150px;
+        width: $fontSize50 * 3;
+        height: $fontSize50 * 3;
     }
     .desc {
         font-size: $fontSize24;
         color: $theme777;
+    }
+}
+.loadMore {
+    img {
+        width: $fontSize40 * 2;
+        height: $fontSize40 * 2;
     }
 }
 </style>

@@ -73,8 +73,7 @@ export default {
             /* better-scroll的初始化 */
             this.scroll = new BScroll (this.$refs.wrapper, {
                 probeType : this.probeType,
-                click : this.click,
-                scrollX: this.scrollX
+                click : this.click
             })
 
             /* 是否派发滚动事件 */
@@ -90,7 +89,7 @@ export default {
                 this.scroll.on('scrollEnd', () => {
                     /* 滚动到底部 */
                     if (this.scroll.y <= (this.scroll.maxAcrollY + 50)) {
-                        this.$emit('scrollToEnd')
+                        this.$emit('pullingUp')
                     }
                 })
             }
@@ -100,7 +99,7 @@ export default {
                 this.scroll.on('touchend', (pos) => {
                     /* 下拉动作 */
                     if (pos.y > 50) {
-                        this.$emit('pulldown')
+                        this.$emit('pullingDown')
                     }
                 })
             }

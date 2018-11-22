@@ -3,7 +3,12 @@
         <div class="musicList">
             <NetNav :title="navTitle"></NetNav>
             <div class="musicList-wrapper">
-                <Scroll ref="scroll" class="musicListContent" v-if="topPlayList.length">
+                <Scroll ref="scroll" 
+                        class="musicListContent" 
+                        v-if="topPlayList.length"
+                        :data = "topPlayList"
+                        :pullUp="onPullUp"
+                        @pullingUp="onPullingUp">
                     <div>
                         <!-- 精品歌单推荐 -->
                         <div class="highQualityMusic">
@@ -33,6 +38,7 @@
                                     <p class="song-title">{{ topPlayList.name }}</p>
                                 </template>
                             </SongList>
+                            <Loading class="loadMore" :desc="desc"></Loading>
                         </div>
                     </div>    
                 </Scroll>
@@ -57,6 +63,8 @@ export default {
     data () {
         return {
             navTitle : '歌单',
+            desc : '',
+            onPullUp : true,
             highQualityList : [],
             topPlayList : []
         }
@@ -66,6 +74,10 @@ export default {
         this._getTopPlayList()
     },
     methods : {
+        // 上拉加载
+        onPullingUp () {
+
+        },
         _getPlayListHighQuality () {
             getPlayListHighQuality().then(res => {
                 if (res.data.code === ERR_OK) {
