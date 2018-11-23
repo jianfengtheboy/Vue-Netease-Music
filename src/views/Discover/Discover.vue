@@ -3,6 +3,7 @@
         <div class="discover" ref="discover">
             <Scroll ref="scroll" class="discoverContent" v-if="personalizedList.length && highQualityList.length && newSongsList.length && djProgramList.length">
                 <div>
+                    <div class="decorate" v-if="bannerList.length"></div>
                     <div class="banner">
                         <div v-if="bannerList.length" class="sliderWrapper">
                             <Slider>
@@ -198,14 +199,14 @@ export default {
     .discoverContent {
         height: 100%;
         overflow: hidden;
-        &:before {
-            content: '';
-            width: 100%;
-            height: $fontSize24 * 10 + 5;
+        .decorate {
             position: absolute;
-            top: 0;
-            left: 0;
-            background-color:$themeColor; 
+            top: -30vh;
+            z-index: -10;
+            background-color: $themeColor;
+            width: 100%;
+            height: 50vh;
+            vertical-align: inherit;
         }
         .banner {
             position: relative;

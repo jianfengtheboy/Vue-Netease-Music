@@ -7,7 +7,7 @@
                         class="musicListContent" 
                         v-if="topPlayList.length"
                         :data = "topPlayList"
-                        :pullUpLoad="onPullUp"
+                        :pullUp="onPullUp"
                         @pullingUp="onPullingUp">
                     <div>
                         <!-- 精品歌单推荐 -->
@@ -79,9 +79,7 @@ export default {
     methods : {
         // 上拉加载
         onPullingUp () {
-            if (!this.hasMore) return
-            this.page ++
-
+        
         },
         _getPlayListHighQuality () {
             getPlayListHighQuality().then(res => {

@@ -33,6 +33,7 @@ export default {
     }
 }
 .loadMore {
+    padding: $fontSize36 / 2 0;
     img {
         width: $fontSize40 * 2;
         height: $fontSize40 * 2;

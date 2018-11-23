@@ -40,12 +40,12 @@ export default {
             default : false
         },
         /* 是否派发滚动到底部的事件，用于上拉加载 */
-        pullUpLoad : {
+        pullUp : {
             type : Boolean,
             default : false
         },
         /* 是否派发顶部下拉的事件，用于下拉刷新 */
-        pullDownRefresh : {
+        pullDown : {
             type : Boolean,
             default : false
         },
@@ -88,7 +88,7 @@ export default {
             if (this.pullUp) {
                 this.scroll.on('scrollEnd', () => {
                     /* 滚动到底部 */
-                    if (this.scroll.y <= (this.scroll.maxAcrollY + 50)) {
+                    if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
                         this.$emit('pullingUp')
                     }
                 })
