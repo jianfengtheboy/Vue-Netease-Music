@@ -7,41 +7,39 @@
                         class="musicListContent" 
                         v-if="topPlayList.length"
                         :data = "topPlayList"
-                        :pullUp="onPullUp"
+                        :pullUpLoad="onPullUp"
                         @pullingUp="onPullingUp">
-                    <div>
-                        <!-- 精品歌单推荐 -->
-                        <div class="highQualityMusic">
-                            <div class="contentWrapper">
-                                <div class="picBox">
-                                    <img v-lazy="highQualityList[0].coverImgUrl">
-                                </div>
-                                <div class="descBox">
-                                    <span class="desc-title">精品歌单</span>
-                                    <p class="desc-name">{{ highQualityList[0].name }}</p>
-                                    <p class="desc-copywriter">{{ highQualityList[0].copywriter }}</p>
-                                </div>
+                    <!-- 精品歌单推荐 -->
+                    <div class="highQualityMusic">
+                        <div class="contentWrapper">
+                            <div class="picBox">
+                                <img v-lazy="highQualityList[0].coverImgUrl">
                             </div>
-                            <div class="bg">
-                                <img :src="highQualityList[0].coverImgUrl">
+                            <div class="descBox">
+                                <span class="desc-title">精品歌单</span>
+                                <p class="desc-name">{{ highQualityList[0].name }}</p>
+                                <p class="desc-copywriter">{{ highQualityList[0].copywriter }}</p>
                             </div>
                         </div>
-                        <!-- 歌单列表 -->
-                        <div class="topPlayListMusic">
-                            <SongList :items="topPlayList">
-                                <template slot-scope="topPlayList">
-                                    <div class="song-img bgTopLinear bgBottomLinear">
-                                        <span class="playCount">{{ formatPlayCount(topPlayList.playCount) }}</span>
-                                        <img width="100%" height="100%" v-lazy="topPlayList.coverImgUrl">
-                                        <span class="nickname">{{ topPlayList.creator.nickname }}</span>
-                                    </div>
-                                    <p class="song-title">{{ topPlayList.name }}</p>
-                                </template>
-                            </SongList>
-                            <Loading class="loadMore" v-show="hasMore" :desc="desc"></Loading>
-                            <p class="tips" v-show="!hasMore">(^_^) 已全部加载</p>
+                        <div class="bg">
+                            <img :src="highQualityList[0].coverImgUrl">
                         </div>
-                    </div>    
+                    </div>
+                    <!-- 歌单列表 -->
+                    <div class="topPlayListMusic">
+                        <SongList :items="topPlayList">
+                            <template slot-scope="topPlayList">
+                                <div class="song-img bgTopLinear bgBottomLinear">
+                                    <span class="playCount">{{ formatPlayCount(topPlayList.playCount) }}</span>
+                                    <img width="100%" height="100%" v-lazy="topPlayList.coverImgUrl">
+                                    <span class="nickname">{{ topPlayList.creator.nickname }}</span>
+                                </div>
+                                <p class="song-title">{{ topPlayList.name }}</p>
+                            </template>
+                        </SongList>
+                        <Loading class="loadMore" v-if="hasMore" :desc="desc"></Loading>
+                        <p class="tips" v-show="!hasMore">(^_^) 已全部加载</p>
+                    </div>
                 </Scroll>
                 <div class="loadingContainer" v-else>
                     <Loading></Loading>
@@ -57,6 +55,7 @@ import Scroll from '@/base/scroll/scroll'
 import Loading from '@/base/loading/loading'
 import SongList from '@/base/song-list/song-list'
 import { getPlayListHighQuality, getTopPlayList } from '@/api/index.js'
+import { formatPlayList } from '@/common/js/playlist.js'
 import { ERR_OK } from '@/common/js/config.js'
 
 export default {
@@ -67,7 +66,7 @@ export default {
             desc : '',
             onPullUp : true,
             hasMore : false,
-            page : 1,
+            page : 0,
             highQualityList : [],
             topPlayList : []
         }
@@ -79,7 +78,8 @@ export default {
     methods : {
         // 上拉加载
         onPullingUp () {
-        
+            this.hasMore = true
+            this._getTopPlayList()
         },
         _getPlayListHighQuality () {
             getPlayListHighQuality().then(res => {
@@ -89,9 +89,12 @@ export default {
             })
         },
         _getTopPlayList () {
-            getTopPlayList().then(res => {
+            getTopPlayList(this.page).then(res => {
                 if (res.data.code === ERR_OK) {
-                    this.topPlayList = res.data.playlists
+                    const topPlayList = this.topPlayList
+                    this.page ++
+                    this.hasMore = false
+                    topPlayList = topPlayList.concat(formatPlayList(res.data.playlists)) 
                 }
             })
         },

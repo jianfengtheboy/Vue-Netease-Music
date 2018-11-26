@@ -2,81 +2,79 @@
     <transition name="slide">
         <div class="discover" ref="discover">
             <Scroll ref="scroll" class="discoverContent" v-if="personalizedList.length && highQualityList.length && newSongsList.length && djProgramList.length">
-                <div>
-                    <div class="decorate" v-if="bannerList.length"></div>
-                    <div class="banner">
-                        <div v-if="bannerList.length" class="sliderWrapper">
-                            <Slider>
-                                <div v-for="item in bannerList" :key="item.index">
-                                    <a :href="item.url">
-                                        <img class="pic" @load="loadImage" :src="item.imageUrl" alt="">
-                                    </a>
-                                </div>
-                            </Slider>
-                        </div>
+                <div class="decorate" v-if="bannerList.length"></div>
+                <div class="banner">
+                    <div v-if="bannerList.length" class="sliderWrapper">
+                        <Slider>
+                            <div v-for="item in bannerList" :key="item.index">
+                                <a :href="item.url">
+                                    <img class="pic" @load="loadImage" :src="item.imageUrl" alt="">
+                                </a>
+                            </div>
+                        </Slider>
                     </div>
-                    <NetMenu></NetMenu>
-                    <div class="songListBox">
-                        <!-- 推荐歌单 -->
-                        <div class="personalizedList">
-                            <div class="listTitle">
-                                <span>推荐歌单</span>
-                            </div>
-                            <SongList :items="personalizedList">
-                                <template slot-scope="personalizedList">
-                                    <div class="song-img bgTopLinear">
-                                        <span class="playCount">{{ formatPlayCount(personalizedList.playCount) }}</span>
-                                        <img width="100%" height="100%" v-lazy="personalizedList.picUrl">
-                                    </div>
-                                    <p class="song-title">{{ personalizedList.name.replace(/\s/g, ' ') }}</p>
-                                </template>
-                            </SongList>
+                </div>
+                <NetMenu></NetMenu>
+                <div class="songListBox">
+                    <!-- 推荐歌单 -->
+                    <div class="personalizedList">
+                        <div class="listTitle">
+                            <span>推荐歌单</span>
                         </div>
-                        <!-- 精品歌单 -->
-                        <div class="highQualityList">
-                            <div class="listTitle">
-                                <span>精品歌单</span>
-                            </div>
-                            <SongList :items="highQualityList">
-                                <template slot-scope="highQualityList">
-                                    <div class="song-img bgTopLinear">
-                                        <span class="playCount">{{ formatPlayCount(highQualityList.playCount) }}</span>
-                                        <img width="100%" height="100%" v-lazy="highQualityList.coverImgUrl">
-                                    </div>
-                                    <p class="song-title">{{ highQualityList.name.replace(/\s/g, ' ') }}</p>
-                                </template>
-                            </SongList>
+                        <SongList :items="personalizedList">
+                            <template slot-scope="personalizedList">
+                                <div class="song-img bgTopLinear">
+                                    <span class="playCount">{{ formatPlayCount(personalizedList.playCount) }}</span>
+                                    <img width="100%" height="100%" v-lazy="personalizedList.picUrl">
+                                </div>
+                                <p class="song-title">{{ personalizedList.name.replace(/\s/g, ' ') }}</p>
+                            </template>
+                        </SongList>
+                    </div>
+                    <!-- 精品歌单 -->
+                    <div class="highQualityList">
+                        <div class="listTitle">
+                            <span>精品歌单</span>
                         </div>
-                        <!-- 最新音乐 -->
-                        <div class="newSongsList">
-                            <div class="listTitle">
-                                <span>最新音乐</span>
-                            </div>
-                            <SongList :items="newSongsList">
-                                <template slot-scope="newSongsList">
-                                    <div class="song-img">
-                                        <img width="100%" height="100%" v-lazy="newSongsList.song.album.picUrl">
-                                    </div>
-                                    <p class="album-name">{{ newSongsList.song.album.name.replace(/\s/g, ' ') }}</p>
-                                    <p class="artist-name">{{ newSongsList.song.artists[0].name.replace(/\s/g, ' ') }}</p>
-                                </template>
-                            </SongList>
+                        <SongList :items="highQualityList">
+                            <template slot-scope="highQualityList">
+                                <div class="song-img bgTopLinear">
+                                    <span class="playCount">{{ formatPlayCount(highQualityList.playCount) }}</span>
+                                    <img width="100%" height="100%" v-lazy="highQualityList.coverImgUrl">
+                                </div>
+                                <p class="song-title">{{ highQualityList.name.replace(/\s/g, ' ') }}</p>
+                            </template>
+                        </SongList>
+                    </div>
+                    <!-- 最新音乐 -->
+                    <div class="newSongsList">
+                        <div class="listTitle">
+                            <span>最新音乐</span>
                         </div>
-                        <!-- 推荐电台 -->
-                        <div class="djProgramList">
-                            <div class="listTitle">
-                                <span>推荐电台</span>
-                            </div>
-                            <SongList :items="djProgramList">
-                                <template slot-scope="djProgramList">
-                                    <div class="song-img bgBottomLinear">
-                                        <span class="djProgram-name">{{ djProgramList.program.radio.name.replace(/\s/g, ' ') }}</span>
-                                        <img width="100%" height="100%" v-lazy="djProgramList.program.radio.picUrl">
-                                    </div>
-                                    <p class="song-title">{{ djProgramList.program.radio.desc.replace(/\s/g, ' ') }}</p>
-                                </template>
-                            </SongList>
+                        <SongList :items="newSongsList">
+                            <template slot-scope="newSongsList">
+                                <div class="song-img">
+                                    <img width="100%" height="100%" v-lazy="newSongsList.song.album.picUrl">
+                                </div>
+                                <p class="album-name">{{ newSongsList.song.album.name.replace(/\s/g, ' ') }}</p>
+                                <p class="artist-name">{{ newSongsList.song.artists[0].name.replace(/\s/g, ' ') }}</p>
+                            </template>
+                        </SongList>
+                    </div>
+                    <!-- 推荐电台 -->
+                    <div class="djProgramList">
+                        <div class="listTitle">
+                            <span>推荐电台</span>
                         </div>
+                        <SongList :items="djProgramList">
+                            <template slot-scope="djProgramList">
+                                <div class="song-img bgBottomLinear">
+                                    <span class="djProgram-name">{{ djProgramList.program.radio.name.replace(/\s/g, ' ') }}</span>
+                                    <img width="100%" height="100%" v-lazy="djProgramList.program.radio.picUrl">
+                                </div>
+                                <p class="song-title">{{ djProgramList.program.radio.desc.replace(/\s/g, ' ') }}</p>
+                            </template>
+                        </SongList>
                     </div>
                 </div>
             </Scroll>

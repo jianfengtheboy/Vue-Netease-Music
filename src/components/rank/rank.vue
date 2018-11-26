@@ -4,63 +4,61 @@
             <NetNav :title="navTitle"></NetNav>
             <div class="rank-wrapper">
                 <Scroll ref="scroll" class="rankContent" v-if="rankList.length">
-                    <div>
-                        <!-- 云音乐官方榜 -->
-                        <div class="officialList">
-                            <h1 class="rank-title">云音乐官方榜</h1>
-                            <RowList :items="officialList">
-                                <template slot-scope="officialList">
-                                    <div class="row-hd bgBottomLinear">
-                                        <span class="update-desc">{{ officialList.updateFrequency }}</span>
-                                        <img v-lazy="officialList.coverImgUrl">
-                                    </div>
-                                    <div class="row-bd">
-                                        <p v-for="(item, index) in officialList.tracks" :key="index">
-                                            {{ `${index + 1}.&nbsp;${item.first}&nbsp;-&nbsp;${item.second}` }}
-                                        </p>
-                                    </div>
-                                </template>
-                            </RowList>
-                            <div class="row-list extraList">
-                                <div class="row-item">
-                                    <div class="row-hd bgBottomLinear">
-                                        <span class="update-desc">{{ rewardList.name }}</span>
-                                        <img v-lazy="rewardList.coverUrl">
-                                    </div>
-                                    <div class="row-bd">
-                                        <p v-for="(item, index) in rewardList.songs" :key="index">
-                                            {{ `${index + 1}.&nbsp;${item.name}&nbsp;-&nbsp;${item.artists[0].name}` }}
-                                        </p>
-                                    </div>
+                    <!-- 云音乐官方榜 -->
+                    <div class="officialList">
+                        <h1 class="rank-title">云音乐官方榜</h1>
+                        <RowList :items="officialList">
+                            <template slot-scope="officialList">
+                                <div class="row-hd bgBottomLinear">
+                                    <span class="update-desc">{{ officialList.updateFrequency }}</span>
+                                    <img v-lazy="officialList.coverImgUrl">
                                 </div>
-                            </div>
-                            <div class="row-list extraList">
-                                <div class="row-item">
-                                    <div class="row-hd bgBottomLinear">
-                                        <span class="update-desc">{{ artistList.updateFrequency }}</span>
-                                        <img v-lazy="artistList.coverUrl">
-                                    </div>
-                                    <div class="row-bd">
-                                        <p v-for="(item, index) in artistList.artists" :key="index">
-                                            {{ `${index + 1}.&nbsp;${item.first}&nbsp;-&nbsp;${item.third}` }}
-                                        </p>
-                                    </div>
+                                <div class="row-bd">
+                                    <p v-for="(item, index) in officialList.tracks" :key="index">
+                                        {{ `${index + 1}.&nbsp;${item.first}&nbsp;-&nbsp;${item.second}` }}
+                                    </p>
+                                </div>
+                            </template>
+                        </RowList>
+                        <div class="row-list extraList">
+                            <div class="row-item">
+                                <div class="row-hd bgBottomLinear">
+                                    <span class="update-desc">{{ rewardList.name }}</span>
+                                    <img v-lazy="rewardList.coverUrl">
+                                </div>
+                                <div class="row-bd">
+                                    <p v-for="(item, index) in rewardList.songs" :key="index">
+                                        {{ `${index + 1}.&nbsp;${item.name}&nbsp;-&nbsp;${item.artists[0].name}` }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <!-- 全球榜 -->
-                        <div class="globalList">
-                            <h1 class="rank-title">全球榜</h1>
-                            <SongList :items="globalList">
-                                <template slot-scope="globalList">
-                                    <div class="song-img bgBottomLinear">
-                                        <span class="update-desc">{{ globalList.updateFrequency }}</span>
-                                        <img width="100%" height="100%" v-lazy="globalList.coverImgUrl">
-                                    </div>
-                                    <p class="song-title">{{ globalList.name }}</p>
-                                </template>
-                            </SongList>
+                        <div class="row-list extraList">
+                            <div class="row-item">
+                                <div class="row-hd bgBottomLinear">
+                                    <span class="update-desc">{{ artistList.updateFrequency }}</span>
+                                    <img v-lazy="artistList.coverUrl">
+                                </div>
+                                <div class="row-bd">
+                                    <p v-for="(item, index) in artistList.artists" :key="index">
+                                        {{ `${index + 1}.&nbsp;${item.first}&nbsp;-&nbsp;${item.third}` }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <!-- 全球榜 -->
+                    <div class="globalList">
+                        <h1 class="rank-title">全球榜</h1>
+                        <SongList :items="globalList">
+                            <template slot-scope="globalList">
+                                <div class="song-img bgBottomLinear">
+                                    <span class="update-desc">{{ globalList.updateFrequency }}</span>
+                                    <img width="100%" height="100%" v-lazy="globalList.coverImgUrl">
+                                </div>
+                                <p class="song-title">{{ globalList.name }}</p>
+                            </template>
+                        </SongList>
                     </div>
                 </Scroll>
                 <div class="loadingContainer" v-else>

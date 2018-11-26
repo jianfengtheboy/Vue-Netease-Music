@@ -1,6 +1,8 @@
 <template>
-    <div ref="wrapper">
-        <slot></slot>
+    <div ref="wrapper" class="list-wrapper">
+        <div ref="listWrapper">
+            <slot></slot>
+        </div>
     </div>
 </template>
 
@@ -10,6 +12,10 @@ import BScroll from 'better-scroll'
 export default {
     name : 'scroll',
     props : {
+        data : {
+            type : Array,
+            default : null
+        },
         /**
         * 1 滚动的时候会派发scroll事件，会截流。
         * 2 滚动的时候实时派发scroll事件，不会截流。
@@ -19,45 +25,33 @@ export default {
             type : Number,
             default : 1
         },
-        /* 点击列表是否派发click事件 */
         click : {
             type : Boolean,
             default : true
         },
-        /* 是否开启横向滚动 */
-        scrollX: {
-            type: Boolean,
-            default: false
-        },
-        /* 列表的数据 */
-        data : {
-            type : Array,
-            default : null
-        },
-        /* 是否派发滚动事件 */
         listenScroll : {
             type : Boolean,
             default : false
         },
-        /* 是否派发滚动到底部的事件，用于上拉加载 */
-        pullUp : {
-            type : Boolean,
-            default : false
-        },
         /* 是否派发顶部下拉的事件，用于下拉刷新 */
-        pullDown : {
-            type : Boolean,
+        pullDownRefresh : {
+            type : null,
             default : false
         },
-        /* 是否派发列表滚动开始的事件 */
-        beforeScroll : {
-            type : Boolean,
+        /* 是否派发滚动到底部的事件，用于上拉加载 */
+        pullUpLoad : {
+            type : null,
             default : false
         },
-        /* 当数据更新后，刷新scroll的延时 */
         refreshDelay : {
             type : Number,
             default : 20
+        }
+    },
+    data () {
+        return {
+            isPullingDown : false, 
+            isPullUpLoad: false
         }
     },
     mounted () {
@@ -66,6 +60,9 @@ export default {
             this._initScroll()
         })
     },
+    destroyed() {
+        this.$refs.scroll && this.$refs.scroll.destroy()
+    },
     methods : {
         _initScroll () {
             if (!this.$refs.wrapper) return
@@ -73,41 +70,31 @@ export default {
             /* better-scroll的初始化 */
             this.scroll = new BScroll (this.$refs.wrapper, {
                 probeType : this.probeType,
-                click : this.click
+                click : this.click,
+                pullDownRefresh : this.pullDownRefresh,
+                pullUpLoad : this.pullUpLoad
             })
 
             /* 是否派发滚动事件 */
             if (this.listenScroll) {
-                let _this = this
                 this.scroll.on('scroll', (pos) => {
-                    _this.$emit('scroll', pos)
+                    this.$emit('scroll', pos)
                 })
             }
 
             /* 是否派发滚动到底部事件，用于上拉加载 */
-            if (this.pullUp) {
-                this.scroll.on('scrollEnd', () => {
-                    /* 滚动到底部 */
-                    if (this.scroll.y <= (this.scroll.maxScrollY + 50)) {
-                        this.$emit('pullingUp')
-                    }
+            if (this.pullUpLoad) {
+                this.scroll.on('pullingUp', () => {
+                    this.isPullUpLoad = true
+                    this.$emit('pullingUp')
                 })
             }
 
             /* 是否派发顶部下拉事件，用于下拉刷新 */
-            if (this.pullDown) {
-                this.scroll.on('touchend', (pos) => {
-                    /* 下拉动作 */
-                    if (pos.y > 50) {
-                        this.$emit('pullingDown')
-                    }
-                })
-            }
-
-            /* 是否派发列表滚动开始的事件 */
-            if (this.beforeScroll) {
-                this.scroll.on('beforeScrollStart', () => {
-                    this.$emit('beforeScroll')
+            if (this.pullDownRefresh) {
+                this.scroll.on('pullingDown', () => {
+                    this.isPullingDown = true
+                    this.$emit('pullingDown')
                 })
             }
         },
@@ -125,12 +112,26 @@ export default {
         },
         scrollToElement () {
             this.scroll &&this.scroll.scrollToElement.apply(this.scroll, arguments)
+        },
+        destroy() {
+            this.scroll.destroy()
+        },
+        forceUpdate(dirty) {
+            if (this.pullDownRefresh && this.isPullingDown) {
+                this.isPullingDown = false
+            } else if (this.pullUpLoad && this.isPullUpLoad) {
+                this.isPullUpLoad = false
+                this.scroll.finishPullUp()
+                this.refresh()
+            } else {
+                this.refresh()
+            }
         }
     },
     watch : {
         data () {
             setTimeout(() => {
-                this.refresh()
+                this.forceUpdate(true)
             }, this.refreshDelay)
         }
     }
