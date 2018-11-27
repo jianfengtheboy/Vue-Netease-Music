@@ -62,7 +62,7 @@ export default {
                 display: block;
                 height: $fontSize34;
                 line-height: $fontSize34;
-                padding-left: $fontSize32;
+                padding-left: $fontSize30;
                 font-size: $fontSize22 - 2;
                 color: $themeMainColor;
                 @include bg-url("./zf.png");

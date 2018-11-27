@@ -102,13 +102,12 @@ export function getTopPlayList(page = 0, limit = 20, order = 'hot') {
 }
 
 //获取精品歌单
-export function getPlayListHighQuality(cat, offset) {
+export function getPlayListHighQuality(page = 0, limit = 9) {
     const url = `${URL}/top/playlist/highquality`
     return axios.get(url, {
         params : {
-            type : cat,
-            offset : offset,
-            limit : 9
+            offset : page * limit,
+            limit
         }
     })
 }

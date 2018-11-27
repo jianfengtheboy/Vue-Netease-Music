@@ -16,7 +16,7 @@
                                 <img v-lazy="highQualityList[0].coverImgUrl">
                             </div>
                             <div class="descBox">
-                                <span class="desc-title">精品歌单</span>
+                                <span class="desc-title" @click="toDetail">精品歌单</span>
                                 <p class="desc-name">{{ highQualityList[0].name }}</p>
                                 <p class="desc-copywriter">{{ highQualityList[0].copywriter }}</p>
                             </div>
@@ -37,8 +37,7 @@
                                 <p class="song-title">{{ topPlayList.name }}</p>
                             </template>
                         </SongList>
-                        <Loading class="loadMore" v-if="hasMore" :desc="desc"></Loading>
-                        <p class="tips" v-show="!hasMore">(^_^) 已全部加载</p>
+                        <Loading class="loadMore" v-if="onPullUp" :desc="desc"></Loading>
                     </div>
                 </Scroll>
                 <div class="loadingContainer" v-else>
@@ -55,7 +54,6 @@ import Scroll from '@/base/scroll/scroll'
 import Loading from '@/base/loading/loading'
 import SongList from '@/base/song-list/song-list'
 import { getPlayListHighQuality, getTopPlayList } from '@/api/index.js'
-import { formatPlayList } from '@/common/js/playlist.js'
 import { ERR_OK } from '@/common/js/config.js'
 
 export default {
@@ -65,7 +63,6 @@ export default {
             navTitle : '歌单',
             desc : '',
             onPullUp : true,
-            hasMore : false,
             page : 0,
             highQualityList : [],
             topPlayList : []
@@ -78,8 +75,9 @@ export default {
     methods : {
         // 上拉加载
         onPullingUp () {
-            this.hasMore = true
-            this._getTopPlayList()
+            setTimeout(() =>{
+                this._getTopPlayList()
+            }, 1000)
         },
         _getPlayListHighQuality () {
             getPlayListHighQuality().then(res => {
@@ -91,12 +89,15 @@ export default {
         _getTopPlayList () {
             getTopPlayList(this.page).then(res => {
                 if (res.data.code === ERR_OK) {
-                    const topPlayList = this.topPlayList
+                    this.topPlayList = this.topPlayList.concat(res.data.playlists)
                     this.page ++
-                    this.hasMore = false
-                    topPlayList = topPlayList.concat(formatPlayList(res.data.playlists)) 
+                } else {
+                    this.$refs.scroll.forceUpdate()
                 }
             })
+        },
+        toDetail () {
+            this.$router.push('/highQualityList')
         },
         formatPlayCount (item) {
             return (item / 10000) > 9 ?
@@ -233,13 +234,6 @@ export default {
                 @include no-wrap-line(1);
                 @include bg-url("./user.png");
                 @include bg-full($s:$fontSize22 - 2, $p:left center);
-            }
-            .tips {
-                height: $fontSize50 * 2.4;
-                line-height: $fontSize50 * 2.4;
-                font-size: $fontSize24;
-                color: $themeColor;
-                text-align: center;
             }
         }
         .loadingContainer {

@@ -51,7 +51,8 @@ export default {
     data () {
         return {
             isPullingDown : false, 
-            isPullUpLoad: false
+            isPullUpLoad: false,
+            pullUpDirty : true
         }
     },
     mounted () {
@@ -121,6 +122,7 @@ export default {
                 this.isPullingDown = false
             } else if (this.pullUpLoad && this.isPullUpLoad) {
                 this.isPullUpLoad = false
+                this.pullUpDirty = dirty
                 this.scroll.finishPullUp()
                 this.refresh()
             } else {

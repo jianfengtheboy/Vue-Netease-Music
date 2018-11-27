@@ -8,7 +8,7 @@
                         <Slider>
                             <div v-for="item in bannerList" :key="item.index">
                                 <a :href="item.url">
-                                    <img class="pic" @load="loadImage" :src="item.imageUrl" alt="">
+                                    <img class="pic" :src="item.imageUrl" alt="">
                                 </a>
                             </div>
                         </Slider>
@@ -19,7 +19,7 @@
                     <!-- 推荐歌单 -->
                     <div class="personalizedList">
                         <div class="listTitle">
-                            <span>推荐歌单</span>
+                            <span @click="toList">推荐歌单</span>
                         </div>
                         <SongList :items="personalizedList">
                             <template slot-scope="personalizedList">
@@ -34,7 +34,7 @@
                     <!-- 精品歌单 -->
                     <div class="highQualityList">
                         <div class="listTitle">
-                            <span>精品歌单</span>
+                            <span @click="toDetail">精品歌单</span>
                         </div>
                         <SongList :items="highQualityList">
                             <template slot-scope="highQualityList">
@@ -154,11 +154,11 @@ export default {
                 }
             })
         },
-        loadImage () {
-            if (!this.checkedLoad) {
-                this.$refs.scroll.refresh()
-                this.checkedLoad = true
-            }
+        toList () {
+            this.$router.push('/musicList')
+        },
+        toDetail () {
+            this.$router.push('/highQualityList')
         },
         formatPlayCount (item) {
             return (item / 10000) > 9 ?

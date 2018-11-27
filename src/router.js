@@ -69,6 +69,11 @@ export default new Router({
             path : '/rank',
             name : 'rank',
             component : () => import(/* webpackChunkName: "rank" */ '@/components/rank/rank.vue')
+        },
+        {
+            path : '/highQualityList',
+            name : 'highQualityList',
+            component : () => import(/* webpackChunkName: "highQualityList" */ '@/components/highQuality-list/highQuality-list.vue')
         }
     ]
 })

@@ -226,7 +226,7 @@ export default {
                     min-width: 0;
                     box-sizing: border-box;
                     padding: 0 $fontSize22;
-                    border-bottom: 1px solid $themeBlackOpacity10;
+                    border-bottom: 1px solid $themeBlackOpacity5;
                     p {
                         height: $fontSize40;
                         line-height: $fontSize40;
