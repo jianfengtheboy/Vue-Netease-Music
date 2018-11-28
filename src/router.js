@@ -9,14 +9,14 @@ Vue.use(Router)
 * 方法一 ：webpack + ES6 写法
 */
 //const Friends = () => import(/* webpackChunkName: "friends" */ '@/views/friends/friends.vue')
-//const Music = () => import(/* webpackChunkName: "music" */ '@/views/music/music.vue')
+//const Mine = () => import(/* webpackChunkName: "mine" */ '@/views/mine/mine.vue')
 //const UserVideo = () => import(/* webpackChunkName: "userVideo" */ '@/views/user-video/user-video.vue')
 
 /**
 * 方法二 ：webpack 代码分割写法
 */ 
 //const Friends = r => require.ensure([], () => r(require('@/views/friends/friends.vue')), 'friends')
-//const Music = r => require.ensure([], () => r(require('@/views/music/music.vue')), 'music')
+//const Mine = r => require.ensure([], () => r(require('@/views/mine/mine.vue')), 'mine')
 //const UserVideo = r => require.ensure([], () => r(require('@/views/user-video/user-video.vue')), 'userVideo')
 
 export default new Router({
@@ -41,9 +41,9 @@ export default new Router({
             component : () => import(/* webpackChunkName: "friends" */ '@/views/friends/friends.vue')
         },
         {
-            path : '/music',
-            name : 'music',
-            component : () => import(/* webpackChunkName: "music" */ '@/views/music/music.vue')
+            path : '/mine',
+            name : 'mine',
+            component : () => import(/* webpackChunkName: "mine" */ '@/views/mine/mine.vue')
         },
         {
             path : '/userVideo',
@@ -71,9 +71,9 @@ export default new Router({
             component : () => import(/* webpackChunkName: "rank" */ '@/components/rank/rank.vue')
         },
         {
-            path : '/highQualityList',
-            name : 'highQualityList',
-            component : () => import(/* webpackChunkName: "highQualityList" */ '@/components/highQuality-list/highQuality-list.vue')
+            path : '/highQuality',
+            name : 'highQuality',
+            component : () => import(/* webpackChunkName: "highQuality" */ '@/components/highQuality/highQuality.vue')
         }
     ]
 })

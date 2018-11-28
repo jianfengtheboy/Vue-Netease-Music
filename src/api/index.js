@@ -18,9 +18,13 @@ export function getPersonalized(limit) {
 }
 
 //获取推荐新音乐
-export function getPersonalizedNewSong() {
+export function getPersonalizedNewSong(limit) {
     const url = `${URL}/personalized/newsong`
-    return axios.get(url)
+    return axios.get(url, {
+        params : {
+            limit
+        }
+    })
 }
 
 //获取推荐MV
@@ -102,11 +106,10 @@ export function getTopPlayList(page = 0, limit = 20, order = 'hot') {
 }
 
 //获取精品歌单
-export function getPlayListHighQuality(page = 0, limit = 9) {
+export function getPlayListHighQuality(limit) {
     const url = `${URL}/top/playlist/highquality`
     return axios.get(url, {
         params : {
-            offset : page * limit,
             limit
         }
     })

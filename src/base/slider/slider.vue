@@ -170,7 +170,7 @@ export default {
             width: $fontSize28 / 2 - 1;
             height: $fontSize28 / 2 - 1;
             @include borderRadius(50%);
-            background-color: $themeWhite;
+            background-color: $themeWhiteOpacity60;
             &.active {
                 background-color: $themeColor;
             }

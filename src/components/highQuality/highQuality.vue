@@ -30,7 +30,8 @@
                             </div>
                         </template>
                     </RowList>
-                    <Loading class="loadMore" v-if="onPullUp" :desc="desc"></Loading>
+                    <Loading class="loadMore" v-if="isLoading" :desc="desc"></Loading>
+                    <p class="noMoreTip" v-if="noMore">厉害，你刷到了底线</p>
                 </div>
             </Scroll>
             <div class="loadingContainer" v-else>
@@ -49,14 +50,20 @@ import RowList from '@/base/row-list/row-list'
 import { getPlayListHighQuality } from '@/api/index.js'
 import { ERR_OK } from '@/common/js/config.js'
 
+const TOTAL_NUM = 100
+
 export default {
-    name : 'highQualityList',
+    name : 'highQuality',
     data () {
         return {
             navTitle : '精品歌单',
             desc : '',
             onPullUp : true,
-            page : 0,
+            limit : 9,
+            total : 0,
+            page : 1,
+            isLoading : true,
+            noMore : false,
             highQualityList : []
         }
     },
@@ -66,15 +73,25 @@ export default {
     methods : {
         // 上拉加载
         onPullingUp () {
+            if (this.highQualityList.length >= this.total) {
+                this.isLoading = false
+                this.noMore = true
+                return
+            }
+            this.page ++
             setTimeout(() =>{
-                this._getHighQualityList()
+                getPlayListHighQuality(this.limit * this.page).then(res => {
+                    if (res.data.code === ERR_OK) {
+                        this.highQualityList = res.data.playlists.concat()
+                    }
+                })
             }, 1000)
         },
         _getHighQualityList () {
-            getPlayListHighQuality(this.page).then(res => {
+            getPlayListHighQuality(this.limit).then(res => {
                 if (res.data.code === ERR_OK) {
-                    this.highQualityList = this.highQualityList.concat(res.data.playlists)
-                    this.page ++
+                    this.highQualityList = res.data.playlists.concat()
+                    this.total = res.data.total > TOTAL_NUM ? TOTAL_NUM : res.data.total
                 } else {
                     this.$refs.scroll.forceUpdate()
                 }
@@ -127,9 +144,6 @@ export default {
             .highQualityMusic {
                 padding-top: $fontSize30 / 3;
             }
-            .loadingContainer {
-                padding: $fontSize50 * 5 0;
-            }
             .vipIcon {
                 position: absolute;
                 top: 0;
@@ -150,6 +164,16 @@ export default {
                 @include bg-url("./star.png");
                 @include bg-full($p:left bottom,$s:$fontSize22 - 2);
             }
+        }
+        .loadingContainer {
+            padding: $fontSize50 * 5 0;
+        }
+        .noMoreTip {
+            height: $fontSize50 * 2.2;
+            line-height: $fontSize50 * 2.2;
+            font-size: $fontSize24;
+            color: $themeColor;
+            text-align: center;
         }
     }
 }

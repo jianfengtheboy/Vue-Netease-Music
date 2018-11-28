@@ -104,6 +104,7 @@ export default {
     name : 'discover',
     data () {
         return {
+            limit : 9,
             bannerList : [],
             personalizedList : [],
             highQualityList : [],
@@ -134,14 +135,14 @@ export default {
             })
         },
         _getHighQuality () {
-            getPlayListHighQuality().then(res => {
+            getPlayListHighQuality(this.limit).then(res => {
                 if (res.data.code === ERR_OK) {
                     this.highQualityList = res.data.playlists
                 }
             })
         },
         _getPersonalizedNewSong () {
-            getPersonalizedNewSong().then((res) => {
+            getPersonalizedNewSong(this.limit).then(res => {
                 if (res.data.code === ERR_OK) {
                     this.newSongsList = res.data.result
                 }
@@ -158,7 +159,7 @@ export default {
             this.$router.push('/musicList')
         },
         toDetail () {
-            this.$router.push('/highQualityList')
+            this.$router.push('/highQuality')
         },
         formatPlayCount (item) {
             return (item / 10000) > 9 ?

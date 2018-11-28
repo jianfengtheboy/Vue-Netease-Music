@@ -2,9 +2,9 @@
     <div class="netHeader">
         <div class="netHeaderLeft"></div>
         <div class="netHeaderTitle">
-            <router-link tag="div" class="netHeaderIcon music" to="/music"></router-link>
             <router-link tag="div" class="netHeaderIcon discover" to="/discover"></router-link>
             <router-link tag="div" class="netHeaderIcon video" to="/userVideo"></router-link>
+            <router-link tag="div" class="netHeaderIcon mine" to="/mine"></router-link>
             <router-link tag="div" class="netHeaderIcon friends" to="/friends"></router-link>
         </div>
         <div class="netHeaderRight"></div>
@@ -42,7 +42,7 @@ export default {
             flex: 0 0 25%;
             height: $fontSize50;
             @include bg-full($s:cover);
-            &.music {
+            &.mine {
                 background-image: url("./t_actionbar_music_normal.png");
                 &.active {
                     background-image: url("./t_actionbar_music_selected.png");

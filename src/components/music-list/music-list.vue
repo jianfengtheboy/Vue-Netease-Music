@@ -10,19 +10,19 @@
                         :pullUpLoad="onPullUp"
                         @pullingUp="onPullingUp">
                     <!-- 精品歌单推荐 -->
-                    <div class="highQualityMusic">
+                    <div class="highQualityMusic" @click="toDetail">
                         <div class="contentWrapper">
                             <div class="picBox">
-                                <img v-lazy="highQualityList[0].coverImgUrl">
+                                <img v-lazy="highQualityList.coverImgUrl">
                             </div>
                             <div class="descBox">
-                                <span class="desc-title" @click="toDetail">精品歌单</span>
-                                <p class="desc-name">{{ highQualityList[0].name }}</p>
-                                <p class="desc-copywriter">{{ highQualityList[0].copywriter }}</p>
+                                <span class="desc-title">精品歌单</span>
+                                <p class="desc-name">{{ highQualityList.name }}</p>
+                                <p class="desc-copywriter">{{ highQualityList.copywriter }}</p>
                             </div>
                         </div>
                         <div class="bg">
-                            <img :src="highQualityList[0].coverImgUrl">
+                            <img :src="highQualityList.coverImgUrl">
                         </div>
                     </div>
                     <!-- 歌单列表 -->
@@ -82,7 +82,7 @@ export default {
         _getPlayListHighQuality () {
             getPlayListHighQuality().then(res => {
                 if (res.data.code === ERR_OK) {
-                    this.highQualityList = res.data.playlists
+                    this.highQualityList = res.data.playlists[0]
                 }
             })
         },
@@ -97,7 +97,7 @@ export default {
             })
         },
         toDetail () {
-            this.$router.push('/highQualityList')
+            this.$router.push('/highQuality')
         },
         formatPlayCount (item) {
             return (item / 10000) > 9 ?
