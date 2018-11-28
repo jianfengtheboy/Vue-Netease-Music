@@ -8,7 +8,7 @@
                         <Slider>
                             <div v-for="item in bannerList" :key="item.index">
                                 <a :href="item.url">
-                                    <img class="pic" :src="item.imageUrl" alt="">
+                                    <img class="pic" :src="item.imageUrl">
                                 </a>
                             </div>
                         </Slider>
