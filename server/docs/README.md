@@ -104,6 +104,7 @@
 86. 关注用户
 87. 新歌速递
 88. 喜欢音乐列表(无序)
+89. 收藏的 MV 列表
 
 ## 安装
 
@@ -164,16 +165,23 @@ request 相关的环境变量
 6. NO_PROXY
 
 ```shell
-docker pull twesix/netease-cloud-music
+docker pull binaryify/netease_cloud_music_api
 
-docker run -d -p 3000:3000 --name netease-cloud-music twesix/netease-music-api
+docker run -d -p 3000:3000 --name netease_cloud_music_api    binaryify/netease_cloud_music_api
+
+
+// 或者 
+docker run -d -p 3000:3000 binaryify/netease_cloud_music_api
 
 // 去掉或者设置相关的环境变量
 
-docker run -d -p 3000:3000 --name netease-cloud-music -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= netease-cloud-music
+docker run -d -p 3000:3000 --name netease_cloud_music_api -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= binaryify/netease_cloud_music_api
+
+// 或者
+docker run -d -p 3000:3000 -e http_proxy= -e https_proxy= -e no_proxy= -e HTTP_PROXY= -e HTTPS_PROXY= -e NO_PROXY= binaryify/netease_cloud_music_api
 ```
 
-> 由于 docker 镜像更新不是很及时,推荐自己 build, 以下为 build 镜像的方式
+> 以下是自行 build docker 镜像方式
 
 ```
 $ git clone https://github.com/Binaryify/NeteaseCloudMusicApi && cd NeteaseCloudMusicApi
@@ -559,6 +567,14 @@ category Code 取值:
 
 **调用例子 :** `/mv/sub`
 
+### 收藏的 MV 列表
+
+说明 : 调用此接口,可获取收藏的 MV 列表
+
+**接口地址 :** `/mv/sublist`
+
+**调用例子 :** `/mv/sublist`
+
 ### 歌单分类
 
 说明 : 调用此接口,可获取歌单分类,包含 category 信息
@@ -706,16 +722,6 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 **必选参数 :** `keywords` : 关键词
 
-**可选参数 :**
-
-`limit` : 返回数量 , 默认为 30
-
-`offset` : 偏移数量，用于分页 , 如
-: 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
-
-`type`: 搜索类型；默认为 1 即单曲 , 取值意义 : 1: 单曲 10: 专辑 100: 歌手 1000:
-歌单 1002: 用户 1004: MV 1006: 歌词 1009: 电台
-
 **接口地址 :** `/search/suggest`
 
 **调用例子 :** `/search/suggest?keywords= 海阔天空`
@@ -806,10 +812,6 @@ mp3url 不能直接用 , 可通过 `/song/url` 接口传入歌曲 id 获取具�
 
 韩国:16
 ```
-
-`limit`: 取出数量 , 默认为 100
-
-`offset`: 偏移数量 , 用于分页 , 如 :( 评论页数 -1)\*100, 其中 100 为 limit 的值
 
 **接口地址 :** `/top/song`
 
@@ -1443,8 +1445,7 @@ MV 数据 , 数据包含 mv 名字 , 歌手 , 发布时间 , mv 视频地址等�
 
 ### 获取视频数据
 
-说明 : 调用此接口 , 传入视频的 id ( 在搜索音乐的时候传 type=1014 获得 ) , 可获取对应
-视频数据,其中视频网易做了防盗链处理 , 可能不能直接播放 , 需要播放的话需要调用 ' 播放 mv/视频' 接口
+说明 : 调用此接口 , 传入视频 id,可获取视频播放地址
 
 **必选参数 :** `id`: 视频 的 id
 
@@ -1631,6 +1632,8 @@ type='1009' 获取其 id, 如`/search?keywords= 代码时间 &type=1009`
 
 `offset` : 偏移数量，用于分页 , 如
 : 如 :( 页数 -1)\*30, 其中 30 为 limit 的值 , 默认为 0
+
+`asc` : 排序方式,默认为 `false` (新 => 老 ) 设置 `true` 可改为 老 => 新 
 
 **接口地址 :** `/dj/program`
 
