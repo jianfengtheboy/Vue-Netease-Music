@@ -1,11 +1,8 @@
-// 电台详情
+// 最新专辑
 
 module.exports = (query, request) => {
-    const data = {
-        id: query.rid
-    }
     return request(
-        'POST', `https://music.163.com/weapi/djradio/get`, data,
+        'POST', `https://music.163.com/api/discovery/newAlbum`, {},
         {crypto: 'weapi', cookie: query.cookie, proxy: query.proxy}
     )
 }
