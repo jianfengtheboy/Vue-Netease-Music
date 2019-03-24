@@ -34,7 +34,7 @@
                                     <img width="100%" height="100%" v-lazy="topPlayList.coverImgUrl">
                                     <span class="nickname">{{ topPlayList.creator.nickname }}</span>
                                 </div>
-                                <p class="song-title">{{ topPlayList.name }}</p>
+                                <p class="song-title">{{ formatName(topPlayList.name) }}</p>
                             </template>
                         </SongList>
                         <Loading class="loadMore" v-if="onPullUp" :desc="desc"></Loading>
@@ -55,9 +55,11 @@ import Loading from '@/base/loading/loading'
 import SongList from '@/base/song-list/song-list'
 import { getPlayListHighQuality, getTopPlayList } from '@/api/index.js'
 import { ERR_OK } from '@/common/js/config.js'
+import { formatMixin } from '@/common/js/mixin'
 
 export default {
     name : 'musicList',
+    mixins: [formatMixin],
     data () {
         return {
             navTitle : '歌单',
@@ -98,11 +100,6 @@ export default {
         },
         toDetail () {
             this.$router.push('/highQuality')
-        },
-        formatPlayCount (item) {
-            return (item / 10000) > 9 ?
-             ((item / 10000) > 10000 ? `${(item / 100000000).toFixed(1)}亿` : 
-             `${Math.ceil(item / 10000)}万`) : Math.floor(item)
         }
     },
     components : {

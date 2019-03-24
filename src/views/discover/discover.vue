@@ -27,7 +27,7 @@
                                     <span class="playCount">{{ formatPlayCount(personalizedList.playCount) }}</span>
                                     <img width="100%" height="100%" v-lazy="personalizedList.picUrl">
                                 </div>
-                                <p class="song-title">{{ personalizedList.name.replace(/\s/g, ' ') }}</p>
+                                <p class="song-title">{{ formatName(personalizedList.name) }}</p>
                             </template>
                         </SongList>
                     </div>
@@ -42,7 +42,7 @@
                                     <span class="playCount">{{ formatPlayCount(highQualityList.playCount) }}</span>
                                     <img width="100%" height="100%" v-lazy="highQualityList.coverImgUrl">
                                 </div>
-                                <p class="song-title">{{ highQualityList.name.replace(/\s/g, ' ') }}</p>
+                                <p class="song-title">{{ formatName(highQualityList.name) }}</p>
                             </template>
                         </SongList>
                     </div>
@@ -56,8 +56,8 @@
                                 <div class="song-img">
                                     <img width="100%" height="100%" v-lazy="newSongsList.song.album.picUrl">
                                 </div>
-                                <p class="album-name">{{ newSongsList.song.album.name.replace(/\s/g, ' ') }}</p>
-                                <p class="artist-name">{{ newSongsList.song.artists[0].name.replace(/\s/g, ' ') }}</p>
+                                <p class="album-name">{{ formatName(newSongsList.song.album.name) }}</p>
+                                <p class="artist-name">{{ formatName(newSongsList.song.artists[0].name) }}</p>
                             </template>
                         </SongList>
                     </div>
@@ -69,10 +69,10 @@
                         <SongList :items="djProgramList">
                             <template slot-scope="djProgramList">
                                 <div class="song-img bgBottomLinear">
-                                    <span class="djProgram-name">{{ djProgramList.program.radio.name.replace(/\s/g, ' ') }}</span>
+                                    <span class="djProgram-name">{{ formatName(djProgramList.program.radio.name) }}</span>
                                     <img width="100%" height="100%" v-lazy="djProgramList.program.radio.picUrl">
                                 </div>
-                                <p class="song-title">{{ djProgramList.program.radio.desc.replace(/\s/g, ' ') }}</p>
+                                <p class="song-title">{{ formatName(djProgramList.program.radio.desc) }}</p>
                             </template>
                         </SongList>
                     </div>
@@ -99,9 +99,11 @@ import {
     getPersonalizedDjProgram 
 } from '@/api/index'
 import { ERR_OK } from '@/common/js/config'
+import { formatMixin } from '@/common/js/mixin.js'
 
 export default {
     name : 'discover',
+    mixins: [formatMixin],
     data () {
         return {
             limit : 9,
@@ -160,11 +162,6 @@ export default {
         },
         toDetail () {
             this.$router.push('/highQuality')
-        },
-        formatPlayCount (item) {
-            return (item / 10000) > 9 ?
-             ((item / 10000) > 10000 ? `${(item / 100000000).toFixed(1)}亿` : 
-             `${Math.ceil(item / 10000)}万`) : Math.floor(item)
         }
     },
     components : {

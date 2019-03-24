@@ -18,9 +18,9 @@
                                 <span class="vipIcon"></span>
                             </div>
                             <div class="row-desc">
-                                <p class="row-name">{{ highQualityList.name }}</p>
+                                <p class="row-name">{{ formatName(highQualityList.name) }}</p>
                                 <p class="row-nickname">
-                                    by&nbsp;{{ highQualityList.creator.nickname }}
+                                    by&nbsp;{{ formatName(highQualityList.creator.nickname) }}
                                     <i class="vip"></i>
                                 </p>
                                 <p class="row-txt">
@@ -49,11 +49,13 @@ import Loading from '@/base/loading/loading'
 import RowList from '@/base/row-list/row-list'
 import { getPlayListHighQuality } from '@/api/index.js'
 import { ERR_OK } from '@/common/js/config.js'
+import { formatMixin } from '@/common/js/mixin'
 
 const TOTAL_NUM = 100
 
 export default {
     name : 'highQuality',
+    mixins: [formatMixin],
     data () {
         return {
             navTitle : '精品歌单',
@@ -96,11 +98,6 @@ export default {
                     this.$refs.scroll.forceUpdate()
                 }
             })
-        },
-        formatPlayCount (item) {
-            return (item / 10000) > 9 ?
-             ((item / 10000) > 10000 ? `${(item / 100000000).toFixed(1)}亿` : 
-             `${Math.ceil(item / 10000)}万`) : Math.floor(item)
         }
     },
     components : {
