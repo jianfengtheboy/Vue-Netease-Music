@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router'
+import router from './router/index'
 import store from './store/index'
 import FastClick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 
+//全局引入样式
 import './common/css/index.scss';
 
 //优化移动端300ms点击延迟
 FastClick.attach(document.body)
 
-//懒加载
+//图片懒加载
 Vue.use(VueLazyLoad, {
     preLoad : 1,
     loading : require('./common/image/default.png')
