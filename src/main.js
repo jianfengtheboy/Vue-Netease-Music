@@ -6,7 +6,7 @@ import FastClick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
 
 //全局引入样式
-import './common/css/index.scss';
+import './common/css/index.scss'
 
 //优化移动端300ms点击延迟
 FastClick.attach(document.body)
@@ -20,12 +20,12 @@ Vue.use(VueLazyLoad, {
 Vue.config.productionTip = false
 
 //版权信息
-const pkg = require('../package.json');
+const pkg = require('../package.json')
 window.NeteaseMusic = window.NeteaseMusic = `网易云音乐，听见好时光!
 当前版本为：${pkg.version}
 作者：${pkg.author}
-歌曲来源于网易云音乐(http://music.163.com)`;
-console.info(`%c${NeteaseMusic}`, `color : #e5473c`);
+歌曲来源于网易云音乐(http://music.163.com)`
+console.info(`%c${NeteaseMusic}`, `color : #e5473c`)
 
 new Vue({
     router,

@@ -4,7 +4,7 @@
 
 "@types/node@^8.0.7":
   version "8.10.45"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.10.45.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fnode%2Fdownload%2F%40types%2Fnode-8.10.45.tgz#4c49ba34106bc7dced77ff6bae8eb6543cde8351"
+  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.10.45.tgz#4c49ba34106bc7dced77ff6bae8eb6543cde8351"
   integrity sha1-TEm6NBBrx9ztd/9rro62VDzeg1E=
 
 accepts@~1.3.5:
@@ -80,9 +80,9 @@ assert-plus@1.0.0, assert-plus@^1.0.0:
   integrity sha1-8S4PPF13sLHN2RRpQuTpbB5N1SU=
 
 ast-types@0.x.x:
-  version "0.12.2"
-  resolved "http://registry.npm.taobao.org/ast-types/download/ast-types-0.12.2.tgz#341656049ee328ac03fc805c156b49ebab1e4462"
-  integrity sha1-NBZWBJ7jKKwD/IBcFWtJ66seRGI=
+  version "0.12.3"
+  resolved "http://registry.npm.taobao.org/ast-types/download/ast-types-0.12.3.tgz#2299c6201d34b2a749a2dd9f2de7ef5f0e84f423"
+  integrity sha1-IpnGIB00sqdJot2fLefvXw6E9CM=
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -239,9 +239,9 @@ dashdash@^1.12.0:
     assert-plus "^1.0.0"
 
 data-uri-to-buffer@2:
-  version "2.0.0"
-  resolved "http://registry.npm.taobao.org/data-uri-to-buffer/download/data-uri-to-buffer-2.0.0.tgz#0ba23671727349828c32cfafddea411908d13d23"
-  integrity sha1-C6I2cXJzSYKMMs+v3epBGQjRPSM=
+  version "2.0.1"
+  resolved "http://registry.npm.taobao.org/data-uri-to-buffer/download/data-uri-to-buffer-2.0.1.tgz#ca8f56fe38b1fd329473e9d1b4a9afcd8ce1c045"
+  integrity sha1-yo9W/jix/TKUc+nRtKmvzYzhwEU=
   dependencies:
     "@types/node" "^8.0.7"
 
@@ -1285,9 +1285,9 @@ readable-stream@1.1.x:
     string_decoder "~0.10.x"
 
 readable-stream@3:
-  version "3.2.0"
-  resolved "http://registry.npm.taobao.org/readable-stream/download/readable-stream-3.2.0.tgz#de17f229864c120a9f56945756e4f32c4045245d"
-  integrity sha1-3hfyKYZMEgqfVpRXVuTzLEBFJF0=
+  version "3.3.0"
+  resolved "http://registry.npm.taobao.org/readable-stream/download/readable-stream-3.3.0.tgz#cb8011aad002eb717bf040291feba8569c986fb9"
+  integrity sha1-y4ARqtAC63F78EApH+uoVpyYb7k=
   dependencies:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
