@@ -12,7 +12,7 @@ export function getPersonalized(limit) {
     const url = `${URL}/personalized`
     return axios.get(url, {
         params : {
-            limit : 9
+            limit : 24
         }
     })
 }

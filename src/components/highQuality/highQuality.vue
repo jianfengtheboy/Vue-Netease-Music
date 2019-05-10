@@ -82,15 +82,18 @@ export default {
             }
             this.page ++
             setTimeout(() =>{
-                getPlayListHighQuality(this.limit * this.page).then(res => {
+                let param = this.limit * this.page
+                getPlayListHighQuality(param).then(res => {
                     if (res.data.code === ERR_OK) {
                         this.highQualityList = res.data.playlists.concat()
                     }
                 })
             }, 1000)
         },
+        //获取歌单列表
         _getHighQualityList () {
-            getPlayListHighQuality(this.limit).then(res => {
+            let param = this.limit
+            getPlayListHighQuality(param).then(res => {
                 if (res.data.code === ERR_OK) {
                     this.highQualityList = res.data.playlists.concat()
                     this.total = res.data.total > TOTAL_NUM ? TOTAL_NUM : res.data.total

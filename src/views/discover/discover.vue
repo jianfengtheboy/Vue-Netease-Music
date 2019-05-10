@@ -106,7 +106,7 @@ export default {
     mixins: [formatMixin],
     data () {
         return {
-            limit : 9,
+            limit : 24,
             bannerList : [],
             personalizedList : [],
             highQualityList : [],
@@ -122,6 +122,7 @@ export default {
         this._getPersonalizedDjProgram()
     },
     methods : {
+        //获取轮播图
         _getBannerList () {
             getBanner().then(res => {
                 if (res.data.code === ERR_OK) {
@@ -129,6 +130,7 @@ export default {
                 }
             })
         },
+        //获取推荐歌单
         _getPersonalized () {
             getPersonalized().then(res => {
                 if (res.data.code === ERR_OK) {
@@ -136,20 +138,25 @@ export default {
                 }
             })
         },
+        //获取精品歌单
         _getHighQuality () {
-            getPlayListHighQuality(this.limit).then(res => {
+            let param = this.limit
+            getPlayListHighQuality(param).then(res => {
                 if (res.data.code === ERR_OK) {
                     this.highQualityList = res.data.playlists
                 }
             })
         },
+        //获取最新音乐
         _getPersonalizedNewSong () {
-            getPersonalizedNewSong(this.limit).then(res => {
+            let param = this.limit
+            getPersonalizedNewSong(param).then(res => {
                 if (res.data.code === ERR_OK) {
                     this.newSongsList = res.data.result
                 }
             })
         },
+        //获取推荐电台
         _getPersonalizedDjProgram () {
             getPersonalizedDjProgram().then(res => {
                 if (res.data.code === ERR_OK) {
@@ -157,9 +164,11 @@ export default {
                 }
             })
         },
+        //跳转推荐歌单页面
         toList () {
             this.$router.push('/musicList')
         },
+        //跳转精品歌单页面
         toDetail () {
             this.$router.push('/highQuality')
         }

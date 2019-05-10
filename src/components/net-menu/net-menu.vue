@@ -28,6 +28,7 @@ export default {
         }
     },
     computed : {
+        //获取当前日期
         getTime () {
             let today = new Date()
             return this.date = today.getUTCDate()

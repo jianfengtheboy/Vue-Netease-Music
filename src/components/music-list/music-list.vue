@@ -81,6 +81,7 @@ export default {
                 this._getTopPlayList()
             }, 1000)
         },
+        //获取歌单头部精品歌单推荐项
         _getPlayListHighQuality () {
             getPlayListHighQuality().then(res => {
                 if (res.data.code === ERR_OK) {
@@ -88,6 +89,7 @@ export default {
                 }
             })
         },
+        //获取歌单列表
         _getTopPlayList () {
             getTopPlayList(this.page).then(res => {
                 if (res.data.code === ERR_OK) {
@@ -98,6 +100,7 @@ export default {
                 }
             })
         },
+        //跳转精品歌单页面
         toDetail () {
             this.$router.push('/highQuality')
         }

@@ -94,6 +94,7 @@ export default {
         this._getTopListDetail()
     },
     methods : {
+        //获取排行榜列表
         _getTopListDetail() {
             getTopListDetail().then(res => {
                 if (res.data.code === ERR_OK) {
