@@ -1,4 +1,20 @@
 # 更新日志
+### 3.22.4 | 2019.09.26
+- 修复私信历史记录分页参数问题,更新文档 [#599](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/599)
+
+### 3.22.3 | 2019.09.24
+- 手机号码检测： 添加国家码作为参数，方便检测国外手机号码 [#598](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/598)
+
+### 3.22.2 | 2019.09.18
+- 排行榜参数更新,更新文档[#592](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/592)
+
+### 3.22.1 | 2019.09.12
+- 支持回复评论[#589](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/589)
+
+
+### 3.22.0 | 2019.08.25
+- 支持 CORS 预检 [#564](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/564) [#578](https://github.com/Binaryify/NeteaseCloudMusicApi/pull/578)
+
 ### 3.21.1 | 2019.08.21
 - 修复推荐歌单和网易出品mv参数错误,更新文档 [#571](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/571) [#572](https://github.com/Binaryify/NeteaseCloudMusicApi/issues/572) 
 

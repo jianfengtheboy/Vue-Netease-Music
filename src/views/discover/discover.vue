@@ -88,7 +88,7 @@
 <script>
 import Scroll from '@/base/scroll/scroll'
 import Loading from '@/base/loading/loading'
-import Slider from '@/base/slider/slider'
+import Slider from '@/components/slider/slider'
 import NetMenu from '@/components/net-menu/net-menu'
 import SongList from '@/base/song-list/song-list'
 import { 
