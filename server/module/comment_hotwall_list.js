@@ -1,12 +1,9 @@
-// 电台banner
-
 module.exports = (query, request) => {
-  const data = {};
-  query.cookie.os = 'pc';
+  const data = {}
   return request(
     'POST',
-    `http://music.163.com/weapi/djradio/banner/get`,
-    {},
+    `https://music.163.com/api/comment/hotwall/list/get`,
+    data,
     { crypto: 'weapi', cookie: query.cookie, proxy: query.proxy }
-  );
-};
+  )
+}
