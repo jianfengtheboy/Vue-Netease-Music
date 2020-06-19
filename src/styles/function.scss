@@ -1,0 +1,21 @@
+// 浮动
+@function floatFn($fl) {
+  @if($fl == left) {
+    @return right;
+  }
+  @return left;
+}
+
+// 方向
+@function direction($dir){
+  @return $dir;
+}
+
+// 从对象中取值
+@function sun-map-get($map, $name) {
+  @each $label, $var in $map {
+    @if ($label = data-theme) {
+      @return map-get($var, $name);
+    }
+  }
+}
