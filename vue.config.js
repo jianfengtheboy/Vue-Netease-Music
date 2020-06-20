@@ -3,7 +3,7 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 11:09:06
- * @LastEditTime: 2020-06-20 11:48:06
+ * @LastEditTime: 2020-06-20 12:02:39
  * @Description: 配置文件
  */
 // eslint-disable-next-line
@@ -40,6 +40,14 @@ module.exports = {
     overlay: {
       warnings: true,
       errors: true
+    },
+    // 配置跨域处理 可以设置多个
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000',
+        ws: true,
+        changeOrigin: true
+      }
     }
   },
   chainWebpack(config) {

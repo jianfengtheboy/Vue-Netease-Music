@@ -900,6 +900,11 @@
   resolved "https://registry.npm.taobao.org/@types/eslint-visitor-keys/download/@types/eslint-visitor-keys-1.0.0.tgz?cache=0&sync_timestamp=1588199895754&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Feslint-visitor-keys%2Fdownload%2F%40types%2Feslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
   integrity sha1-HuMNeVRMqE1o1LPNsK9PIFZj3S0=
 
+"@types/fastclick@^1.0.29":
+  version "1.0.29"
+  resolved "https://registry.npm.taobao.org/@types/fastclick/download/@types/fastclick-1.0.29.tgz#90f43082848187b42250620f13ec93e32393169b"
+  integrity sha1-kPQwgoSBh7QiUGIPE+yT4yOTFps=
+
 "@types/glob@^7.1.1":
   version "7.1.2"
   resolved "https://registry.npm.taobao.org/@types/glob/download/@types/glob-7.1.2.tgz?cache=0&sync_timestamp=1591314114348&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fglob%2Fdownload%2F%40types%2Fglob-7.1.2.tgz#06ca26521353a545d94a0adc74f38a59d232c987"
