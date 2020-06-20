@@ -31,7 +31,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx", "src/config/config.js", "src/utils/vender/reconnectingWebsocket.js", "src/utils/webSocket.js"
+    "tests/**/*.tsx", "src/config/config.js"
   ],
   "exclude": [
     "node_modules"
