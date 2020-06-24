@@ -1,9 +1,9 @@
 <!--
  * @Author: SunJianFeng
- * @LastEditors: SunJianFeng
+ * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:28:15
- * @LastEditTime: 2020-06-20 02:34:34
+ * @LastEditTime: 2020-06-24 23:17:18
  * @Description: loading组件
 --> 
 <template>
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Loading extends Vue {

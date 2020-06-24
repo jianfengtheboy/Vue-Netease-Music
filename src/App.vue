@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-06-24 00:35:00
+ * @LastEditTime: 2020-06-24 23:16:26
  * @Description: App.vue
 -->
 <template>
@@ -14,9 +14,12 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'App'
+<script lang="ts">
+import { Vue, Component } from 'vue-property-decorator'
+
+@Component
+export default class App extends Vue {
+
 }
 </script>
 

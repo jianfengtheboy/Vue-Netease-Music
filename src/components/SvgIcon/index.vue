@@ -1,9 +1,9 @@
 <!--
  * @Author: SunJianFeng
- * @LastEditors: SunJianFeng
+ * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:10:36
- * @LastEditTime: 2020-06-21 00:29:16
+ * @LastEditTime: 2020-06-24 23:17:27
  * @Description: svgIcon组件
 --> 
 <template>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class SvgIcon extends Vue {
