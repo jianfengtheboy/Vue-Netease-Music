@@ -1,16 +1,16 @@
 /*
  * @Author: SunJianFeng
- * @LastEditors: SunJianFeng
+ * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-05-13 23:05:31
- * @LastEditTime: 2020-06-20 01:12:49
+ * @LastEditTime: 2020-06-23 18:14:43
  * @Description: 操作dom
  */ 
 export default class DomUtils {
 	// 是否具有某个css class类名
 	hasClass(el: { className: string }, className: string) {
-    const reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
-    return reg.test(el.className)
+		const reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+		return reg.test(el.className)
 	}
 
 	//添加类名

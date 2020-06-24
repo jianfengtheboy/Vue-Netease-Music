@@ -3,12 +3,9 @@
  * @LastEditors: SunJianFeng
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-05-13 23:05:31
- * @LastEditTime: 2020-06-21 00:48:51
+ * @LastEditTime: 2020-06-23 14:04:13
  * @Description: config.js
  */
-
-//网络请求地址
-export const URL = 'http://localhost:3000'
 
 //默认分页数量
 export const defaultLimit = 30
