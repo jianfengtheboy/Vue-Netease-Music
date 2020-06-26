@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-25 00:10:04
- * @LastEditTime: 2020-06-25 00:23:36
+ * @LastEditTime: 2020-06-26 11:39:17
  * @Description: string
  */ 
 export default class StringUtil {
@@ -20,7 +20,7 @@ export default class StringUtil {
     return string === undefined || string === null || string === ''
   }
   // 是否不为空
-  notEmpty(string: string) {
+  notEmpty(string: string | number) {
     return string && string !== ''
   }
   // 下划线转驼峰
