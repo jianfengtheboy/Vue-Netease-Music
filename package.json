@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/fastclick": "^1.0.29",
+    "@types/js-base64": "^2.3.2",
     "axios": "^0.19.2",
     "better-scroll": "^1.15.2",
     "core-js": "^3.6.5",

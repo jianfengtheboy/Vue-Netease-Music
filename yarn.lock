@@ -913,6 +913,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/js-base64@^2.3.2":
+  version "2.3.2"
+  resolved "https://registry.npm.taobao.org/@types/js-base64/download/@types/js-base64-2.3.2.tgz?cache=0&sync_timestamp=1592983986973&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fjs-base64%2Fdownload%2F%40types%2Fjs-base64-2.3.2.tgz#266be882b28b52649b1d34db9515e54c8ef783f2"
+  integrity sha1-JmvogrKLUmSbHTTblRXlTI73g/I=
+
 "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.4":
   version "7.0.5"
   resolved "https://registry.npm.taobao.org/@types/json-schema/download/@types/json-schema-7.0.5.tgz?cache=0&sync_timestamp=1591720921048&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fjson-schema%2Fdownload%2F%40types%2Fjson-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
