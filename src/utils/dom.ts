@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-05-13 23:05:31
- * @LastEditTime: 2020-06-23 18:14:43
+ * @LastEditTime: 2020-06-28 23:43:31
  * @Description: 操作dom
  */ 
 export default class DomUtils {
@@ -30,5 +30,42 @@ export default class DomUtils {
     })
     newClass.splice(index, 1)
     el.className = newClass.join(' ')
+	}
+
+	// 获取滚动的坐标
+	getScrollPosition = (el = window) => ({
+    x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollTo,
+    y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTo
+	})
+
+	// 滚动到顶部
+	scrollToTop () {
+    const c = document.documentElement.scrollTop || document.body.scrollTop
+    if (c > 0) {
+			window.requestAnimationFrame(this.scrollToTop)
+			window.scrollTo(0, c - c / 8)
+    }
+	}
+
+	// el是否在视口范围内
+	elementIsVisibleInViewport = (el: HTMLElement, partiallyVisible = false) => {
+    const { top, left, bottom, right } = el.getBoundingClientRect()
+    const { innerHeight, innerWidth } = window
+    return partiallyVisible
+      ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
+        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+      : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth
+	}
+
+	// 洗牌算法随机
+	shuffle = (arr: Array<number | string | null | undefined>) => {
+    const result = []
+    let random
+    while (arr.length > 0) {
+			random = Math.floor(Math.random() * arr.length)
+			result.push(arr[random])
+			arr.splice(random, 1)
+    }
+    return result
 	}
 }

@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 22:00:12
- * @LastEditTime: 2020-06-26 22:24:33
+ * @LastEditTime: 2020-06-28 23:36:39
  * @Description: 计算浮点数
  */
 export default class CalculateUtils {
@@ -75,5 +75,27 @@ export default class CalculateUtils {
     const r1 = Number(arg1.toString().replace('.', ''))
     const r2 = Number(arg2.toString().replace('.', ''))
     return (r1 / r2) * Math.pow(10, t2 - t1)
+  }
+
+  // 最大值
+  max = (arr: Array<number>) => {
+    return Math.max.apply(null, arr)
+  }
+
+  // 最小值
+  min = (arr: Array<number>) => {
+    return Math.min.apply(null, arr)
+  }
+
+  // 求和
+  sum = (arr: Array<number>) => {
+    return arr.reduce((pre, cur) => {
+      return pre + cur
+    })
+  }
+
+  // 平均值
+  average = (arr: Array<number>) => {
+    return this.sum(arr) / arr.length
   }
 }
