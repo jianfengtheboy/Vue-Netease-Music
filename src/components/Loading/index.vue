@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:28:15
- * @LastEditTime: 2020-06-24 23:17:18
+ * @LastEditTime: 2020-07-02 16:07:33
  * @Description: loading组件
 --> 
 <template>
@@ -22,7 +22,7 @@ export default class Loading extends Vue {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import "../../styles/mixin";
 
 .loading {

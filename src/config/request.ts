@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 23:21:23
- * @LastEditTime: 2020-06-27 00:48:10
+ * @LastEditTime: 2020-07-01 22:48:11
  * @Description: request
  */ 
 import axios from 'axios'
@@ -11,6 +11,7 @@ import { Base64 } from 'js-base64'
 import { baseURL, ERR_OK } from './config'
 
 export default class Interceptors {
+  // eslint-disable-next-line
   public instance: any
 
   constructor() {
@@ -33,18 +34,17 @@ export default class Interceptors {
   initInterceptors() {
     this.instance.interceptors.request.use((
       config: { 
-        headers: { [x: string]: string }
-        method: string
-        params: { params: string | number | object | Array<string | number> }
+        headers: { [x: string]: string };
+        method: string;
+        params: { params: string | number | object | Array<string | number> };
       }) => {
-      config.headers['sra'] = 'sra'
       if (process.env.NODE_ENV !== 'production' && config.method == 'get' && config.params) {
         config.params = {
           params: Base64.encode(JSON.stringify(config.params))
         }
       }
       return config
-    }, (error: any) => {
+    }, (error: string | object) => {
       Promise.reject(error)
     })
     
@@ -60,13 +60,13 @@ export default class Interceptors {
       },
       (error: {
         response: {
-          status: number,
-          data: { msg: string, message: string },
-          statusText: string
-        }
+          status: number;
+          data: { msg: string; message: string };
+          statusText: string;
+        };
       }) => {
         if (error.response) {
-          let res = error.response
+          const res = error.response
           switch (res.status) {
             case 301:
               localStorage.removeItem('userId')

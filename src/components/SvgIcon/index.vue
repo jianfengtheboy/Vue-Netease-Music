@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:10:36
- * @LastEditTime: 2020-06-24 23:17:27
+ * @LastEditTime: 2020-07-02 16:07:23
  * @Description: svgIcon组件
 --> 
 <template>
@@ -34,7 +34,7 @@ export default class SvgIcon extends Vue {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .svg-icon {
   width: 1em;
   height: 1em;

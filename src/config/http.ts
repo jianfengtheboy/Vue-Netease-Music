@@ -3,51 +3,60 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-27 00:01:06
- * @LastEditTime: 2020-06-27 01:20:17
+ * @LastEditTime: 2020-07-02 15:56:42
  * @Description: http
  */ 
 import Interceptors from './request'
 
-export default class Http {
+class Http {
+  // eslint-disable-next-line
   public axios: any
  
   constructor() {
     this.axios = new Interceptors().getInterceptors()
   }
   // get请求
-  get(url: string, params: string | object){
+  public get(url: string, params?: string | object) {
     const config = {
       methods: 'get',
       url: url
     }
+    // eslint-disable-next-line
     if(params) (config as any).params = params
     return this.axios(config)
   }
   // post请求
-  post(url: string, params: any){
+  public post(url: string, params?: string | object) {
     const config = {
       methods: 'post',
       url: url
     }
+    // eslint-disable-next-line
     if(params) (config as any).data = params
     return this.axios(config)
   }
   // put请求
-  put(url: any, params: any){
+  public put(url: string, params?: string | object) {
     const config = {
       methods: 'put',
       url: url
     }
+    // eslint-disable-next-line
     if(params) (config as any).params = params
     return this.axios(config)
   }
   // delete请求
-  delete(url: any, params: any){
+  public delete(url: string, params?: string | object) {
     const config = {
       methods: 'delete',
       url: url
     }
+    // eslint-disable-next-line
     if(params) (config as any).params = params
     return this.axios(config)
   }
 }
+
+const Https = new Http()
+
+export default Https
