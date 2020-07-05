@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 23:21:23
- * @LastEditTime: 2020-07-01 22:48:11
+ * @LastEditTime: 2020-07-05 21:59:25
  * @Description: request
  */ 
 import axios from 'axios'
@@ -11,7 +11,6 @@ import { Base64 } from 'js-base64'
 import { baseURL, ERR_OK } from './config'
 
 export default class Interceptors {
-  // eslint-disable-next-line
   public instance: any
 
   constructor() {

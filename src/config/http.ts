@@ -3,13 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-27 00:01:06
- * @LastEditTime: 2020-07-02 15:56:42
+ * @LastEditTime: 2020-07-05 21:58:50
  * @Description: http
  */ 
 import Interceptors from './request'
 
 class Http {
-  // eslint-disable-next-line
   public axios: any
  
   constructor() {
@@ -21,7 +20,6 @@ class Http {
       methods: 'get',
       url: url
     }
-    // eslint-disable-next-line
     if(params) (config as any).params = params
     return this.axios(config)
   }
@@ -31,7 +29,6 @@ class Http {
       methods: 'post',
       url: url
     }
-    // eslint-disable-next-line
     if(params) (config as any).data = params
     return this.axios(config)
   }
@@ -41,7 +38,6 @@ class Http {
       methods: 'put',
       url: url
     }
-    // eslint-disable-next-line
     if(params) (config as any).params = params
     return this.axios(config)
   }
@@ -51,7 +47,6 @@ class Http {
       methods: 'delete',
       url: url
     }
-    // eslint-disable-next-line
     if(params) (config as any).params = params
     return this.axios(config)
   }

@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-06-27 01:01:32
+ * @LastEditTime: 2020-07-05 20:46:49
  * @Description: 全局入口文件
  */
 import Vue from 'vue'
@@ -36,6 +36,10 @@ globalFilters(Vue)
 // 引入全局自定义指令
 import globalDirectives from './directives'
 globalDirectives(Vue)
+
+// 引入api
+import Apis from '@/api'
+Vue.prototype.$api = Apis
 
 Vue.config.productionTip = false
 

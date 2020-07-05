@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-02 16:17:02
+ * @LastEditTime: 2020-07-05 21:28:10
  * @Description: App.vue
 -->
 <template>
@@ -16,7 +16,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import HomeApis from './api/home'
 
 @Component
 export default class App extends Vue {
@@ -24,8 +23,8 @@ export default class App extends Vue {
     this.getHomeBanner()
   }
 
-  async getHomeBanner() {
-    const res = await HomeApis.getBanner()
+  public async getHomeBanner() {
+    const res = await (this as any).$api.homeApi.getBanner()
     console.log(res.banners)
   }
 }
