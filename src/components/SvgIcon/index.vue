@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:10:36
- * @LastEditTime: 2020-07-02 16:07:23
+ * @LastEditTime: 2020-07-08 13:57:15
  * @Description: svgIcon组件
 --> 
 <template>
@@ -12,13 +12,13 @@
   </svg>
 </template>
 
-<script lang="ts">
+<script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class SvgIcon extends Vue {
-  @Prop({ required: true }) private iconClass!: string;
-  @Prop({ default: '' }) private className?: string;
+  @Prop({ required: true }) public iconClass!: string;
+  @Prop({ default: '' }) public className?: string;
 
   public get iconName() {
     return `#icon-${this.iconClass}`

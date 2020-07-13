@@ -3,28 +3,49 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-05 21:28:10
+ * @LastEditTime: 2020-07-13 17:00:06
  * @Description: App.vue
 -->
 <template>
   <div id="sun" @touchmove.prevent>
+    <Slider>
+      <div v-for="item in bannerList" :key="item.index">
+        <a :href="item.url">
+          <img class="pic" :src="item.imageUrl">
+        </a>
+      </div>
+    </Slider>
     <keep-alive>
       <router-view/>
     </keep-alive>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
+import Slider from '@/components/Slider/index.vue'
 
-@Component
+@Component({
+  components: {
+    Slider
+  }
+})
 export default class App extends Vue {
+  
+  private bannerList!: Array<object>
+
+  constructor() {
+    super()
+    this.bannerList = []
+  }
+
   mounted() {
     this.getHomeBanner()
   }
 
-  public async getHomeBanner() {
-    const res = await (this as any).$api.homeApi.getBanner()
+  public async getHomeBanner(this: any) {
+    const res = await this.$api.homeApi.getBanner()
+    this.bannerList = res.banners
     console.log(res.banners)
   }
 }
