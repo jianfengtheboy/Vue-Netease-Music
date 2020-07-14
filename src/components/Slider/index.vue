@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-02 16:05:35
- * @LastEditTime: 2020-07-13 16:58:17
+ * @LastEditTime: 2020-07-14 22:52:53
  * @Description: slider组件
 -->
 <template>
@@ -33,7 +33,7 @@ export default class Slider extends Vue {
   private dots!: Array<any>
   private currentPageIndex!: number
   private timer!: any
-  private children!: any
+  private children!: Array<any>
   private slider!: any
 
   constructor() {
@@ -41,7 +41,7 @@ export default class Slider extends Vue {
     this.dots = []
     this.currentPageIndex = 0
     this.timer = undefined
-    this.children = undefined
+    this.children = []
     this.slider = undefined
   }
 

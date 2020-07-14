@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-25 00:02:06
- * @LastEditTime: 2020-06-25 00:09:22
+ * @LastEditTime: 2020-07-14 09:15:26
  * @Description: storage
  */
 export default class StorageUtils {
@@ -97,7 +97,8 @@ export default class StorageUtils {
     }
   }
   
-  creatUuid () { // 生成一个通用唯一标识符
+  // 生成一个通用唯一标识符
+  creatUuid () {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
       const r = Math.random() * 16 | 0
       const v = c === 'x' ? r : (r & 0x3 | 0x8)
