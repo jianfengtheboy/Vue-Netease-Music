@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 22:54:43
- * @LastEditTime: 2020-07-15 00:45:48
+ * @LastEditTime: 2020-07-16 00:16:13
  * @Description: regexp
  */ 
 
@@ -222,7 +222,33 @@ export default class RegExpUtils {
   // 验证身份证号, 支持1/2代(15位/18位数字)
   isIDCard = (value: string) => /(^\d{8}(0\d|10|11|12)([0-2]\d|30|31)\d{3}$)|(^\d{6}(18|19|20)\d{2}(0\d|10|11|12)([0-2]\d|30|31)\d{3}(\d|X|x)$)/g.test(value)
 
-  // 验证护照（包含香港、澳门
+  // 验证护照（包含香港、澳门)
   isPassport = (value: string) => /(^[EeKkGgDdSsPpHh]\d{8}$)|(^(([Ee][a-fA-F])|([DdSsPp][Ee])|([Kk][Jj])|([Mm][Aa])|(1[45]))\d{7}$)/g.test(value)
 
+  // 验证帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线组合
+  isWebAccount = (value: string) => /^[a-zA-Z]\w{4,15}$/g.test(value)
+
+  // 验证中文/汉字
+  isChineseCharacter = (value: string) => /^(?:[\u3400-\u4DB5\u4E00-\u9FEA\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879][\uDC00-\uDFFF]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0])+$/g.test(value)
+
+  // 验证小数
+  isDecimal = (value: string) => /^\d+\.\d+$/g.test(value)
+
+  // 验证数字
+  isNumber = (value: string) => /^\d{1,}$/g.test(value)
+
+  // 验证qq号格式
+  isQQNum = (value: string) => /^[1-9][0-9]{4,10}$/g.test(value)
+
+  // 验证数字和字母组成
+  isNumAndStr = (value: string) => /^[A-Za-z0-9]+$/g.test(value)
+
+  // 验证英文字母
+  isEnglish = (value: string) => /^[a-zA-Z]+$/g.test(value)
+
+  // 验证大写英文字母
+  isCapital = (value: string) => /^[A-Z]+$/g.test(value)
+
+  // 验证小写英文字母
+  isLowercase = (value: string) => /^[a-z]+$/g.test(value)
 }

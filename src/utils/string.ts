@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-25 00:10:04
- * @LastEditTime: 2020-07-14 23:27:29
+ * @LastEditTime: 2020-07-16 00:18:48
  * @Description: string
  */ 
 export default class StringUtil {
@@ -214,6 +214,4 @@ export default class StringUtil {
   isaz = (val: string) => {
     return /^[a-z]+$/.test(val)
   }
-
-  
 }

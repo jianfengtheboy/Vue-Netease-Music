@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 01:03:24
- * @LastEditTime: 2020-07-14 23:22:26
+ * @LastEditTime: 2020-07-16 00:17:51
  * @Description: index.ts
  */ 
 import DomUtils from './dom'
@@ -14,6 +14,7 @@ import CalculateUtils from './calculate'
 import RegExpUtils from './regexp'
 import ArrayUtils from './array'
 import NumberUtils from './number'
+import BrowserUtils from './browser'
 
 export default {
   dom: new DomUtils(),
@@ -23,5 +24,6 @@ export default {
   calculate: new CalculateUtils(),
   reg: new RegExpUtils(),
   array: new ArrayUtils(),
-  number: new NumberUtils()
+  number: new NumberUtils(),
+  browser: new BrowserUtils()
 }
