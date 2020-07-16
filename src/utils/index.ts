@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 01:03:24
- * @LastEditTime: 2020-07-16 13:24:34
+ * @LastEditTime: 2020-07-16 23:10:33
  * @Description: index.ts
  */ 
 import DomUtils from './dom'
@@ -17,6 +17,7 @@ import NumberUtils from './number'
 import BrowserUtils from './browser'
 import FileUtils from './file'
 import FunctionUtils from './function'
+import DateUtils from './date'
 
 export default {
   dom: new DomUtils(),
@@ -29,5 +30,6 @@ export default {
   number: new NumberUtils(),
   browser: new BrowserUtils(),
   file: new FileUtils(),
-  function: new FunctionUtils()
+  function: new FunctionUtils(),
+  date: new DateUtils()
 }

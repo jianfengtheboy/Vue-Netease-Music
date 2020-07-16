@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-16 13:23:53
- * @LastEditTime: 2020-07-16 16:40:49
+ * @LastEditTime: 2020-07-16 23:35:01
  * @Description: function
  */ 
 export default class FunctionUtils {
@@ -332,7 +332,50 @@ export default class FunctionUtils {
         .filter((t: string) => t !== '')
         .reduce((prev: { [x: string]: any }, cur: string | number) => prev && prev[cur], from)
     )
+
+  // 向传递的URL发出GET请求
+  httpGet = (url: string, callback: (arg0: string) => any, err = console.error) => {
+    const request = new XMLHttpRequest()
+    request.open('GET', url, true)
+    request.onload = () => callback(request.responseText)
+    request.onerror = () => err(request)
+    request.send()
+  }
+
+  // 向传递的URL发出POST请求
+  httpPost = (url: string, data: any, callback: (arg0: string) => any, err = console.error) => {
+    const request = new XMLHttpRequest()
+    request.open('POST', url, true)
+    request.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+    request.onload = () => callback(request.responseText)
+    request.onerror = () => err(request)
+    request.send(data)
+  }
   
-  
+  /**
+   * @指定选择器创建具有指定范围和步长和持续时间的计数器
+   * 例：counter('#my-id', 1, 1000, 5, 2000); 让 `id=“my-id”`的元素创建一个2秒计时器
+   */
+  counter = (selector: any, start: number, end: number, step = 1, duration = 2000) => {
+    let current = start
+    const _step = (end - start) * step < 0 ? -step : step
+    const timer = setInterval(() => {
+      current += _step
+      document.querySelector(selector).innerHTML = current
+      if (current >= end) document.querySelector(selector).innerHTML = end
+      if (current >= end) clearInterval(timer);
+    }, Math.abs(Math.floor(duration / (end - start))))
+    return timer
+  }
+
+  // 获取上下文路径
+  getRootPath = () => {
+    const curWwwPath = window.document.location.href
+    const pathName = window.document.location.pathname
+    const pos = curWwwPath.indexOf(pathName)
+    const localhostPaht = curWwwPath.substring(0, pos)
+    const projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1)
+    return(localhostPaht + projectName)
+  }
+
 }
-  
