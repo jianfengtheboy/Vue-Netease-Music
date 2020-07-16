@@ -3,18 +3,18 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-05-13 23:05:31
- * @LastEditTime: 2020-07-08 13:38:22
+ * @LastEditTime: 2020-07-16 14:08:33
  * @Description: 操作dom
  */ 
 export default class DomUtils {
 	// 是否具有某个css class类名
-	hasClass(el: HTMLElement, className: string) {
+	hasClass = (el: HTMLElement, className: string) => {
 		const reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
 		return reg.test(el.className)
 	}
 
 	//添加类名
-	addClass(el: HTMLElement, className: string) {
+	addClass = (el: HTMLElement, className: string) => {
     if (this.hasClass(el, className)) return
     const newClass = el.className.split(' ')
     newClass.push(className)
@@ -22,7 +22,7 @@ export default class DomUtils {
 	}
 
 	//删除类名
-	removeClass (el: HTMLElement, className: string) {
+	removeClass = (el: HTMLElement, className: string) => {
     if (!this.hasClass(el, className)) return
     const newClass = el.className.split(' ')
     const index = newClass.findIndex((item: string) => {
@@ -39,7 +39,7 @@ export default class DomUtils {
 	})
 
 	// 滚动到顶部
-	scrollToTop () {
+	scrollToTop = () => {
     const c = document.documentElement.scrollTop || document.body.scrollTop
     if (c > 0) {
 			window.requestAnimationFrame(this.scrollToTop)

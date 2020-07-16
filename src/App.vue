@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-13 17:00:06
+ * @LastEditTime: 2020-07-16 14:58:34
  * @Description: App.vue
 -->
 <template>
@@ -46,7 +46,6 @@ export default class App extends Vue {
   public async getHomeBanner(this: any) {
     const res = await this.$api.homeApi.getBanner()
     this.bannerList = res.banners
-    console.log(res.banners)
   }
 }
 </script>

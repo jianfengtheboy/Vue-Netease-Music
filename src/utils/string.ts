@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-25 00:10:04
- * @LastEditTime: 2020-07-16 00:18:48
+ * @LastEditTime: 2020-07-16 16:18:10
  * @Description: string
  */ 
 export default class StringUtil {
@@ -13,119 +13,119 @@ export default class StringUtil {
   }
   
   // 是否是字符串
-  isString(value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isString = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'String'
   }
 
   // 是否数字
-  isNumber (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isNumber = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Number'
   }
 
   // 是否boolean
-  isBoolean (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isBoolean = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Boolean'
   }
   
   // 是否函数
-  isFunction (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isFunction = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Function'
   }
 
   // 是否为null
-  isNull (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isNull = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Null'
   }
 
   // 是否undefined
-  isUndefined (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isUndefined = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Undefined'
   }
   
   // 是否对象
-  isObj (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isObj = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Object'
   }
 
   // 是否数组
-  isArray (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isArray = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Array'
   }
 
   // 是否时间
-  isDate (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isDate = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Date'
   }
   
   // 是否正则
-  isRegExp (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isRegExp = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'RegExp'
   }
 
   // 是否Set对象
-  isSet (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isSet = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Set'
   }
   
   // 是否错误对象
-  isError (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isError = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Error'
   }
 
   // 是否Symbol函数
-  isSymbol (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isSymbol = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Symbol'
   }
 
   // 是否Promise对象
-  isPromise (value: string | number | boolean | object | Array<string | number> | null | undefined) {
+  isPromise = (value: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return Object.prototype.toString.call(value).slice(8, -1) === 'Promise'
   }
   
   // 不是字符串
-  notString (string: string | number | boolean | object | Array<string | number> | null | undefined) {
+  notString = (string: string | number | boolean | object | Array<string | number> | null | undefined) => {
     return typeof string !== 'string'
   }
 
   // 是否为空
-  isEmpty (string: string | number | boolean | object | null | undefined) {
+  isEmpty = (string: string | number | boolean | object | null | undefined) => {
     return string === undefined || string === null || string === ''
   }
 
   // 是否不为空
-  notEmpty (string: string | number) {
+  notEmpty = (string: string | number) => {
     return string && string !== ''
   }
 
   // 下划线转驼峰
-  toHump (string: string) {
+  toHump = (string: string) => {
     if (this.notString(string) || this.isEmpty(string)) return string
     return string.replace(/\\_(\w)/g, (all, letter) => letter.toUpperCase())
   }
   
   // 驼峰转下划线
-  toLine (string: string) {
+  toLine = (string: string) => {
     if (this.notString(string) || this.isEmpty(string)) return string
     return string.replace(/([A-Z])/g, '_$1').toLowerCase()
   }
 
   // 是否是移动端
-  isDeviceMobile () {
+  isDeviceMobile = () => {
     return /android|webos|iphone|ipod|balckberry/i.test(this.ua)
   }
 
   // 是否是QQ浏览器
-  isQQBrowser () {
+  isQQBrowser = () => {
     return !!this.ua.match(/mqqbrowser|qzone|qqbrowser|qbwebviewtype/i)
   }
   
   // 是否是爬虫
-  isSpider () {
+  isSpider = () => {
     return /adsbot|googlebot|bingbot|msnbot|yandexbot|baidubot|robot|careerbot|seznambot|bot|baiduspider|jikespider|symantecspider|scannerlwebcrawler|crawler|360spider|sosospider|sogou web sprider|sogou orion spider/.test(this.ua)
   }
 
   // 是否ios
-  isIos () {
+  isIos = () => {
     const u = navigator.userAgent
     if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) { // 安卓手机
       return false
@@ -155,7 +155,7 @@ export default class StringUtil {
   }
 
   // 获取url参数
-  getQueryString (name: string) {
+  getQueryString = (name: string) => {
     const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i')
     const search = window.location.search.split('?')[1] || ''
     const r = search.match(reg) || []
@@ -200,18 +200,41 @@ export default class StringUtil {
     return rgbStr
   }
 
-  //匹配由 26 个英文字母组成的字符串
-  isAZaz = (val: string) => {
-    return /^[A-Za-z]+$/.test(val)
+  // 生成一个通用唯一标识符
+  creatUuid = () => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = Math.random() * 16 | 0
+      const v = c === 'x' ? r : (r & 0x3 | 0x8)
+      return v.toString(16)
+    })
   }
-  
-  //匹配由 26 个英文字母的大写组成的字符串
-  isAZ = (val: string) => {
-    return /^[A-Z]+$/.test(val)
+
+  // 金钱格式化，三位加逗号
+  formatMoney = (num: number) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+  // 截取字符串并加省略号
+  subText = (str: string, length: number) => {
+    if (str.length === 0) {
+      return ''
+    }
+    if (str.length > length) {
+      return str.substr(0, length) + "..."
+    } else {
+      return str
+    }
   }
-  
-  //匹配由 26 个英文字母的小写组成的字符串
-  isaz = (val: string) => {
-    return /^[a-z]+$/.test(val)
+
+  /**
+    * @数字超过规定大小加上加号“+”，如数字超过99显示99+
+    * @param { number } val 输入的数字
+    * @param { number } maxNum 数字规定界限
+    */
+  outOfNum = (val: number, maxNum: number) => {
+    val = val ? val - 0 : 0
+    if (val > maxNum ) {
+      return `${maxNum}+`
+    } else {
+      return val
+    }
   }
 }

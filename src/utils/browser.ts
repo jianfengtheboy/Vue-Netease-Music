@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-16 00:16:52
- * @LastEditTime: 2020-07-16 00:47:38
+ * @LastEditTime: 2020-07-16 14:03:55
  * @Description: browser
  */ 
 export default class BrowserUtils {
@@ -11,7 +11,7 @@ export default class BrowserUtils {
   currentURL = () => window.location.href
 
   // 获取url参数
-  getUrlParam(name: string, origin: null | string) {
+  getUrlParam = (name: string, origin: null | string) => {
     const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
     let r = null
     if (origin == null) {
@@ -24,7 +24,7 @@ export default class BrowserUtils {
   }
 
   // 修改url中的参数
-  replaceParamVal(paramName: string, replaceWith: string) {
+  replaceParamVal = (paramName: string, replaceWith: string) => {
     const oUrl = location.href.toString()
     const re = eval('/('+ paramName + '=)([^&]*)/gi')
     location.href = oUrl.replace(re, paramName + '=' + replaceWith)
@@ -32,7 +32,7 @@ export default class BrowserUtils {
   }
 
   // 获取窗口可视范围的高度
-  getClientHeight() {
+  getClientHeight = () => {
     let clientHeight = 0
     if (document.body.clientHeight && document.documentElement.clientHeight) {
       clientHeight = (document.body.clientHeight < document.documentElement.clientHeight)
@@ -47,14 +47,14 @@ export default class BrowserUtils {
   }
 
   // 获取窗口可视范围宽度
-  getPageViewWidth() {
+  getPageViewWidth = () => {
     const d = document
     const a = d.compatMode == "BackCompat" ? d.body : d.documentElement
     return a.clientWidth
   }
 
   // 获取窗口宽度
-  getPageWidth() {
+  getPageWidth = () => {
     const g = document,
         a = g.body,
         f = g.documentElement,
@@ -63,7 +63,7 @@ export default class BrowserUtils {
   }
 
   // 获取窗口尺寸
-  getViewportOffset() {
+  getViewportOffset = () => {
     if (window.innerWidth) {
       return {
         w: window.innerWidth,
@@ -88,19 +88,19 @@ export default class BrowserUtils {
   }
 
   // 获取滚动条距顶部高度
-  getPageScrollTop() {
+  getPageScrollTop = () => {
     const a = document
     return a.documentElement.scrollTop || a.body.scrollTop
   }
 
   // 获取滚动条距左边的高度
-  getPageScrollLeft() {
+  getPageScrollLeft = () => {
     const a = document
     return a.documentElement.scrollLeft || a.body.scrollLeft
   }
 
   // 开启全屏
-  launchFullscreen(element: { requestFullscreen: () => void; mozRequestFullScreen: () => void; msRequestFullscreen: () => void; webkitRequestFullscreen: any; webkitRequestFullScreen: () => void }) {
+  launchFullscreen = (element: { requestFullscreen: () => void; mozRequestFullScreen: () => void; msRequestFullscreen: () => void; webkitRequestFullscreen: any; webkitRequestFullScreen: () => void }) => {
     if (element.requestFullscreen) {
       element.requestFullscreen()
     } else if (element.mozRequestFullScreen) {
@@ -113,7 +113,7 @@ export default class BrowserUtils {
   }
 
   // 关闭全屏
-  exitFullscreen(document: { exitFullscreen: () => void; msExitFullscreen: () => void; mozCancelFullScreen: () => void; webkitExitFullscreen: () => void }) {
+  exitFullscreen = (document: { exitFullscreen: () => void; msExitFullscreen: () => void; mozCancelFullScreen: () => void; webkitExitFullscreen: () => void }) => {
     if (document.exitFullscreen) {
       document.exitFullscreen()
     } else if (document.msExitFullscreen) {
@@ -132,7 +132,7 @@ export default class BrowserUtils {
   })
 
   // 滚动到指定元素区域
-  smoothScroll = (element: any) =>{
+  smoothScroll = (element: any) => {
     document.querySelector(element).scrollIntoView({
       behavior: 'smooth'
     })
@@ -159,7 +159,7 @@ export default class BrowserUtils {
   }
 
   // 自适应页面（rem）
-  AutoResponse(width = 750) {
+  AutoResponse = (width = 750) => {
     const target = document.documentElement
     target.clientWidth >= 600
       ? (target.style.fontSize = "80px")

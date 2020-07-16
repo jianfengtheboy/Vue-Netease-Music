@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-14 23:21:09
- * @LastEditTime: 2020-07-15 00:25:22
+ * @LastEditTime: 2020-07-16 16:25:22
  * @Description: array
  */ 
 export default class ArrayUtils {
@@ -149,5 +149,15 @@ export default class ArrayUtils {
       }
     }
     return false
+  }
+
+  // 查询数组中是否存在某个元素并返回元素第一次出现的下标
+  inArray = (item: any, data: string | any[]) => {
+    for (let i = 0; i < data.length; i++) {
+      if (item === data[i]) {
+        return i
+      }
+    }
+    return -1
   }
 }

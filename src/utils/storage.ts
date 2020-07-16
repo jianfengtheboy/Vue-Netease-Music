@@ -3,106 +3,100 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-25 00:02:06
- * @LastEditTime: 2020-07-14 09:15:26
+ * @LastEditTime: 2020-07-16 10:55:01
  * @Description: storage
  */
 export default class StorageUtils {
-  // localStorage缓存
-  save (key: string, value: string) {
-    if (!key) return console.warn('save storage key can`t null!')
-    if (value) {
-      localStorage ? localStorage.setItem(key, value) : this.setCookie(key, value, 0)
-    } else {
-      localStorage ? localStorage.removeItem(key) : this.removeCookie(key)
+  /**
+   * @localStorage
+   * @param key 键
+   * @param value 值
+   */
+  // localStorage 存贮
+  localStorageSet = (key: string, value: string | object) => {
+    if (typeof (value) === 'object') value = JSON.stringify(value)
+    localStorage.setItem(key, value)
+  }
+
+  // localStorage 获取
+  localStorageGet = (key: string) => {
+    return localStorage.getItem(key)
+  }
+
+  // localStorage 移除
+  localStorageRemove = (key: string) => {
+    localStorage.removeItem(key)
+  }
+
+  // localStorage 存贮某一段时间失效
+  localStorageSetExpire = (key: string, value: string | object, expire: number | undefined) => {
+    if (typeof (value) === 'object') value = JSON.stringify(value)
+    localStorage.setItem(key, value)
+    setTimeout(() => {
+      localStorage.removeItem(key)
+    }, expire)
+  }
+
+  /**
+   * @sessionStorage
+   * @param key 键
+   * @param value 值
+   */
+  // sessionStorage 存贮
+  sessionStorageSet = (key: string, value: string | object) => {
+    if (typeof (value) === 'object') value = JSON.stringify(value)
+    sessionStorage.setItem(key, value)
+  }
+
+  // sessionStorage 获取
+  sessionStorageGet = (key: string) => {
+    return sessionStorage.getItem(key)
+  }
+
+  // sessionStorage 删除
+  sessionStorageRemove = (key: string) => {
+    sessionStorage.removeItem(key)
+  }
+
+  // sessionStorage 存贮某一段时间失效
+  sessionStorageSetExpire = (key: string, value: string | object, expire: number | undefined) => {
+    if (typeof (value) === 'object') value = JSON.stringify(value)
+    sessionStorage.setItem(key, value)
+    setTimeout(() => {
+      sessionStorage.removeItem(key)
+    }, expire)
+  }
+
+  /**
+   * @cookie
+   * @param key 键
+   * @param value 值
+   * @param expire 过期时间
+   */
+  // cookie 存贮
+  cookieSet = (key: string, value: string | object, expire: number) => {
+    const d = new Date()
+    d.setDate(d.getDate() + expire)
+    document.cookie = `${key}=${value};expires=${d.toUTCString()}`
+  }
+
+  // cookie 获取
+  cookieGet = (key: string) => {
+    const cookieStr = unescape(document.cookie)
+    const arr = cookieStr.split('; ')
+    let cookieValue = ''
+    for (let i = 0; i < arr.length; i++) {
+      const temp = arr[i].split('=')
+      if (temp[0] === key) {
+        cookieValue = temp[1]
+        break
+      }
     }
-  }
-  // localStorage缓存对象
-  saveObject (key: string, object: string) {
-    try {
-      object = typeof object === 'object' ? JSON.stringify(object) : object
-    } catch (e) {
-      console.error(`storage saveObject of '${key}' error. \nerror :`, e, '\nvalue : ', object)
-    }
-    this.save(key, object)
-  }
-  // SessionStorage缓存
-  saveForSession(key: string, value: string) {
-    value = typeof value === 'object' ? JSON.stringify(value) : value
-    if (sessionStorage) sessionStorage.setItem(key, value)
+    return cookieValue
   }
 
-  // SessionStorage获取
-  GetForSession(key: string) {
-    if (!key) return console.warn('get item key can not null!')
-    if (sessionStorage) return sessionStorage.getItem(key)
-  }
-
-  // 取值
-  get (key: string) {
-    if (!key) return console.warn('get item key can not null!')
-    let value
-    if (localStorage) {
-      value = localStorage.getItem(key)
-    } else {
-      value = this.getCookie(key)
-    }
-    return value
-  }
-
-  // 获取缓存数据
-  getObjcet (key: string) {
-    let value = this.get(key)
-    try {
-      value = typeof value === 'string' ? JSON.parse(value) : value
-    } catch (e) {
-      console.error(`storage getObjcet of '${key}' error \n`, e)
-    }
-    return value
-  }
-
-  // 删除缓存
-  remove (key: string) {
-    if (!key) return console.warn('storage remove key can`t null!')
-    localStorage ? localStorage.removeItem(key) : this.removeCookie(key)
-  }
-
-  removeForSession (key: string) {
-    if (!key) return console.warn('storage remove key can`t null!')
-    sessionStorage && sessionStorage.removeItem(key)
-  }
-
-  // 获取cookie值
-  getCookie (key: string) {
-    const reg = new RegExp('(^| )' + key + '=([^;]*)(;|$)')
-    const arr = document.cookie.match(reg)
-    if (arr) {
-      return unescape(arr[2])
-    }
-    return null
-  }
-
-  // 删除cookie值
-  removeCookie (key: string) {
-    this.setCookie(key, '', -1)
-  }
-
-  // 保存cookie
-  setCookie (key: string, value: string, day: number) {
-    if (day !== 0) { // 当设置的时间等于0时，不设置expires属性，cookie在浏览器关闭后删除
-      const expires = day * 24 * 60 * 60 * 1000
-      const date = new Date(+new Date() + expires)
-      document.cookie = key + '=' + escape(value) + ';expires=' + date.toUTCString()
-    } else {
-      document.cookie = key + '=' + escape(value)
-    }
-  }
-  
-  // 生成一个通用唯一标识符
-  creatUuid () {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-      const r = Math.random() * 16 | 0
-      const v = c === 'x' ? r : (r & 0x3 | 0x8)
-      return v.toString(16)
-    })
+  // cookie 删除
+  cookieRemove = (key: string) => {
+    document.cookie = `${encodeURIComponent(key)}=;expires=${new Date()}`
   }
 }

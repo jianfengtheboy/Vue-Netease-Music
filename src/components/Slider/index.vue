@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-02 16:05:35
- * @LastEditTime: 2020-07-14 22:52:53
+ * @LastEditTime: 2020-07-16 13:44:53
  * @Description: slider组件
 -->
 <template>
@@ -30,10 +30,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Slider extends Vue {
   // data
-  private dots!: Array<any>
+  private dots!: Array<object>
   private currentPageIndex!: number
   private timer!: any
-  private children!: Array<any>
+  private children!: Array<object>
   private slider!: any
 
   constructor() {
@@ -140,7 +140,7 @@ export default class Slider extends Vue {
   }
 
   private initDots(): void {
-    this.dots = new Array(this.children.length - 2)
+    this.dots = this.children.length > 0 ? new Array(this.children.length - 2) : []
   }
 
   private play(): void {
