@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-14 23:21:09
- * @LastEditTime: 2020-07-16 16:25:22
+ * @LastEditTime: 2020-07-18 02:33:52
  * @Description: array
  */ 
 export default class ArrayUtils {
@@ -12,9 +12,6 @@ export default class ArrayUtils {
     const arr = Array.isArray(ary) ? ary : Array.prototype.slice.call(ary)
     return arr
   }
-
-  // 返回数组中的最大值
-  arrayMax = (arr: Array<number>) => Math.max(...arr)
 
   // 返回数组中的最小值
   arrayMin = (arr: Array<number>) => Math.min(...arr)
@@ -26,9 +23,6 @@ export default class ArrayUtils {
 
   // 从数组中移除 false 值
   compact = (arr: any[]) => arr.filter(Boolean)
-
-  // 计算数组中值的出现次数
-  countOccurrences = (arr: any[], value: string | number) => arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0)
 
   // 返回两个数组之间的差异
   difference = (a: any[], b: any[]) => {
@@ -86,9 +80,6 @@ export default class ArrayUtils {
 
   // 返回数组中的随机元素
   sample = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)]
-
-  // 随机数组值的顺序
-  shuffle = (arr: any[]) => arr.sort(() => Math.random() - 0.5)
 
   // 返回两个数组中都显示的元素的数组
   similarity = (arr: any[], values: string | any[]) => arr.filter(v => values.includes(v))
@@ -160,4 +151,72 @@ export default class ArrayUtils {
     }
     return -1
   }
+
+  /**
+   * @数组去重
+   */
+  noRepeatSet = (arr: any[]) => [...new Set(arr)]
+
+  noRepeatFrom = (arr: any[]) => Array.from(new Set(arr))
+
+  noRepeatFilter = (arr: any[]) => arr.filter((v, idx) => idx == arr.lastIndexOf(v))
+  
+  noRepeatObject = (arr: any[]) => {
+    return Object.values(arr.reduce((s, n) => {
+      s[n] = n
+      return s
+    }, {}))
+  }
+
+  /**
+   * @查找数组最大
+   */
+  arrayMax = (arr: any[]) => Math.max(...arr)
+
+  arrayMaxReduce = (arr: any[]) => arr.reduce((s, n) => Math.max(s, n)) 
+
+  arrayMaxCompire = (arr: any[]) => arr.reduce((s, n) => s > n ? s : n)
+
+  arrayMaxSort = (arr: any[]) => arr.sort((n, m) => m - n)[0]
+
+  /**
+   * @返回以size为长度的数组分割的原数组
+   */
+  chunkSlice = (arr: any[], size = 1) => Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size))
+
+  chunkSplice = (arr: any[], size = 1) => Array.from({ length: Math.ceil(arr.length / size) }, () => arr.splice(0, size))
+
+  chunkWhile = (arr: any[], size = 1) => {
+    const returnArr = []
+    while (arr.length) {
+      returnArr.push(arr.splice(0, size))
+    }
+    return returnArr
+  }
+
+  /**
+   * @检查数组中某元素出现的次数
+   */
+  countOccurrencesReduce = (arr: any[], value: string | number) => arr.reduce((a, v) => v === value ? a + 1 : a + 0, 0)
+
+  countOccurrencesFilter = (arr: any[], value: string | number) => arr.filter(v => v === value).length
+
+  /**
+   * @数组乱排
+   */
+  shuffleWhile = (arr: any[]) => {
+    const array = arr
+    let index = array.length
+    while (index) {
+      index -= 1
+      const randomInedx = Math.floor(Math.random() * index)
+      const middleware = array[index]
+      array[index] = array[randomInedx]
+      array[randomInedx] = middleware
+    }
+    return array
+  }
+
+  shuffleSort = (arr: any[]) => arr.sort(() => Math.random() - 0.5)
+  
 }
