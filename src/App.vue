@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-16 14:58:34
+ * @LastEditTime: 2020-07-17 17:48:01
  * @Description: App.vue
 -->
 <template>
@@ -23,7 +23,7 @@
 
 <script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
-import Slider from '@/components/Slider/index.vue'
+import Slider from '@/components/Slider/Slider.vue'
 
 @Component({
   components: {
