@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-16 13:23:53
- * @LastEditTime: 2020-07-16 23:35:01
+ * @LastEditTime: 2020-07-18 00:46:23
  * @Description: function
  */ 
 export default class FunctionUtils {
@@ -378,4 +378,43 @@ export default class FunctionUtils {
     return(localhostPaht + projectName)
   }
 
+  // 过滤器指定字段
+  filterArrBySex = (data: any[], name: any) => {
+    if (!name) {
+      return data
+    } else {
+      return data.filter(function(ele) {
+        if (ele.name.includes(name)) {
+          return ele
+        }
+      })
+    }
+  }
+
+  // 根据身份证获取出生年月
+  getBirthdayFromIdCard = (idCard: string | null) => {
+    let birthday = ''
+    if (idCard != null && idCard != '') {
+      if (idCard.length == 15) {
+        birthday = '19' + idCard.substr(6, 6)
+      } else if (idCard.length == 18) {
+        birthday = idCard.substr(6, 8)
+      }
+      birthday = birthday.replace(/(.{4})(.{2})/, '$1-$2-')
+    }
+    return birthday
+  }
+
+  // 根据身份证获取年龄
+  IdCard = (UUserCard: { substring: (arg0: number, arg1: number) => number }) => {
+    //获取年龄
+    const myDate = new Date()
+    const month = myDate.getMonth() + 1
+    const day = myDate.getDate()
+    let age = myDate.getFullYear() - UUserCard.substring(6, 10) - 1
+    if (UUserCard.substring(10, 12) < month || UUserCard.substring(10, 12) == month && UUserCard.substring(12, 14) <= day) {
+      age++
+    }
+    return age
+  }
 }
