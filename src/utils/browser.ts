@@ -3,14 +3,16 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-16 00:16:52
- * @LastEditTime: 2020-07-16 14:03:55
+ * @LastEditTime: 2020-07-19 00:56:22
  * @Description: browser
  */ 
 export default class BrowserUtils {
   // 获取当前url
   currentURL = () => window.location.href
 
-  // 获取url参数
+  /**
+   * @获取url参数
+   */
   getUrlParam = (name: string, origin: null | string) => {
     const reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)")
     let r = null
@@ -21,6 +23,16 @@ export default class BrowserUtils {
     }
     if (r != null) return decodeURIComponent(r[2])
     return null
+  }
+  getURLParametersReduce = (url: { match: (arg0: RegExp) => any[] }) => {
+    return url
+      .match(/([^?=&]+)(=([^&]*))/g)
+      .reduce(
+        (a, v) => (
+          (a[v.slice(0, v.indexOf("="))] = v.slice(v.indexOf("=") + 1)), a
+        ),
+        {}
+      )
   }
 
   // 修改url中的参数
@@ -164,5 +176,18 @@ export default class BrowserUtils {
     target.clientWidth >= 600
       ? (target.style.fontSize = "80px")
       : (target.style.fontSize = target.clientWidth / width * 100 + "px")
+  }
+
+  /**
+   * @页面跳转是否记录在history中
+   * @param url
+   * @param asLink 
+   */
+  redirectHref = (url: string, asLink = true) => {
+    asLink ? (window.location.href = url) : window.location.replace(url)
+  }
+
+  redirectAssign = (url: string, asLink = true) => {
+    asLink ? window.location.assign(url) : window.location.replace(url)
   }
 }

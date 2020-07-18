@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2019-05-13 23:05:31
- * @LastEditTime: 2020-07-16 14:08:33
+ * @LastEditTime: 2020-07-19 00:21:47
  * @Description: 操作dom
  */ 
 export default class DomUtils {
@@ -37,15 +37,6 @@ export default class DomUtils {
     x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollTo,
     y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTo
 	})
-
-	// 滚动到顶部
-	scrollToTop = () => {
-    const c = document.documentElement.scrollTop || document.body.scrollTop
-    if (c > 0) {
-			window.requestAnimationFrame(this.scrollToTop)
-			window.scrollTo(0, c - c / 8)
-    }
-	}
 
 	// el是否在视口范围内
 	elementIsVisibleInViewport = (el: HTMLElement, partiallyVisible = false) => {
