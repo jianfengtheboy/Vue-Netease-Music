@@ -3,12 +3,11 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-19 23:15:36
+ * @LastEditTime: 2020-07-20 22:45:51
  * @Description: App.vue
 -->
 <template>
   <div id="sun" @touchmove.prevent>
-    <Scroll></Scroll>
     <Slider>
       <div v-for="item in bannerList" :key="item.index">
         <a :href="item.url">
@@ -25,12 +24,10 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
 import Slider from '@/components/Slider/Slider.vue'
-import Scroll from '@/components/Scroll/Scroll.vue'
 
 @Component({
   components: {
-    Slider,
-    Scroll
+    Slider
   }
 })
 export default class App extends Vue {
