@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-02 16:05:35
- * @LastEditTime: 2020-07-16 13:44:53
+ * @LastEditTime: 2020-07-22 16:00:57
  * @Description: slider组件
 -->
 <template>
@@ -140,7 +140,7 @@ export default class Slider extends Vue {
   }
 
   private initDots(): void {
-    this.dots = this.children.length > 0 ? new Array(this.children.length - 2) : []
+    this.dots = new Array(this.children.length - 2)
   }
 
   private play(): void {
