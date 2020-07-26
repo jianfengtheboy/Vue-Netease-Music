@@ -3,11 +3,11 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-05 20:42:00
- * @LastEditTime: 2020-07-05 20:43:44
+ * @LastEditTime: 2020-07-27 00:38:09
  */
-import HomeApi from './home'
+import DiscoverApi from './discover'
 
 export default {
-  homeApi: new HomeApi()
+  discoverApi: new DiscoverApi()
 }
 

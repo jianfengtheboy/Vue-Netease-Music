@@ -3,15 +3,14 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-22 16:23:21
+ * @LastEditTime: 2020-07-27 01:01:33
  * @Description: App.vue
 -->
 <template>
   <transition name="slide">
     <div id="sun" @touchmove.prevent>
-      <net-header></net-header>
       <keep-alive>
-        <router-view/>
+        <router-view />
       </keep-alive>
     </div>
   </transition>
@@ -19,31 +18,9 @@
 
 <script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
-import NetHeader from './components/NetHeader/NetHeader.vue'
 
-@Component({
-  components: {
-    NetHeader
-  }
-})
-export default class App extends Vue {
-  
-  // private bannerList!: Array<object>
-
-  // constructor() {
-  //   super()
-  //   this.bannerList = []
-  // }
-
-  // mounted() {
-  //   this.getHomeBanner()
-  // }
-
-  // public async getHomeBanner(this: any) {
-  //   const res = await this.$api.homeApi.getBanner()
-  //   this.bannerList = res.banners
-  // }
-}
+@Component
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">

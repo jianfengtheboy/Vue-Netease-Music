@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-05 20:46:49
+ * @LastEditTime: 2020-07-27 00:57:05
  * @Description: 全局入口文件
  */
 import Vue from 'vue'
@@ -13,6 +13,9 @@ import store from './store'
 
 // 引入全局样式
 import './styles/index.scss'
+
+// 引入svg
+import './icons'
 
 //优化移动端300ms点击延迟
 import FastClick from 'fastclick'

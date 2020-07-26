@@ -3,12 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:28:15
- * @LastEditTime: 2020-07-13 15:22:54
+ * @LastEditTime: 2020-07-27 00:58:42
  * @Description: loading组件
 --> 
 <template>
   <div class="loading">
-    <img src="../../icons/svg/loading.svg" alt="">
+    <svg-icon iconClass="loading" class="icon" />
     <p class="desc">{{ desc }}</p>
   </div>
 </template>
@@ -23,12 +23,12 @@ export default class Loading extends Vue {
 </script>
 
 <style lang="scss" scoped>
-@import "../../styles/mixin";
+@import "../../styles/base.scss";
 
 .loading {
   width: 100%;
   text-align: center;
-  img {
+  .icon {
     width: $fontSize50 * 3;
     height: $fontSize50 * 3;
   }
