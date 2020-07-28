@@ -3,14 +3,11 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:07:17
- * @LastEditTime: 2020-07-27 01:05:14
+ * @LastEditTime: 2020-07-28 09:28:12
 --> 
 <template>
   <div class="discover" ref="discover">
-    <Scroll
-      ref="scroll"
-      class="discoverContent"
-    >
+    <Scroll ref="scroll" class="discoverContent">
       <div class="decorate" v-if="bannerList.length"></div>
       <div class="banner">
         <div v-if="bannerList.length" class="sliderWrapper">

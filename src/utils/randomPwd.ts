@@ -3,11 +3,11 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-23 22:52:38
- * @LastEditTime: 2020-06-23 23:05:37
+ * @LastEditTime: 2020-07-28 09:26:59
  * @Description: 生成随机密码
  */ 
 export default class RandomPwd {
-  getRandomPwd() {
+  getRandomPwd = () => {
     // 可以生成随机密码的相关数组
     const num = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     const english = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']

@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 01:03:24
- * @LastEditTime: 2020-07-19 00:03:15
+ * @LastEditTime: 2020-07-28 09:27:23
  * @Description: index.ts
  */ 
 import DomUtils from './dom'
@@ -22,7 +22,7 @@ import BomUtils from './bom'
 
 export default {
   dom: new DomUtils(),
-  randomPwd: new RandomPwd().getRandomPwd(),
+  randomPwd: new RandomPwd(),
   storage: new StorageUtils(),
   string: new StringUtils(),
   calculate: new CalculateUtils(),
