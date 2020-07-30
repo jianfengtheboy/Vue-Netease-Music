@@ -46,8 +46,8 @@
 * 边框方向-大小
 * param $direction 方向（left,right,top,bottom）
 */
-@mixin border-direction($direction, $num: 1px) {
-  border-#{direction($direction)}: $num solid $system-color-panel-border;
+@mixin border-direction($direction, $num, $color) {
+  border-#{direction($direction)}: $num solid $color;
 }
 
 /**

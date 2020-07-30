@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-30 15:28:40
+ * @LastEditTime: 2020-07-31 00:40:21
  * @Description: 全局入口文件
  */
 import Vue from 'vue'
@@ -31,6 +31,10 @@ Vue.use(VueLazyLoad, {
 // 引入toast组件
 import Toast from '@/baseComponents/Toast'
 Vue.use(Toast)
+
+// 引入confirm组件
+import Confirm from '@/baseComponents/Confirm'
+Vue.prototype.$confirm = Confirm
 
 // 引入全局utils
 import Utils from '@/utils'
