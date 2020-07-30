@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 23:21:23
- * @LastEditTime: 2020-07-05 21:59:25
+ * @LastEditTime: 2020-07-30 17:10:02
  * @Description: request
  */ 
 import axios from 'axios'
@@ -11,6 +11,7 @@ import { Base64 } from 'js-base64'
 import { baseURL, ERR_OK } from './config'
 
 export default class Interceptors {
+  [x: string]: any
   public instance: any
 
   constructor() {
@@ -69,31 +70,31 @@ export default class Interceptors {
           switch (res.status) {
             case 301:
               localStorage.removeItem('userId')
-              console.error(res.data.msg || '请先登录')
+              this.$toast(res.data.msg || '请先登录', 'error')
               break
             case 400:
-              console.error(res.data.message || res.data.msg || '资源不在收藏列表中')
+              this.$toast(res.data.message || res.data.msg || '资源不在收藏列表中', 'error')
               break
             case 401:
-              console.error(res.data.msg || '请先登录')
+              this.$toast(res.data.msg || '请先登录', 'error')
               break
             case 403:
-              console.error(res.data.msg || '权限不足')
+              this.$toast(res.data.msg || '权限不足', 'error')
               break
             case 404:
-              console.error(res.data.msg || '请求资源不存在')
+              this.$toast(res.data.msg || '请求资源不存在', 'error')
               break
             case 408:
-              console.error(res.data.message || '已经收藏过该视频')
+              this.$toast(res.data.message || '已经收藏过该视频', 'error')
               break
             case 500:
-              console.error(res.data.msg || '服务器开小差啦')
+              this.$toast(res.data.msg || '服务器开小差啦', 'error')
               break
             case 504:
-              console.error(res.data.msg || '网络请求失败')
+              this.$toast(res.data.msg || '网络请求失败', 'error')
               break
             default:
-              console.error(res.data.msg || res.statusText)
+              this.$toast(res.data.msg || res.statusText, 'error')
           }
         }
         return Promise.reject(error.response)

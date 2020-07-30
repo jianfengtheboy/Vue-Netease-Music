@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-27 00:57:05
+ * @LastEditTime: 2020-07-30 15:28:40
  * @Description: 全局入口文件
  */
 import Vue from 'vue'
@@ -27,6 +27,10 @@ Vue.use(VueLazyLoad, {
   preLoad : 1,
   loading : require('./assets/image/default.png')
 })
+
+// 引入toast组件
+import Toast from '@/baseComponents/Toast'
+Vue.use(Toast)
 
 // 引入全局utils
 import Utils from '@/utils'
