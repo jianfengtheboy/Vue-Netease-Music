@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:36:01
- * @LastEditTime: 2020-07-22 16:39:40
+ * @LastEditTime: 2020-08-01 23:45:47
  * @Description: 
 --> 
 <template>
@@ -30,7 +30,7 @@ export default class SongList extends Vue {
 .song-list {
   display: flex;
   flex-flow: wrap;
-  padding: 0 $fontSize30 / 3;
+  padding: 0 $fontSize30 / 3 $fontSize30 / 3;
   .song-item {
     flex: 0 0 33.33333%;
     box-sizing: border-box;
@@ -39,7 +39,7 @@ export default class SongList extends Vue {
       width: 100%;
       height: 0;
       padding-top: 100%;
-      border-radius: $fontSize30 / 5;
+      border-radius: $fontSize24 / 2;
       overflow: hidden;
       position: relative;
       &.bgTopLinear:before {

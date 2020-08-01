@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-23 22:22:22
- * @LastEditTime: 2020-06-24 00:33:21
+ * @LastEditTime: 2020-07-31 16:41:31
  * @Description: 过滤器
  */
 import VueInstance from 'vue'
@@ -74,6 +74,10 @@ const textover = (val: string, length: number) => {
   return val
 }
 
+const formatName = (val: string) => {
+  return val.replace(/\s/g, ' ')
+}
+
 const globalFilters = (Vue: typeof VueInstance) => {
   Vue.filter('numberFormat', numberFormat)
   Vue.filter('toWan', toWan)
@@ -83,6 +87,7 @@ const globalFilters = (Vue: typeof VueInstance) => {
   Vue.filter('formatBrs', formatBrs)
   Vue.filter('normalSize', normalSize)
   Vue.filter('textover', textover)
+  Vue.filter('formatName', formatName)
 }
 
 export default globalFilters

@@ -3,11 +3,10 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 23:21:23
- * @LastEditTime: 2020-07-30 17:10:02
+ * @LastEditTime: 2020-08-02 00:56:51
  * @Description: request
  */ 
 import axios from 'axios'
-import { Base64 } from 'js-base64'
 import { baseURL, ERR_OK } from './config'
 
 export default class Interceptors {
@@ -38,24 +37,18 @@ export default class Interceptors {
         method: string;
         params: { params: string | number | object | Array<string | number> };
       }) => {
-      if (process.env.NODE_ENV !== 'production' && config.method == 'get' && config.params) {
-        config.params = {
-          params: Base64.encode(JSON.stringify(config.params))
-        }
-      }
       return config
     }, (error: string | object) => {
+      this.$toast(error, 'error')
       Promise.reject(error)
     })
     
     this.instance.interceptors.response.use(
       (response: { data: { code: number } }) => {
-        if (typeof response.data === 'string') {
-          response.data = JSON.parse(Base64.decode(response.data))
-        }
         if (response.data.code && response.data.code === ERR_OK) {
           return response.data
         }
+        this.$toast((response.data as any).msg || (response.data as any).statusText, 'warning')
         return Promise.reject(response.data)
       },
       (error: {
@@ -96,6 +89,8 @@ export default class Interceptors {
             default:
               this.$toast(res.data.msg || res.statusText, 'error')
           }
+        } else {
+          this.$toast('请检查网络连接状态!', 'error')
         }
         return Promise.reject(error.response)
       })

@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-30 17:15:19
- * @LastEditTime: 2020-07-31 01:21:51
+ * @LastEditTime: 2020-08-02 00:04:29
  * @Description: Confirm全局组件
 --> 
 <template>
@@ -112,7 +112,7 @@ export default class Confirm extends Vue {
   margin: 0 auto;
   transform: translateY(-50%);
   background-color: $themeWhite;
-  @include borderRadius($fontSize36 / 6);
+  @include borderRadius($fontSize30 / 3);
   z-index: 999;
   user-select: none;
 }

@@ -3,16 +3,16 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:07:17
- * @LastEditTime: 2020-07-28 09:28:12
+ * @LastEditTime: 2020-08-02 02:13:25
 --> 
 <template>
   <div class="discover" ref="discover">
-    <Scroll ref="scroll" class="discoverContent">
-      <div class="decorate" v-if="bannerList.length"></div>
+    <Scroll ref="scroll" class="discoverContent" v-if="isRenderFinish">
+      <div class="decorate" v-if="pageDatas.bannerList.length"></div>
       <div class="banner">
-        <div v-if="bannerList.length" class="sliderWrapper">
+        <div v-if="pageDatas.bannerList.length" class="sliderWrapper">
           <Slider>
-            <div v-for="item in bannerList" :key="item.index">
+            <div v-for="item in pageDatas.bannerList" :key="item.index">
               <a :href="item.url">
                 <img class="pic" :src="item.imageUrl">
               </a>
@@ -21,10 +21,99 @@
         </div>
       </div>
       <NetMenu></NetMenu>
-
+      <div class="songListBox">
+        <!-- 推荐歌单 -->
+        <div class="personalizedList">
+          <div class="listTitle">
+            <span @click="toList">推荐歌单</span>
+          </div>
+          <SongList :items="pageDatas.personalizedList">
+            <template slot-scope="personalizedList">
+              <div class="song-img bgTopLinear">
+                <span class="playCount">{{ personalizedList.playCount | toWan }}</span>
+                <img v-lazy="personalizedList.picUrl">
+              </div>
+              <p class="song-title">{{ personalizedList.name | formatName }}</p>
+            </template>
+          </SongList>
+        </div>
+        <!-- 独家放送 -->
+        <div class="privateContent">
+          <div class="listTitle">
+            <span @click="toList">独家放送</span>
+          </div>
+          <SongList :items="pageDatas.privateContent">
+            <template slot-scope="privateContent">
+              <div class="song-img bgTopLinear">
+                <span class="playCount" v-if="privateContent.playCount || privateContent.playTime">
+                  {{ privateContent.playCount | toWan }}
+                </span>
+                <svg-icon iconClass="play-circle" class="icon playCircle" />
+                <img v-lazy="privateContent.sPicUrl || privateContent.picUrl">
+              </div>
+              <p class="song-title">{{ privateContent.name }}</p>
+            </template>
+          </SongList>
+        </div>
+        <!-- 最新音乐 -->
+        <div class="newSongsList">
+          <div class="listTitle">
+            <span @click="toList">最新音乐</span>
+          </div>
+          <SongList :items="pageDatas.newSongsList">
+            <template slot-scope="newSongsList">
+              <div class="song-img">
+                <img v-lazy="newSongsList.song.album.picUrl">
+              </div>
+              <p class="album-name">{{ newSongsList.song.album.name | formatName }}</p>
+              <p class="artist-name">
+                <span v-for="(item, index) in newSongsList.song.artists" :key="index">
+                  {{ item.name | formatName }}
+                  <i v-if="index < newSongsList.song.artists.length - 1">、</i>
+                </span>
+              </p>
+            </template>
+          </SongList>
+        </div>
+        <!-- 推荐mv -->
+        <div class="mvlist">
+          <div class="listTitle">
+            <span @click="toList">推荐mv</span>
+          </div>
+          <SongList :items="pageDatas.mvlist">
+            <template slot-scope="mvlist">
+              <div class="song-img bgTopLinear">
+                <span class="playCount" v-if="mvlist.playCount || mvlist.playTime">
+                  {{ mvlist.playCount | toWan }}
+                </span>
+                <svg-icon iconClass="play-circle" class="icon playCircle" />
+                <img v-lazy="mvlist.sPicUrl || mvlist.picUrl">
+              </div>
+              <p class="song-title">{{ mvlist.name }}</p>
+              <p class="artist-name" v-if="mvlist.artistName">{{ mvlist.artistName }}</p>
+            </template>
+          </SongList>
+        </div>
+        <!-- 主播电台 -->
+        <div class="djProgramList">
+          <div class="listTitle">
+            <span @click="toList">主播电台</span>
+          </div>
+          <SongList :items="pageDatas.djProgramList">
+            <template slot-scope="djProgramList">
+              <div class="song-img bgBottomLinear">
+                <span class="djProgram-name">{{ djProgramList.name | formatName }}</span>
+                <img v-lazy="djProgramList.picUrl">
+              </div>
+              <p class="song-title">{{ djProgramList.copywriter }}</p>
+              <p class="artist-name" v-if="djProgramList.category">{{ djProgramList.category }}</p>
+            </template>
+          </SongList>
+        </div>
+      </div>
     </Scroll>
-    <div class="loadingContainer">
-      <Loading></Loading>
+    <div class="loadingContainer" v-else>
+      <Loading desc="正在为您生成个性化设置..." />
     </div>
   </div>
 </template>
@@ -47,23 +136,59 @@ import SongList from '@/components/SongList/SongList.vue'
   }
 })
 export default class Discover extends Vue {
-  private limit?: number
-  private bannerList!: Array<object>
+  private isRenderFinish!: boolean
+  private pageDatas!: object
 
   constructor() {
     super()
-    this.limit = 24
-    this.bannerList = []
+    this.isRenderFinish = false
+    this.pageDatas = {
+      bannerList: [],
+      personalizedList: [],
+      privateContent: [],
+      newSongsList: [],
+      mvlist: [],
+      djProgramList: [],
+    }
   }
 
   private created() {
-    this.getBannerList()
+    this.initData()
   }
 
-  //获取轮播图
-  public async getBannerList(this: any) {
-    const res = await this.$api.discoverApi.getBanner()
-    this.bannerList = res.banners
+  private async initData(this: any) {
+    this.isRenderFinish = false
+    Promise.all([
+      this.$api.discoverApi.getBanner(),
+      this.$api.discoverApi.getPersonalized(),
+      this.$api.discoverApi.getPrivateContent(),
+      this.$api.discoverApi.getNewSong(),
+      this.$api.discoverApi.getPersonalizedMV(),
+      this.$api.discoverApi.getDjHot()
+    ]).then(
+      ([
+        { banners: bannerList },
+        { result: personalizedList },
+        { result: privateContent },
+        { result: newSongsList },
+        { result: mvlist },
+        { djRadios: djProgramList }
+      ]) => {
+        this.pageDatas = {
+          bannerList,
+          personalizedList,
+          privateContent,
+          newSongsList,
+          mvlist,
+          djProgramList
+        }
+        this.isRenderFinish = true
+      }
+    )
+  }
+
+  public toList() {
+    this.$router.push('/musicList')
   }
 }
 </script>
@@ -107,6 +232,12 @@ export default class Discover extends Vue {
     }
     .songListBox {
       background-color: $themeWhite;
+      .privateContent,
+      .newSongsList,
+      .mvlist,
+      .djProgramList {
+        border-top: $fontSize22 / 22 solid rgba(219,220,222,.50196);
+      }
       .listTitle {
         height: $fontSize46 * 2 - 2;
         padding-left: $fontSize36 / 2;
@@ -117,6 +248,15 @@ export default class Discover extends Vue {
           @include bg-url("../../assets/image/aa7.png");
           @include bg-full($s:$fontSize32 / 2, $p:right center);
         }
+      }
+      .playCircle {
+        position: absolute;
+        top: $fontSize40 / 4;
+        left: $fontSize32 / 2;
+        color: $themeWhite;
+        width: $fontSize38;
+        height: $fontSize38;
+        z-index: 1;
       }
       .album-name {
         margin: $fontSize24 / 3 $fontSize30 / 6 0;

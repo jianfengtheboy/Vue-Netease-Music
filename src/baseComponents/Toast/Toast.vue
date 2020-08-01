@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-30 15:09:03
- * @LastEditTime: 2020-07-30 16:58:38
+ * @LastEditTime: 2020-08-02 00:03:53
  * @Description: toast全剧组件
 --> 
 <template>
@@ -43,7 +43,7 @@ export default class Toast extends Vue {
   padding: $fontSize36 / 2 $fontSize28;
   font-size: $fontSize26;
   text-align: center;
-  @include borderRadius($fontSize36 / 6);
+  @include borderRadius($fontSize30 / 3);
   position: fixed;
   top: 50%;
   left: 50%;
