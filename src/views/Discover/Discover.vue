@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:07:17
- * @LastEditTime: 2020-08-02 02:13:25
+ * @LastEditTime: 2020-08-04 16:33:34
 --> 
 <template>
   <div class="discover" ref="discover">
@@ -25,7 +25,7 @@
         <!-- 推荐歌单 -->
         <div class="personalizedList">
           <div class="listTitle">
-            <span @click="toList">推荐歌单</span>
+            <span @click="toList('playlist')">推荐歌单</span>
           </div>
           <SongList :items="pageDatas.personalizedList">
             <template slot-scope="personalizedList">
@@ -40,7 +40,7 @@
         <!-- 独家放送 -->
         <div class="privateContent">
           <div class="listTitle">
-            <span @click="toList">独家放送</span>
+            <span @click="toList('privateContent')">独家放送</span>
           </div>
           <SongList :items="pageDatas.privateContent">
             <template slot-scope="privateContent">
@@ -58,7 +58,7 @@
         <!-- 最新音乐 -->
         <div class="newSongsList">
           <div class="listTitle">
-            <span @click="toList">最新音乐</span>
+            <span @click="toList('newSong')">最新音乐</span>
           </div>
           <SongList :items="pageDatas.newSongsList">
             <template slot-scope="newSongsList">
@@ -78,7 +78,7 @@
         <!-- 推荐mv -->
         <div class="mvlist">
           <div class="listTitle">
-            <span @click="toList">推荐mv</span>
+            <span @click="toList('mv')">推荐mv</span>
           </div>
           <SongList :items="pageDatas.mvlist">
             <template slot-scope="mvlist">
@@ -97,7 +97,7 @@
         <!-- 主播电台 -->
         <div class="djProgramList">
           <div class="listTitle">
-            <span @click="toList">主播电台</span>
+            <span @click="toList('dj')">主播电台</span>
           </div>
           <SongList :items="pageDatas.djProgramList">
             <template slot-scope="djProgramList">
@@ -148,7 +148,7 @@ export default class Discover extends Vue {
       privateContent: [],
       newSongsList: [],
       mvlist: [],
-      djProgramList: [],
+      djProgramList: []
     }
   }
 
@@ -187,8 +187,8 @@ export default class Discover extends Vue {
     )
   }
 
-  public toList() {
-    this.$router.push('/musicList')
+  public toList(item: string) {
+    this.$router.push(`/${item}`)
   }
 }
 </script>
