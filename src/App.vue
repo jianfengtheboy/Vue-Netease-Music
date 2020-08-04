@@ -3,17 +3,15 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-07-27 01:01:33
+ * @LastEditTime: 2020-08-04 17:11:11
  * @Description: App.vue
 -->
 <template>
-  <transition name="slide">
-    <div id="sun" @touchmove.prevent>
-      <keep-alive>
-        <router-view />
-      </keep-alive>
-    </div>
-  </transition>
+  <div id="sun" @touchmove.prevent>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
+  </div>
 </template>
 
 <script lang="ts" type="text/ecmascript-6">
@@ -25,14 +23,6 @@ export default class App extends Vue {}
 
 <style lang="scss">
 @import "./styles/base.scss";
-
-.slide-enter-active,.slide-leave-active {
-  transition: all 0.3s;
-}
-
-.slide-enter,.slide-leave-to {
-  transform: translate3d(100%,0,0);
-}
 
 #sun {
   position: fixed;

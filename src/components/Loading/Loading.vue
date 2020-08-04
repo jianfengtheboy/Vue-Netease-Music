@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:28:15
- * @LastEditTime: 2020-07-27 00:58:42
+ * @LastEditTime: 2020-08-04 17:24:09
  * @Description: loading组件
 --> 
 <template>
@@ -18,7 +18,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Loading extends Vue {
-  @Prop({ default: '正在加载中...' }) public desc?: string;
+  @Prop({ default: '加载中...' }) public desc?: string;
 }
 </script>
 

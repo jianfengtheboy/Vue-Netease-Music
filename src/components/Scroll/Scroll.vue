@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-19 23:10:05
- * @LastEditTime: 2020-07-20 22:43:20
+ * @LastEditTime: 2020-08-04 23:44:43
  * @Description: Scroll组件
 --> 
 <template>
@@ -44,24 +44,24 @@ export default class Scroll extends Vue {
   @Prop({ default: true }) public click?: boolean
   @Prop({ default: false }) public listenScroll?: boolean
   // 是否派发顶部下拉的事件，用于下拉刷新
-  @Prop({ default: false }) public pullDownRefresh?: null
+  @Prop({ default: false }) public pullDownRefresh?: boolean
   // 是否派发滚动到底部的事件，用于上拉加载
-  @Prop({ default: false }) public pullUpLoad?: null
+  @Prop({ default: false }) public pullUpLoad?: boolean
   @Prop({ default: 20 }) public refreshDelay?: number
 
-  private mounted(): void {
+  private mounted() {
     // 保证在DOM渲染完毕后初始化better-scroll
     this.$nextTick(() => {
       this.initScroll()
     })
   }
 
-  private destroyed(this: any): void {
+  private destroyed(this: any) {
     this.$refs.scroll && this.$refs.scroll.destroy()
   }
 
   @Watch('renderData', { immediate: true, deep: true })
-  private onWatchRenderData(): void {
+  private onWatchRenderData() {
     setTimeout(() => {
       this.forceUpdate(true)
     }, this.refreshDelay)
@@ -88,7 +88,7 @@ export default class Scroll extends Vue {
     })
   }
 
-  private initScroll(): void {
+  private initScroll() {
     if (!this.$refs.wrapper) return
     // better-scroll的初始化
     this.scroll = new BScroll(this.$refs.wrapper, {
@@ -111,31 +111,31 @@ export default class Scroll extends Vue {
     }
   }
 
-  private enable(): void {
+  private enable() {
     this.scroll && this.scroll.enable()
   }
 
-  private disable(): void {
+  private disable() {
     this.scroll && this.scroll.disable()
   }
 
-  private refresh(): void {
+  private refresh() {
     this.scroll && this.scroll.refresh()
   }
 
-  private scrollTo(): void {
+  private scrollTo() {
     this.scroll && this.scroll.scrollTo.apply(this.scroll)
   }
 
-  private scrollToElement(): void {
+  private scrollToElement() {
     this.scroll && this.scroll.scrollToElement.apply(this.scroll)
   }
 
-  private destroy(): void {
+  private destroy() {
     this.scroll.destroy()
   }
 
-  private forceUpdate(dirty?: any): void {
+  private forceUpdate(dirty?: any) {
     if (this.pullDownRefresh && this.isPullingDown) {
       this.isPullingDown = false
     } else if (this.pullUpLoad && this.isPullUpLoad) {

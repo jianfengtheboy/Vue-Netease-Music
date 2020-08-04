@@ -3,14 +3,14 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:08:21
- * @LastEditTime: 2020-07-22 16:31:32
+ * @LastEditTime: 2020-08-04 17:05:59
  * @Description: 
 --> 
 <template>
-  <div class="net-nav">
+  <div class="netNav">
     <div class="navLeft" @click="goBack"></div>
     <div class="navTitle">{{title}}</div>
-    <div class="navRight"></div>
+    <slot class="navRight"></slot>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class NetNav extends Vue {
   @Prop({ default: '' }) title?: string
 
-  public goBack(): void {
+  private goBack(): void {
     this.$router.back()
   }
 }
@@ -31,7 +31,7 @@ export default class NetNav extends Vue {
 @import "../../styles/base.scss";
 @import "../../styles/mixin.scss";
 
-.net-nav {
+.netNav {
   position: relative;
   height: $fontSize40 * 2;
   padding: $fontSize28 / 2 $fontSize50 * 2 + 5;

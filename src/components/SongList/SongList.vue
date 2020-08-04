@@ -3,12 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:36:01
- * @LastEditTime: 2020-08-01 23:45:47
+ * @LastEditTime: 2020-08-04 18:17:43
  * @Description: 
 --> 
 <template>
   <div class="song-list">
-    <div class="song-item" v-for="item in items" :key="item.id">
+    <div class="song-item" v-for="(item, index) in items" :key="index">
       <slot v-bind="item"></slot>
     </div>
   </div>

@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:26:42
- * @LastEditTime: 2020-08-03 17:41:53
+ * @LastEditTime: 2020-08-04 17:03:39
  * @Description: 歌单列表
  */
 const playlistRoutes: any[] = [
@@ -12,7 +12,8 @@ const playlistRoutes: any[] = [
     component: () => import(/* webpackChunkName: "playlist" */ '@/views/Playlist/Playlist.vue'),
     name: 'playlist',
     meta: {
-      title: '歌单'
+      title: '歌单',
+      show: false
     }
   },
   {
@@ -20,7 +21,8 @@ const playlistRoutes: any[] = [
     component: () => import(/* webpackChunkName: "playlist-highquality" */ '@/views/Playlist/HighQuality.vue'),
     name: 'playlist-highquality',
     meta: {
-      title: '精品歌单'
+      title: '精品歌单',
+      show: false
     }
   },
   {
@@ -28,6 +30,9 @@ const playlistRoutes: any[] = [
     component: () => import(/* webpackChunkName: "playlist-item" */ '@/views/Playlist/PlaylistItem.vue'),
     name: 'playlist-item',
     redirect: '/playlist/:id/tracks',
+    meta: {
+      show: false
+    },
     children: [
       {
         path: '/playlist/:id/tracks',

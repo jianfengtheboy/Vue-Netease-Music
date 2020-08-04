@@ -3,10 +3,10 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-01 21:58:46
- * @LastEditTime: 2020-08-02 01:38:19
+ * @LastEditTime: 2020-08-04 17:56:11
  * @Description: 
  */
-import Https from '../config/http'
+import Https from '@/config/http'
 
 export default class DiscoverApi {
   // 轮播图
