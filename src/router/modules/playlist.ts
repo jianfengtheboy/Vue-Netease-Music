@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:26:42
- * @LastEditTime: 2020-08-04 17:03:39
+ * @LastEditTime: 2020-08-05 16:58:25
  * @Description: 歌单列表
  */
 const playlistRoutes: any[] = [

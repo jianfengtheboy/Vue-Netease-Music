@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:07:17
- * @LastEditTime: 2020-08-04 16:33:34
+ * @LastEditTime: 2020-08-05 15:45:08
 --> 
 <template>
   <div class="discover" ref="discover">
@@ -27,7 +27,7 @@
           <div class="listTitle">
             <span @click="toList('playlist')">推荐歌单</span>
           </div>
-          <SongList :items="pageDatas.personalizedList">
+          <SongList :items="pageDatas.personalizedList" @toItemDetail="toItemDetail">
             <template slot-scope="personalizedList">
               <div class="song-img bgTopLinear">
                 <span class="playCount">{{ personalizedList.playCount | toWan }}</span>
@@ -187,8 +187,12 @@ export default class Discover extends Vue {
     )
   }
 
-  public toList(item: string) {
+  private toList(item: string) {
     this.$router.push(`/${item}`)
+  }
+
+  private toItemDetail(val: string | number) {
+    this.$router.push(`/playlist/${val}`)
   }
 }
 </script>

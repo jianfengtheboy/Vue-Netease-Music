@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 23:21:23
- * @LastEditTime: 2020-08-02 00:56:51
+ * @LastEditTime: 2020-08-05 17:31:19
  * @Description: request
  */ 
 import axios from 'axios'
@@ -45,6 +45,9 @@ export default class Interceptors {
     
     this.instance.interceptors.response.use(
       (response: { data: { code: number } }) => {
+        if (typeof response.data === 'string') {
+          response.data = JSON.parse(response.data)
+        }
         if (response.data.code && response.data.code === ERR_OK) {
           return response.data
         }

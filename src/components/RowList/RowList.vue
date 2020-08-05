@@ -3,23 +3,28 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:40:30
- * @LastEditTime: 2020-07-22 16:43:49
+ * @LastEditTime: 2020-08-05 17:52:11
  * @Description: 
 --> 
 <template>
   <div class="row-list">
-    <div class="row-item" v-for="item in items" :key="item.id">
+    <div class="row-item" v-for="(item, index) in items" :key="index" @click="toItemDetail(item.id)">
       <slot v-bind="item"></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" type="text/ecmascript-6">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
 
 @Component
 export default class RowList extends Vue {
   @Prop() items!: object
+
+  @Emit('toItemDetail')
+  public toItemDetail(val: string | number) {
+    return val
+  }
 }
 </script>
 

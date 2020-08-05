@@ -3,11 +3,11 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:12:41
- * @LastEditTime: 2020-08-04 17:11:58
+ * @LastEditTime: 2020-08-05 14:02:03
 --> 
 <template>
   <div class="basicLayout">
-    <net-header v-if="this.$route.meta.show"></net-header>
+    <NetHeader v-if="this.$route.meta.show"></NetHeader>
     <NetNav v-else :title="this.$route.meta.title"></NetNav>
     <keep-alive>
       <transition name="slide">

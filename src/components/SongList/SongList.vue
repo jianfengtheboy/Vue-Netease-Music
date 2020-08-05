@@ -3,23 +3,28 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:36:01
- * @LastEditTime: 2020-08-04 18:17:43
+ * @LastEditTime: 2020-08-05 15:54:37
  * @Description: 
 --> 
 <template>
   <div class="song-list">
-    <div class="song-item" v-for="(item, index) in items" :key="index">
+    <div class="song-item" v-for="(item, index) in items" :key="index" @click="toItemDetail(item.id)">
       <slot v-bind="item"></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" type="text/ecmascript-6">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
 
 @Component
 export default class SongList extends Vue {
   @Prop() items!: object
+
+  @Emit('toItemDetail')
+  public toItemDetail(val: string | number) {
+    return val
+  }
 }
 </script>
 

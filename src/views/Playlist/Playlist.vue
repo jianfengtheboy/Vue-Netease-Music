@@ -3,8 +3,8 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:32:05
- * @LastEditTime: 2020-08-05 13:29:09
- * @Description: 
+ * @LastEditTime: 2020-08-05 17:00:13
+ * @Description: 歌单
 -->
 <template>
   <div class="playList">
@@ -33,7 +33,7 @@
       </router-link>
       <!-- 歌单列表 -->
       <div class="topPlayListMusic">
-        <SongList :items="topPlayList">
+        <SongList :items="topPlayList" @toItemDetail="toItemDetail">
           <template slot-scope="topPlayList">
             <div class="song-img bgTopLinear bgBottomLinear">
               <span class="playCount">{{ topPlayList.playCount | toWan }}</span>
@@ -111,6 +111,10 @@ export default class Playlist extends Vue {
     } else {
       this.$refs.scroll.forceUpdate()
     }
+  }
+
+  private toItemDetail(val: string | number) {
+    this.$router.push(`/playlist/${val}`)
   }
 }
 </script>
