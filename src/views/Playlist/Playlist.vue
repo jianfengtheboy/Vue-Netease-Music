@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:32:05
- * @LastEditTime: 2020-08-04 23:43:10
+ * @LastEditTime: 2020-08-05 13:29:09
  * @Description: 
 -->
 <template>
@@ -47,7 +47,7 @@
       </div>
     </Scroll>
     <div class="loadingContainer" v-else>
-      <Loading />
+      <Loading></Loading>
     </div>
   </div>
 </template>
@@ -105,7 +105,7 @@ export default class Playlist extends Vue {
 
   public async getTopPlayList(this: any) {
     const res = await this.$api.playListApi.getTopPlayList(this.page)
-    if (res.code === 200) {
+    if (res.more && res.code === 200) {
       this.topPlayList = this.topPlayList.concat(res.playlists)
       this.page ++
     } else {

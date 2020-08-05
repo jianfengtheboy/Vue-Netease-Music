@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-19 23:10:05
- * @LastEditTime: 2020-08-04 23:44:43
+ * @LastEditTime: 2020-08-05 13:15:19
  * @Description: Scroll组件
 --> 
 <template>
@@ -68,29 +68,22 @@ export default class Scroll extends Vue {
   }
 
   @Emit('scroll')
-  private onScroll() {
-    this.scroll.on('scroll', (pos: any) => {
-      return pos
-    })
+  private onScroll(pos: any) {
+    return pos
   }
 
   @Emit('pullingUp')
   private onPullingUp() {
-    this.scroll.on('pullingUp', () => {
-      this.isPullUpLoad = true
-    })
+    this.isPullUpLoad = true
   }
 
   @Emit('pullingDown')
   private onPullingDown() {
-    this.scroll.on('pullingDown', () => {
-      this.isPullingDown = true
-    })
+    this.isPullingDown = true
   }
 
   private initScroll() {
     if (!this.$refs.wrapper) return
-    // better-scroll的初始化
     this.scroll = new BScroll(this.$refs.wrapper, {
       probeType: this.probeType,
       click : this.click,
@@ -99,15 +92,21 @@ export default class Scroll extends Vue {
     })
     // 是否派发滚动事件
     if (this.listenScroll) {
-      this.onScroll()
+      this.scroll.on('scroll', (pos: any) => {
+        this.onScroll(pos)
+      })
     }
     // 是否派发滚动到底部事件，用于上拉加载
     if (this.pullUpLoad) {
-      this.onPullingUp()
+      this.scroll.on('pullingUp', () => {
+        this.onPullingUp()
+      })
     }
     // 是否派发顶部下拉事件，用于下拉刷新
     if (this.pullDownRefresh) {
-      this.onPullingDown()
+      this.scroll.on('pullingDown', () => {
+        this.onPullingDown()
+      })
     }
   }
 

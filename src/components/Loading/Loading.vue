@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:28:15
- * @LastEditTime: 2020-08-04 17:24:09
+ * @LastEditTime: 2020-08-05 13:23:00
  * @Description: loading组件
 --> 
 <template>
@@ -39,7 +39,7 @@ export default class Loading extends Vue {
 }
 .loadMore {
   padding: $fontSize36 / 2 0;
-  img {
+  .icon {
     width: $fontSize40 * 2;
     height: $fontSize40 * 2;
   }
