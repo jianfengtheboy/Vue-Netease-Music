@@ -3,24 +3,24 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 22:44:51
- * @LastEditTime: 2020-07-27 00:35:27
+ * @LastEditTime: 2020-08-10 23:24:24
  * @Description: NetMenu
 --> 
 <template>
   <div class="netmenu">
-    <router-link class="menu-item" tag="div" :to="{name: 'personalFM'}">
+    <router-link class="menu-item" tag="div" :to="{ name: 'personalFM' }">
       <div class="menu-icon fm"></div>
       <p>私人FM</p>
     </router-link>
-    <router-link class="menu-item" tag="div" :to="{name: 'recommend'}">
+    <router-link class="menu-item" tag="div" :to="{ name: 'recommend' }">
       <div class="menu-icon daily"><span class="date">{{ getTime }}</span></div>
       <p>每日推荐</p>
     </router-link>
-    <router-link class="menu-item" tag="div" :to="{name: 'musicList'}">
+    <router-link class="menu-item" tag="div" :to="{ name: 'musicList' }">
       <div class="menu-icon musicList"></div>
       <p>歌单</p>
     </router-link>
-    <router-link class="menu-item" tag="div" :to="{name: 'rank'}">
+    <router-link class="menu-item" tag="div" :to="{ name: 'rank' }">
       <div class="menu-icon rank"></div>
       <p>排行榜</p>
     </router-link>

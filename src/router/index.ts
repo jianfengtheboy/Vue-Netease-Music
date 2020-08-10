@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-08-03 17:42:56
+ * @LastEditTime: 2020-08-10 23:25:27
  * @Description: 路由
  */ 
 import Vue from 'vue'
@@ -12,6 +12,7 @@ import BasicLayout from '@/layout/BasicLayout.vue'
 
 import { recommendRoutes } from '@/router/modules/recommend'
 import { playlistRoutes } from '@/router/modules/playlist'
+import { rankRoutes } from '@/router/modules/rank'
 
 Vue.use(VueRouter)
 
@@ -23,7 +24,8 @@ const routes: Array<RouteConfig> = [
     redirect: '/discover',
     children: [
       ...recommendRoutes,
-      ...playlistRoutes
+      ...playlistRoutes,
+      ...rankRoutes
     ]
   }
 ]

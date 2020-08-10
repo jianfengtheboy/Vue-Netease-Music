@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:22:32
- * @LastEditTime: 2020-07-22 16:31:52
+ * @LastEditTime: 2020-08-10 22:31:04
  * @Description: 
 --> 
 <template>
@@ -46,7 +46,7 @@ export default class NetHeader extends Vue {}
   .netHeaderTitle {
     display: flex;
     justify-content: center;
-    padding: $fontSize30 + 0.5 4 * $fontSize40;
+    padding: $fontSize30 4 * $fontSize40;
     .netHeaderIcon {
       flex: 0 0 25%;
       height: $fontSize50;
