@@ -3,12 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:28:15
- * @LastEditTime: 2020-08-05 13:23:00
+ * @LastEditTime: 2020-08-13 14:49:55
  * @Description: loading组件
 --> 
 <template>
   <div class="loading">
-    <svg-icon iconClass="loading" class="icon" />
+    <svg-icon :iconClass="iconClass" class="icon" />
     <p class="desc">{{ desc }}</p>
   </div>
 </template>
@@ -19,6 +19,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 @Component
 export default class Loading extends Vue {
   @Prop({ default: '加载中...' }) public desc?: string;
+  @Prop({ default: 'loading' }) public iconClass?: string
 }
 </script>
 
