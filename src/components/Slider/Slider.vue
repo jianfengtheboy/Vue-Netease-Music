@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-02 16:05:35
- * @LastEditTime: 2020-07-22 16:00:57
+ * @LastEditTime: 2020-08-21 10:05:36
  * @Description: slider组件
 -->
 <template>
@@ -71,6 +71,9 @@ export default class Slider extends Vue {
       this.setSliderWidth(true)
       this.slider.refresh()
     })
+    this.$once('hook:deactivated', () => clearInterval(this.timer))
+    this.$once('hook:beforeDestroy', () => clearInterval(this.timer))
+    this.$once('hook:destroyed', () => clearInterval(this.timer))
   }
 
   // activated
@@ -79,22 +82,7 @@ export default class Slider extends Vue {
       this.play()
     }
   }
-
-  // deactivated
-  private deactivated(): void {
-    clearTimeout(this.timer)
-  }
-
-  // beforeDestroy
-  private beforeDestroy(): void {
-    clearTimeout(this.timer)
-  }
-
-  // destroyed
-  private destroyed(): void {
-    clearTimeout(this.timer)
-  }
-
+  
   // methods
   private setSliderWidth(this: any, isResize?: boolean): void {
     this.children = this.$refs.sliderGroup.children

@@ -3,8 +3,8 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:08:21
- * @LastEditTime: 2020-08-04 17:05:59
- * @Description: 
+ * @LastEditTime: 2020-08-21 09:51:58
+ * @Description: 导航组件
 --> 
 <template>
   <div class="netNav">

@@ -3,8 +3,8 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-30 15:09:03
- * @LastEditTime: 2020-08-02 00:03:53
- * @Description: toast全剧组件
+ * @LastEditTime: 2020-08-21 09:50:41
+ * @Description: toast全局组件
 --> 
 <template>
   <transition name="fade">

@@ -4,7 +4,7 @@
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-30 15:10:08
  * @LastEditTime: 2020-07-30 16:33:26
- * @Description: 
+ * @Description: toast全局组件
  */
 import ToastComponent from './Toast.vue'
 

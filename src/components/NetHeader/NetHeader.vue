@@ -3,8 +3,8 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:22:32
- * @LastEditTime: 2020-08-10 22:31:04
- * @Description: 
+ * @LastEditTime: 2020-08-21 09:51:25
+ * @Description: 头部组件
 --> 
 <template>
   <div class="netHeader">
