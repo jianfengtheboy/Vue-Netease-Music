@@ -3,8 +3,8 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:36:01
- * @LastEditTime: 2020-08-05 15:54:37
- * @Description: 
+ * @LastEditTime: 2020-08-21 23:18:17
+ * @Description: songList组件
 --> 
 <template>
   <div class="song-list">

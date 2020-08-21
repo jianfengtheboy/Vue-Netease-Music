@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-18 00:53:59
- * @LastEditTime: 2020-07-18 01:43:37
+ * @LastEditTime: 2020-08-21 23:15:09
  * @Description: 瀑布流
  *  <v-water-fall :img_list="photo_list" :img_width="250" :img_margin_bottom="20" class="photo_img_box">
  *   <template slot-scope="scope">
