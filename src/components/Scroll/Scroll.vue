@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-19 23:10:05
- * @LastEditTime: 2020-08-21 09:54:43
+ * @LastEditTime: 2020-08-21 23:24:12
  * @Description: Scroll组件
 --> 
 <template>
@@ -49,15 +49,13 @@ export default class Scroll extends Vue {
   @Prop({ default: false }) public pullUpLoad?: boolean
   @Prop({ default: 20 }) public refreshDelay?: number
 
-  private mounted() {
+  private mounted(this: any) {
     // 保证在DOM渲染完毕后初始化better-scroll
     this.$nextTick(() => {
       this.initScroll()
     })
-  }
 
-  private destroyed(this: any) {
-    this.$refs.scroll && this.$refs.scroll.destroy()
+    this.$once('hook:destroyed', () => this.$refs.scroll && this.$refs.scroll.destroy())
   }
 
   @Watch('renderData', { immediate: true, deep: true })
