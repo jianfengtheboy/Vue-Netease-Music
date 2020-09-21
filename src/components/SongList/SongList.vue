@@ -3,12 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:36:01
- * @LastEditTime: 2020-08-21 23:18:17
+ * @LastEditTime: 2020-09-20 22:43:12
  * @Description: songList组件
 --> 
 <template>
   <div class="song-list">
-    <div class="song-item" v-for="(item, index) in items" :key="index" @click="toItemDetail(item.id)">
+    <div class="song-item" v-for="(item, index) in items" :key="index" @click="toItemDetail(item)">
       <slot v-bind="item"></slot>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default class SongList extends Vue {
   @Prop() items!: object
 
   @Emit('toItemDetail')
-  public toItemDetail(val: string | number) {
+  public toItemDetail(val: object) {
     return val
   }
 }

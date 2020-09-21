@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:36:53
- * @LastEditTime: 2020-08-10 23:51:09
+ * @LastEditTime: 2020-09-22 01:31:22
  * @Description: 
 -->
 <template>
@@ -16,11 +16,7 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 @Component
-export default class PlaylistItem extends Vue {
-  private created() {
-    console.log('...', this.$route.meta)
-  }
-}
+export default class PlaylistItem extends Vue {}
 </script>
 
 <style lang="scss" scoped>

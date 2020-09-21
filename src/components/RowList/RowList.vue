@@ -3,12 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:40:30
- * @LastEditTime: 2020-08-05 17:52:11
+ * @LastEditTime: 2020-09-20 22:43:45
  * @Description: 
 --> 
 <template>
   <div class="row-list">
-    <div class="row-item" v-for="(item, index) in items" :key="index" @click="toItemDetail(item.id)">
+    <div class="row-item" v-for="(item, index) in items" :key="index" @click="toItemDetail(item)">
       <slot v-bind="item"></slot>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default class RowList extends Vue {
   @Prop() items!: object
 
   @Emit('toItemDetail')
-  public toItemDetail(val: string | number) {
+  public toItemDetail(val: object) {
     return val
   }
 }

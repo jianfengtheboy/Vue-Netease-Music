@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:26:42
- * @LastEditTime: 2020-08-05 16:58:25
+ * @LastEditTime: 2020-09-22 01:29:19
  * @Description: 歌单列表
  */
 const playlistRoutes: any[] = [
@@ -26,26 +26,26 @@ const playlistRoutes: any[] = [
     }
   },
   {
-    path: '/playlist/:id',
+    path: '/playlist/:id/:name',
     component: () => import(/* webpackChunkName: "playlist-item" */ '@/views/Playlist/PlaylistItem.vue'),
     name: 'playlist-item',
-    redirect: '/playlist/:id/tracks',
+    redirect: '/playlist/:id/:name/tracks',
     meta: {
       show: false
     },
     children: [
       {
-        path: '/playlist/:id/tracks',
+        path: '/playlist/:id/:name/tracks',
         component: () => import(/* webpackChunkName: "playlist-item-tracks" */ '@/views/Playlist/PlaylistItemDetails/Tracks.vue'),
         name: 'playlist-item-tracks'
       },
       {
-        path: '/playlist/:id/comment',
+        path: '/playlist/:id/:name/comment',
         component: () => import(/* webpackChunkName: "playlist-item-comment" */ '@/views/Playlist/PlaylistItemDetails/Comment.vue'),
         name: 'playlist-item-comment'
       },
       {
-        path: '/playlist/:id/subscriber',
+        path: '/playlist/:id/:name/subscriber',
         component: () => import(/* webpackChunkName: "playlist-item-subscriber" */ '@/views/Playlist/PlaylistItemDetails/Subscriber.vue'),
         name: 'playlist-item-subscriber'
       }

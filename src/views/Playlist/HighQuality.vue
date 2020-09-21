@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:33:33
- * @LastEditTime: 2020-08-05 17:59:57
+ * @LastEditTime: 2020-09-21 00:43:58
  * @Description: 精品歌单
 -->
 <template>
@@ -117,8 +117,8 @@ export default class HighQuality extends Vue {
     }
   }
 
-  private toItemDetail(val: string | number) {
-    this.$router.push(`/playlist/${val}`)
+  private toItemDetail(val: object) {
+    this.$router.push(`/playlist/${(val as any).id}`)
   }
 
   private toUserdetail(val: string | number) {
