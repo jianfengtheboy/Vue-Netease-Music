@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:40:30
- * @LastEditTime: 2020-09-20 22:43:45
+ * @LastEditTime: 2021-02-15 17:31:37
  * @Description: 
 --> 
 <template>
@@ -17,7 +17,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class RowList extends Vue {
   @Prop() items!: object
 

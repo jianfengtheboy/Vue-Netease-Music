@@ -16,7 +16,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Loading extends Vue {
   @Prop({ default: '加载中...' }) public desc?: string;
   @Prop({ default: 'loading' }) public iconClass?: string

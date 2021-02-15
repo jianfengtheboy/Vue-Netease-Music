@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-17 17:47:11
- * @LastEditTime: 2020-07-18 00:25:28
+ * @LastEditTime: 2021-02-15 17:31:22
  * @Description: 报表展示组件
  *  report
  *    thead: 头部区域
@@ -71,7 +71,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Report extends Vue {
   @Prop({ default: () => ({ thead: [], tbody: [] }) }) public report!: any
   @Prop({ default: () => ({}) }) public data!: object

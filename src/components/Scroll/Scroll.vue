@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-19 23:10:05
- * @LastEditTime: 2020-08-21 23:24:12
+ * @LastEditTime: 2021-02-15 17:30:03
  * @Description: Scroll组件
 --> 
 <template>
@@ -18,7 +18,7 @@
 import BScroll from 'better-scroll'
 import { Component, Prop, Vue, Watch, Emit } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Scroll extends Vue {
   private isPullingDown?: boolean
   private isPullUpLoad?: boolean

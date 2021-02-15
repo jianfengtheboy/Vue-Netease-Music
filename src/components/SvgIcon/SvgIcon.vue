@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 02:10:36
- * @LastEditTime: 2020-07-08 13:57:15
+ * @LastEditTime: 2021-02-15 17:31:53
  * @Description: svgIcon组件
 --> 
 <template>
@@ -15,7 +15,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class SvgIcon extends Vue {
   @Prop({ required: true }) public iconClass!: string;
   @Prop({ default: '' }) public className?: string;

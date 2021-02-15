@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:08:21
- * @LastEditTime: 2020-08-21 09:51:58
+ * @LastEditTime: 2021-02-15 17:30:52
  * @Description: 导航组件
 --> 
 <template>
@@ -17,7 +17,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class NetNav extends Vue {
   @Prop({ default: '' }) title?: string
 

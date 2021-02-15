@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:36:01
- * @LastEditTime: 2020-09-20 22:43:12
+ * @LastEditTime: 2021-02-15 17:31:46
  * @Description: songList组件
 --> 
 <template>
@@ -17,7 +17,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue, Emit } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class SongList extends Vue {
   @Prop() items!: object
 

@@ -30,7 +30,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class NetMenu extends Vue {
   private date!: number
 

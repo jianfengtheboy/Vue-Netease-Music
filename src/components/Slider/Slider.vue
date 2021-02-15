@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-02 16:05:35
- * @LastEditTime: 2020-08-21 10:05:36
+ * @LastEditTime: 2021-02-15 17:30:21
  * @Description: slider组件
 -->
 <template>
@@ -27,7 +27,7 @@
 import BScroll from 'better-scroll'
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Slider extends Vue {
   // data
   private dots!: Array<object>

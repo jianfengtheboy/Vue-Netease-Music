@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:22:32
- * @LastEditTime: 2020-08-21 09:51:25
+ * @LastEditTime: 2021-02-15 17:30:38
  * @Description: 头部组件
 --> 
 <template>
@@ -22,7 +22,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class NetHeader extends Vue {}
 </script>
 
