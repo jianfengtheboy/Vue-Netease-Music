@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:26:42
- * @LastEditTime: 2020-08-10 23:20:08
+ * @LastEditTime: 2021-02-22 15:05:50
  * @Description: 排行榜
  */
 const rankRoutes = [
@@ -42,7 +42,6 @@ const rankRoutes = [
 const rankMap: any[] = []
 rankRoutes.concat().forEach(route => {
   const map = {
-    path: route.path,
     name: route.name,
     meta: route.meta
   }

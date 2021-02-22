@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:07:17
- * @LastEditTime: 2020-09-22 01:31:08
+ * @LastEditTime: 2021-02-22 15:06:08
 --> 
 <template>
   <div class="discover" ref="discover">
@@ -192,8 +192,13 @@ export default class Discover extends Vue {
   }
 
   private toItemDetail(val: { id: string; name: string}) {
-    this.$router.push(`/playlist/${val.id}/${val.name}`)
-    this.$set(this.$route.meta, 'title', val.name)
+    this.$router.push({
+      name: 'playlist-item',
+      params: {
+        id: val.id,
+        name: val.name
+      }
+    })
   }
 }
 </script>

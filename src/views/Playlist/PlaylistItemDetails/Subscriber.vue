@@ -15,7 +15,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Subscriber extends Vue {
   
 }

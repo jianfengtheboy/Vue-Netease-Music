@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-27 00:01:06
- * @LastEditTime: 2020-08-02 00:49:39
+ * @LastEditTime: 2021-02-22 11:32:27
  * @Description: http
  */ 
 import Interceptors from './request'
@@ -18,36 +18,40 @@ class Http {
   public get(url: string, params?: string | object) {
     const config = {
       methods: 'get',
-      url: url
+      url: url,
+      params: {} 
     }
-    if(params) (config as any).params = params
+    if (params) config.params = params
     return this.axios(config)
   }
   // post请求
   public post(url: string, params?: string | object) {
     const config = {
       methods: 'post',
-      url: url
+      url: url,
+      data: {}
     }
-    if(params) (config as any).data = params
+    if (params) config.data = params
     return this.axios(config)
   }
   // put请求
   public put(url: string, params?: string | object) {
     const config = {
       methods: 'put',
-      url: url
+      url: url,
+      params: {}
     }
-    if(params) (config as any).params = params
+    if (params) config.params = params
     return this.axios(config)
   }
   // delete请求
   public delete(url: string, params?: string | object) {
     const config = {
       methods: 'delete',
-      url: url
+      url: url,
+      params: {}
     }
-    if(params) (config as any).params = params
+    if (params) config.params = params
     return this.axios(config)
   }
 }

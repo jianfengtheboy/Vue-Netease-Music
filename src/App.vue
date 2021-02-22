@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-08-04 17:11:11
+ * @LastEditTime: 2021-02-22 10:47:41
  * @Description: App.vue
 -->
 <template>
@@ -17,7 +17,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class App extends Vue {}
 </script>
 

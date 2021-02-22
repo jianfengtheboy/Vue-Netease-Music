@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-22 16:08:21
- * @LastEditTime: 2021-02-15 17:30:52
+ * @LastEditTime: 2021-02-22 14:11:03
  * @Description: 导航组件
 --> 
 <template>

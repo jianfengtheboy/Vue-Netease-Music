@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:32:05
- * @LastEditTime: 2020-09-21 00:43:06
+ * @LastEditTime: 2021-02-22 15:02:19
  * @Description: 歌单
 -->
 <template>
@@ -113,8 +113,14 @@ export default class Playlist extends Vue {
     }
   }
 
-  private toItemDetail(val: object) {
-    this.$router.push(`/playlist/${(val as any).id}`)
+  private toItemDetail(val: { id: string; name: string }) {
+    this.$router.push({
+      name: 'playlist-item',
+      params: {
+        id: val.id,
+        name: val.name
+      }
+    })
   }
 }
 </script>

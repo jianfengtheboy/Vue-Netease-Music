@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:26:42
- * @LastEditTime: 2020-09-22 01:29:19
+ * @LastEditTime: 2021-02-22 15:05:43
  * @Description: 歌单列表
  */
 const playlistRoutes: any[] = [
@@ -56,7 +56,6 @@ const playlistRoutes: any[] = [
 const playlistMap: any[] = []
 playlistRoutes.concat().forEach(route => {
   const map = {
-    path: route.path,
     name: route.name,
     meta: route.meta
   }

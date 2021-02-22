@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-08-03 17:38:55
- * @LastEditTime: 2020-08-03 17:41:17
+ * @LastEditTime: 2021-02-22 10:46:52
  * @Description: 
 -->
 <template>
@@ -15,7 +15,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Vue, Component } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Tracks extends Vue {
   
 }

@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-30 15:09:03
- * @LastEditTime: 2020-08-21 09:50:41
+ * @LastEditTime: 2021-02-22 10:50:08
  * @Description: toast全局组件
 --> 
 <template>
@@ -18,7 +18,7 @@
 <script lang="ts" type="text/ecmascript-6">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 
-@Component
+@Component({})
 export default class Toast extends Vue {
   @Prop({ default: 'normal' }) type!: string
   @Prop({ default: false }) visible!: boolean

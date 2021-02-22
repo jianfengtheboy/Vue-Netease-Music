@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-26 23:57:13
- * @LastEditTime: 2020-08-04 16:51:06
+ * @LastEditTime: 2021-02-22 14:54:30
  */ 
 const recommendRoutes: any[] = [
   {
@@ -20,7 +20,6 @@ const recommendRoutes: any[] = [
 const recommendMap: any[] = []
 recommendRoutes.concat().forEach(route => {
   const map = {
-    path: route.path,
     name: route.name,
     meta: route.meta
   }

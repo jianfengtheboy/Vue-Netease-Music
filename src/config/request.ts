@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-26 23:21:23
- * @LastEditTime: 2020-08-05 17:31:19
+ * @LastEditTime: 2021-02-22 13:04:28
  * @Description: request
  */ 
 import axios from 'axios'
@@ -44,14 +44,14 @@ export default class Interceptors {
     })
     
     this.instance.interceptors.response.use(
-      (response: { data: { code: number } }) => {
+      (response: { data: { code: number; msg: string; statusText: string } }) => {
         if (typeof response.data === 'string') {
           response.data = JSON.parse(response.data)
         }
         if (response.data.code && response.data.code === ERR_OK) {
           return response.data
         }
-        this.$toast((response.data as any).msg || (response.data as any).statusText, 'warning')
+        this.$toast(response.data?.msg || response.data?.statusText, 'warning')
         return Promise.reject(response.data)
       },
       (error: {

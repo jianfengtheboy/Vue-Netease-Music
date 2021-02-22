@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2020-08-10 23:25:27
+ * @LastEditTime: 2021-02-22 14:13:35
  * @Description: 路由
  */ 
 import Vue from 'vue'
@@ -31,7 +31,7 @@ const routes: Array<RouteConfig> = [
 ]
 
 const router = new VueRouter({
-  mode: 'history', 
+  mode: 'history',
   base: process.env.BASE_URL,
   linkActiveClass : 'active',
   linkExactActiveClass : 'active',

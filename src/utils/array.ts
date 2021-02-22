@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-14 23:21:09
- * @LastEditTime: 2020-07-18 02:33:52
+ * @LastEditTime: 2021-02-22 13:18:29
  * @Description: array
  */ 
 export default class ArrayUtils {
@@ -25,7 +25,7 @@ export default class ArrayUtils {
   compact = (arr: any[]) => arr.filter(Boolean)
 
   // 返回两个数组之间的差异
-  difference = (a: any[], b: any[]) => {
+  difference = (a: object[], b: object[]) => {
     const s = new Set(b)
     return a.filter(x => !s.has(x))
   }

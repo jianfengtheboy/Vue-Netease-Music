@@ -3,7 +3,7 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-07-19 23:10:05
- * @LastEditTime: 2021-02-15 17:30:03
+ * @LastEditTime: 2021-02-22 10:51:50
  * @Description: Scroll组件
 --> 
 <template>
@@ -84,9 +84,9 @@ export default class Scroll extends Vue {
     if (!this.$refs.wrapper) return
     this.scroll = new BScroll(this.$refs.wrapper, {
       probeType: this.probeType,
-      click : this.click,
-      pullDownRefresh : this.pullDownRefresh,
-      pullUpLoad : this.pullUpLoad
+      click: this.click,
+      pullDownRefresh: this.pullDownRefresh,
+      pullUpLoad: this.pullUpLoad
     })
     // 是否派发滚动事件
     if (this.listenScroll) {
