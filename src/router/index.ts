@@ -3,12 +3,12 @@
  * @LastEditors: Sun
  * @Email: jianfengtheboy@163.com
  * @Date: 2020-06-20 00:16:50
- * @LastEditTime: 2021-02-22 14:13:35
+ * @LastEditTime: 2021-11-08 17:23:14
  * @Description: 路由
  */ 
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import BasicLayout from '@/layout/BasicLayout.vue'
+import basicLayout from '@/layout/basicLayout.vue'
 
 import { recommendRoutes } from '@/router/modules/recommend'
 import { playlistRoutes } from '@/router/modules/playlist'
@@ -20,7 +20,7 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'basicLayout',
-    component: BasicLayout,
+    component: basicLayout,
     redirect: '/discover',
     children: [
       ...recommendRoutes,
